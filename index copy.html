@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Exchange - Hero Section</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     ROOT / CONFIG VARIABLES
+  ========================================================= */
+  :root{
+    --color-primary-red: #E31E24;
+    --color-primary-navy: #0B1F3A;
+    --color-navy-dark: #071630;
+    --color-text-dark: #1A1A1A;
+    --color-text-muted: #6B7280;
+    --color-border: #E5E7EB;
+    --color-bg-pink: #FDEDED;
+    --font-family: 'Poppins', sans-serif;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    font-family: var(--font-family);
+    color: var(--color-text-dark);
+    margin:0;
+    padding:0;
+    background:#fff;
+  }
+
+  a{ text-decoration:none; }
+
+  /* =========================================================
+     HEADER SECTION
+  ========================================================= */
+  .site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: clamp(12px, 1.5vw, 20px) clamp(16px, 4vw, 64px);
+    border-bottom: 1px solid var(--color-border);
+    background:#fff;
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .brand-wot{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+
+  .brand-wot__logo{
+    width: clamp(30px, 3vw, 38px);
+    height: clamp(30px, 3vw, 38px);
+    flex-shrink:0;
+  }
+
+  .brand-wot__divider{
+    width:1px;
+    height: 28px;
+    background: var(--color-border);
+    margin: 0 4px;
+  }
+
+  .brand-wot__text{
+    font-weight:700;
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+    line-height:1.15;
+    color: var(--color-primary-navy);
+  }
+
+  .brand-hero{
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  .brand-hero__logo{
+    width: clamp(20px, 2vw, 26px);
+    height: clamp(24px, 2.4vw, 30px);
+  }
+
+  .brand-hero__text{
+    font-weight:800;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    color: var(--color-primary-red);
+    letter-spacing: -0.5px;
+  }
+
+  .lang-select{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:#F3F4F6;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight:600;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    color:#111;
+    cursor:pointer;
+    border:none;
+  }
+
+  .lang-select__icon{
+    color: var(--color-primary-red);
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .lang-select__arrow{
+    font-size: 0.7rem;
+    margin-left: 4px;
+    color:#555;
+  }
+
+  /* =========================================================
+     HERO SECTION
+  ========================================================= */
+  .hero-section{
+    position: relative;
+  }
+
+  .hero-grid{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  /* -------- hero image column -------- */
+  .hero-media{
+    position: relative;
+    flex: 1 1 55%;
+    min-height: clamp(360px, 45vw, 560px);
+    overflow: hidden;
+  }
+
+  .hero-media__img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+  }
+
+  .hero-media__dots{
+    position:absolute;
+    left: clamp(20px, 3vw, 48px);
+    bottom: clamp(20px, 3vw, 32px);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .hero-media__dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    cursor:pointer;
+    transition: all .2s ease;
+  }
+
+  .hero-media__dot.is-active{
+    width: 34px;
+    border-radius: 6px;
+    background: var(--color-primary-red);
+  }
+
+  /* -------- valuation card column -------- */
+  .hero-valuation-wrap{
+    flex: 1 1 45%;
+    background: linear-gradient(180deg, #FDECEC 0%, #FDF2F2 100%);
+    display:flex;
+    align-items: stretch;
+    padding: clamp(16px, 2vw, 28px);
+  }
+
+  .valuation-card{
+    background:#fff;
+    width:100%;
+    padding: clamp(24px, 2.5vw, 40px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    /* notch cut on top-right corner */
+    clip-path: polygon(
+      0 0,
+      calc(100% - 34px) 0,
+      100% 34px,
+      100% 100%,
+      0 100%
+    );
+    position: relative;
+  }
+
+  .valuation-card__header{
+    display:flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: clamp(16px, 2vw, 24px);
+  }
+
+  .valuation-card__title{
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    font-weight: 700;
+    margin: 0 0 6px 0;
+  }
+
+  .valuation-card__subtitle{
+    color: var(--color-text-muted);
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    margin:0;
+  }
+
+  .valuation-card__step{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-shrink:0;
+  }
+
+  .step-bar{
+    width: 22px;
+    height: 4px;
+    border-radius: 3px;
+    background: var(--color-border);
+  }
+  .step-bar.is-active{
+    background: var(--color-primary-red);
+  }
+
+  .step-label{
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  /* tabs: sell / scrap */
+  .vehicle-tabs{
+    display:flex;
+    width:100%;
+    margin-bottom: clamp(18px, 2vw, 26px);
+  }
+
+  .vehicle-tabs__btn{
+    flex:1;
+    padding: 14px 10px;
+    border:none;
+    background: #F3F4F6;
+    color: var(--color-text-dark);
+    font-weight:600;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    cursor:pointer;
+    transition: all .2s ease;
+  }
+
+  .vehicle-tabs__btn.is-active{
+    background: var(--color-primary-navy);
+    color:#fff;
+  }
+
+  /* form fields */
+  .field-label{
+    font-weight:600;
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    margin-bottom: 8px;
+    display:block;
+  }
+
+  .field-label .required{
+    color: var(--color-primary-red);
+  }
+
+  .form-row{
+    display:flex;
+    gap: 16px;
+    margin-bottom: clamp(16px, 2vw, 22px);
+    flex-wrap: wrap;
+  }
+
+  .form-col{
+    flex:1;
+    min-width: 140px;
+  }
+
+  .custom-select{
+    width:100%;
+    padding: 12px 14px;
+    border:1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background:#F9FAFB;
+    color: var(--color-text-muted);
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    appearance:none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' fill-rule='evenodd'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  /* two wheeler type selector */
+  .wheeler-type-group{
+    display:flex;
+    gap: 12px;
+    margin-bottom: clamp(16px, 2vw, 22px);
+    flex-wrap: wrap;
+  }
+
+  .wheeler-type-option{
+    flex:1;
+    min-width: 100px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 14px 10px;
+    text-align:center;
+    cursor:pointer;
+    font-weight:600;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    color: var(--color-text-dark);
+    transition: all .2s ease;
+    background:#fff;
+  }
+
+  .wheeler-type-option__icon{
+    font-size: 1.3rem;
+    display:block;
+    margin-bottom: 6px;
+  }
+
+  .wheeler-type-option.is-active{
+    border-color: var(--color-primary-red);
+    background: #FDECEC;
+    color: var(--color-primary-red);
+  }
+
+  /* CTA */
+  .btn-continue{
+    width:100%;
+    background: var(--color-primary-red);
+    color:#fff;
+    border:none;
+    padding: 16px;
+    font-weight:600;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    border-radius: var(--radius-md);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    transition: background .2s ease;
+  }
+  .btn-continue:hover{
+    background:#c9181e;
+  }
+
+  /* =========================================================
+     STATS BAR SECTION
+  ========================================================= */
+  .stats-bar{
+    background: var(--color-navy-dark);
+    padding: clamp(20px, 2.5vw, 32px) clamp(16px, 4vw, 64px);
+  }
+
+  .stats-bar__inner{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .stat-card{
+    flex: 1 1 180px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md);
+    padding: clamp(14px, 1.5vw, 20px);
+    display:flex;
+    align-items:center;
+    gap: 14px;
+  }
+
+  .stat-card__icon{
+    width: clamp(38px, 3vw, 46px);
+    height: clamp(38px, 3vw, 46px);
+    border-radius:50%;
+    background: rgba(255,255,255,0.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size: 1.1rem;
+    flex-shrink:0;
+  }
+
+  .stat-card__value{
+    color:#fff;
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+    font-weight: 700;
+    margin:0;
+    line-height:1.2;
+  }
+
+  .stat-card__label{
+    color: rgba(255,255,255,0.85);
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+    margin:0;
+  }
+
+  .stat-card__sub{
+    color: rgba(255,255,255,0.5);
+    font-size: clamp(0.7rem, 0.8vw, 0.78rem);
+    margin:0;
+  }
+
+  /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+  @media (max-width: 991px){
+    .hero-grid{ flex-direction: column; }
+    .hero-media{ flex-basis: auto; min-height: 320px; }
+    .hero-valuation-wrap{ flex-basis: auto; }
+    .valuation-card{ clip-path: none; }
+  }
+
+  @media (max-width: 575px){
+    .form-row{ flex-direction: column; }
+    .wheeler-type-group{ flex-direction: column; }
+    .vehicle-tabs__btn{ padding: 12px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================= HEADER ============================= -->
+<header class="site-header">
+  <div class="brand-wot">
+    <svg class="brand-wot__logo" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="4" fill="#0B1F3A"/>
+      <circle cx="24" cy="8" r="3" fill="#E31E24"/>
+      <circle cx="10" cy="24" r="8" fill="none" stroke="#E31E24" stroke-width="3"/>
+      <circle cx="26" cy="24" r="4" fill="#0B1F3A"/>
+    </svg>
+    <div class="brand-wot__divider"></div>
+    <span class="brand-wot__text">Wheels<br>of Trust</span>
+  </div>
+
+  <div class="brand-hero">
+    <svg class="brand-hero__logo" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 2L2 26L12 14L2 2Z" fill="#E31E24"/>
+      <path d="M14 2L22 14L14 26" stroke="#111" stroke-width="3" fill="none"/>
+    </svg>
+    <span class="brand-hero__text">Hero</span>
+  </div>
+
+  <button class="lang-select" type="button" id="langSelectBtn">
+    <span class="lang-select__icon">&#127760;</span>
+    <span>EN</span>
+    <span class="lang-select__arrow">&#9662;</span>
+  </button>
+</header>
+
+<!-- ============================= HERO SECTION ============================= -->
+<section class="hero-section">
+  <div class="hero-grid">
+
+    <!-- Left: motorcycle image carousel -->
+    <div class="hero-media" id="heroMedia">
+      <img class="hero-media__img" id="heroMediaImg"
+           src="https://placehold.co/1200x800/d8b06b/333333?text=Motorcycle+Image"
+           alt="Motorcycle on hilltop at sunset">
+      <div class="hero-media__dots" id="heroDots">
+        <span class="hero-media__dot is-active" data-index="0"></span>
+        <span class="hero-media__dot" data-index="1"></span>
+        <span class="hero-media__dot" data-index="2"></span>
+      </div>
+    </div>
+
+    <!-- Right: valuation form card -->
+    <div class="hero-valuation-wrap">
+      <div class="valuation-card">
+
+        <div class="valuation-card__header">
+          <div>
+            <h2 class="valuation-card__title">Get Instant Valuation</h2>
+            <p class="valuation-card__subtitle">Fill in your vehicle details below</p>
+          </div>
+          <div class="valuation-card__step">
+            <span class="step-bar is-active"></span>
+            <span class="step-bar"></span>
+            <span class="step-bar"></span>
+            <span class="step-label">Step 1 of 2</span>
+          </div>
+        </div>
+
+        <div class="vehicle-tabs" id="vehicleTabs">
+          <button type="button" class="vehicle-tabs__btn is-active" data-tab="sell">Sell My Vehicle</button>
+          <button type="button" class="vehicle-tabs__btn" data-tab="scrap">Scrap Vehicle</button>
+        </div>
+
+        <label class="field-label">Select Two-Wheeler Type <span class="required">*</span></label>
+        <div class="wheeler-type-group" id="wheelerTypeGroup">
+          <div class="wheeler-type-option is-active" data-type="motorcycle">
+            <span class="wheeler-type-option__icon">&#127949;</span>
+            Motorcycle
+          </div>
+          <div class="wheeler-type-option" data-type="scooter">
+            <span class="wheeler-type-option__icon">&#128690;</span>
+            Scooter
+          </div>
+          <div class="wheeler-type-option" data-type="moped">
+            <span class="wheeler-type-option__icon">&#128690;</span>
+            Moped
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <label class="field-label">State <span class="required">*</span></label>
+            <select class="custom-select">
+              <option>Select State</option>
+              <option>Delhi</option>
+              <option>Maharashtra</option>
+              <option>Karnataka</option>
+            </select>
+          </div>
+          <div class="form-col">
+            <label class="field-label">City <span class="required">*</span></label>
+            <select class="custom-select">
+              <option>Select City</option>
+              <option>New Delhi</option>
+              <option>Mumbai</option>
+              <option>Bengaluru</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-continue" type="button" id="continueBtn">
+          Continue <span>&rarr;</span>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================= STATS BAR SECTION ============================= -->
+<section class="stats-bar">
+  <div class="stats-bar__inner" id="statsBar">
+    <!-- stat cards injected by JS from CONFIG -->
+  </div>
+</section>
+
+<script>
+  /* =========================================================
+     CONFIG
+  ========================================================= */
+  const CONFIG = {
+    heroImages: [
+      "https://placehold.co/1200x800/d8b06b/333333?text=Motorcycle+Image+1",
+      "https://placehold.co/1200x800/b58a52/333333?text=Motorcycle+Image+2",
+      "https://placehold.co/1200x800/8a6a3f/333333?text=Motorcycle+Image+3"
+    ],
+    stats: [
+      { icon: "&#9733;", value: "4.8&#9733;", label: "App Rating", sub: "12K+ reviews" },
+      { icon: "&#128101;", value: "1 Cr+", label: "Happy Customers", sub: "Across India" },
+      { icon: "&#128200;", value: "50L+", label: "Exchanges Done &amp; counting", sub: "" },
+      { icon: "&#128737;", value: "100%", label: "Secure Process Bank-grade safety", sub: "" },
+      { icon: "&#128272;", value: "100%", label: "Secure Process Bank-grade safety", sub: "" }
+    ],
+    wheelerTypes: ["motorcycle", "scooter", "moped"],
+    vehicleTabs: ["sell", "scrap"]
+  };
+
+  /* =========================================================
+     Hero Carousel Controller
+  ========================================================= */
+  class HeroCarouselController {
+    constructor(config) {
+      this.images = config.heroImages;
+      this.currentIndex = 0;
+      this.imgEl = document.getElementById("heroMediaImg");
+      this.dots = document.querySelectorAll("#heroDots .hero-media__dot");
+      this.autoPlayInterval = 4000;
+      this.timer = null;
+    }
+
+    init() {
+      this.dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const index = parseInt(dot.dataset.index, 10);
+          this.goTo(index);
+        });
+      });
+      this.startAutoPlay();
+    }
+
+    goTo(index) {
+      this.currentIndex = index;
+      this.imgEl.src = this.images[index] || this.images[0];
+      this.dots.forEach(d => d.classList.remove("is-active"));
+      this.dots[index]?.classList.add("is-active");
+    }
+
+    startAutoPlay() {
+      this.timer = setInterval(() => {
+        const next = (this.currentIndex + 1) % this.dots.length;
+        this.goTo(next);
+      }, this.autoPlayInterval);
+    }
+  }
+
+  /* =========================================================
+     Vehicle Tabs Controller (Sell / Scrap)
+  ========================================================= */
+  class VehicleTabsController {
+    constructor() {
+      this.container = document.getElementById("vehicleTabs");
+      this.buttons = this.container.querySelectorAll(".vehicle-tabs__btn");
+    }
+
+    init() {
+      this.buttons.forEach(btn => {
+        btn.addEventListener("click", () => this.setActive(btn));
+      });
+    }
+
+    setActive(activeBtn) {
+      this.buttons.forEach(btn => btn.classList.remove("is-active"));
+      activeBtn.classList.add("is-active");
+    }
+  }
+
+  /* =========================================================
+     Wheeler Type Selector Controller
+  ========================================================= */
+  class WheelerTypeController {
+    constructor() {
+      this.container = document.getElementById("wheelerTypeGroup");
+      this.options = this.container.querySelectorAll(".wheeler-type-option");
+    }
+
+    init() {
+      this.options.forEach(opt => {
+        opt.addEventListener("click", () => this.setActive(opt));
+      });
+    }
+
+    setActive(activeOpt) {
+      this.options.forEach(opt => opt.classList.remove("is-active"));
+      activeOpt.classList.add("is-active");
+    }
+  }
+
+  /* =========================================================
+     Stats Bar Renderer
+  ========================================================= */
+  class StatsBarController {
+    constructor(config) {
+      this.stats = config.stats;
+      this.container = document.getElementById("statsBar");
+    }
+
+    init() {
+      this.render();
+    }
+
+    render() {
+      const html = this.stats.map(stat => `
+        <div class="stat-card">
+          <div class="stat-card__icon">${stat.icon}</div>
+          <div>
+            <p class="stat-card__value">${stat.value}</p>
+            <p class="stat-card__label">${stat.label}</p>
+            ${stat.sub ? `<p class="stat-card__sub">${stat.sub}</p>` : ""}
+          </div>
+        </div>
+      `).join("");
+      this.container.innerHTML = html;
+    }
+  }
+
+  /* =========================================================
+     App Init Class - entry point
+  ========================================================= */
+  class App {
+    constructor(config) {
+      this.config = config;
+    }
+
+    init() {
+      new HeroCarouselController(this.config).init();
+      new VehicleTabsController().init();
+      new WheelerTypeController().init();
+      new StatsBarController(this.config).init();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    new App(CONFIG).init();
+  });
+</script>
+
+</body>
+</html>
