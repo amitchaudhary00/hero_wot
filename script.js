@@ -574,87 +574,7 @@ class BlogsController {
   }
 }
 
-/* =========================================================
-     Testimonials Marquee Controller
-  ========================================================= */
-class TestimonialsController {
-  constructor(config) {
-    this.testimonials = config.testimonials;
-    this.track = document.getElementById("testimonialsTrack");
-  }
 
-  init() {
-    this.render();
-  }
-
-  cardMarkup(t) {
-    const stars = "&#9733;".repeat(t.rating);
-    return `
-        <div class="testimonial-card">
-          <img class="testimonial-card__avatar" src="${t.avatar}" alt="${t.name}">
-          <div>
-            <p class="testimonial-card__name">${t.name}</p>
-            <p class="testimonial-card__vehicle">${t.vehicle}</p>
-          </div>
-          <span class="testimonial-card__stars">${stars}</span>
-        </div>
-      `;
-  }
-
-  render() {
-    // duplicate list for seamless infinite scroll loop
-    const doubled = [...this.testimonials, ...this.testimonials];
-    this.track.innerHTML = doubled.map((t) => this.cardMarkup(t)).join("");
-  }
-}
-
-/* =========================================================
-     FAQ Accordion Controller
-  ========================================================= */
-class FaqController {
-  constructor(config) {
-    this.faqs = config.faqs.map((f) => ({ ...f }));
-    this.container = document.getElementById("faqAccordion");
-  }
-
-  init() {
-    this.render();
-  }
-
-  render() {
-    this.container.innerHTML = this.faqs
-      .map(
-        (faq, i) => `
-        <div class="faq-item ${faq.open ? "is-open" : ""}" data-index="${i}">
-          <button class="faq-item__header" type="button">
-            <p class="faq-item__question">${faq.question}</p>
-            <span class="faq-item__icon">&#9662;</span>
-          </button>
-          <div class="faq-item__body">
-            <p class="faq-item__answer">${faq.answer}</p>
-          </div>
-        </div>
-      `,
-      )
-      .join("");
-
-    this.container.querySelectorAll(".faq-item__header").forEach((header) => {
-      header.addEventListener("click", () => {
-        const item = header.closest(".faq-item");
-        const index = parseInt(item.dataset.index, 10);
-        this.toggle(index);
-      });
-    });
-  }
-
-  toggle(index) {
-    this.faqs = this.faqs.map((faq, i) => ({
-      ...faq,
-      open: i === index ? !faq.open : false,
-    }));
-    this.render();
-  }
-}
 
 /* =========================================================
      Footer Controller
@@ -698,8 +618,8 @@ class App {
     new BenefitsCarouselController(this.config).init();
     new VehiclesController(this.config).init();
     new BlogsController(this.config).init();
-    new TestimonialsController(this.config).init();
-    new FaqController(this.config).init();
+    // new TestimonialsController(this.config).init();
+    // new FaqController(this.config).init();
     new FooterController(this.config).init();
   }
 }

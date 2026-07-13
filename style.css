@@ -1119,16 +1119,19 @@ header.site-header {
          TESTIMONIALS SECTION
       ========================================================= */
 .testimonials-section {
-  background: var(--color-navy-dark);
+  background: #0a0b0f;
   padding: clamp(28px, 3vw, 40px) 0;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .testimonials-track {
   display: flex;
-  gap: 0;
+  gap: 20px;
   width: max-content;
   animation: testimonial-scroll 30s linear infinite;
+  animation-play-state: paused;
 }
 
 .testimonials-section:hover .testimonials-track {
@@ -1147,15 +1150,16 @@ header.site-header {
 .testimonial-card {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: clamp(16px, 1.6vw, 22px) clamp(24px, 3vw, 48px);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 8px;
+  padding: clamp(16px, 1.6vw, 20px) clamp(20px, 3vw, 30px);
+  /* border-right: 1px solid rgba(255, 255, 255, 0.08); */
   flex-shrink: 0;
+  background: #2a2a2a1a;
 }
 
 .testimonial-card__avatar {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -1192,28 +1196,28 @@ header.site-header {
 
 .faq-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: 1fr 1fr;
   gap: clamp(32px, 4vw, 60px);
   align-items: start;
 }
 
 .faq-heading {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2rem);
+  font-weight: 600;
   margin: 0 0 clamp(24px, 3vw, 36px) 0;
   color: var(--color-text-dark);
+  max-width: 300px;
 }
 
 .faq-contact-card {
   background: #fff;
-  border-radius: var(--radius-lg);
-  padding: clamp(28px, 3vw, 40px);
+  padding: clamp(20px, 3vw, 30px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .faq-contact-card__title {
-  font-size: clamp(1.3rem, 1.6vw, 1.6rem);
-  font-weight: 700;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  /* font-weight: 700; */
   margin: 0 0 12px 0;
 }
 
