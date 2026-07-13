@@ -143,7 +143,7 @@ header.site-header {
   position: relative;
 }
 .hero_carousel_img {
-  min-height: 180px;
+  min-height: 300px;
   position: relative;
   height: 100%;
   width: 100%;
@@ -393,14 +393,16 @@ header.site-header {
       ========================================================= */
 .stats-bar {
   background: var(--color-navy-dark);
-  padding: clamp(20px, 2.5vw, 32px) clamp(16px, 4vw, 64px);
+  padding: clamp(14px, 2.5vw, 20px) clamp(16px, 4vw, 64px);
   overflow: hidden;
+  overflow-x: auto;
 }
 
 .stats-bar__inner {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
+  min-width: 1100px;
   width: 100%;
 }
 
@@ -408,11 +410,11 @@ header.site-header {
   background: #0000004d;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
-  padding: clamp(14px, 1.5vw, 20px);
+  padding: clamp(10px, 1vw, 0.5rem);
   display: flex;
   align-items: center;
   gap: 14px;
-  min-width: 0;
+  min-width: 200px;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
@@ -438,10 +440,9 @@ header.site-header {
 
 .stat-card__value {
   color: #fff;
-  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-  font-weight: 700;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 500;
   margin: 0;
-  line-height: 1.2;
 }
 
 .stat-card__label {
@@ -487,14 +488,11 @@ header.site-header {
       6.3% 100.2%
     );
   }
-  .stats-bar__inner {
-    grid-template-columns: repeat(5, 1fr);
-  }
 }
 
 @media (max-width: 767px) {
-  .stats-bar__inner {
-    grid-template-columns: repeat(2, 1fr);
+  .hero_carousel_img {
+    min-height: 250px;
   }
   .stat-card {
     align-items: flex-start;
@@ -502,6 +500,9 @@ header.site-header {
 }
 
 @media (max-width: 575px) {
+  .hero_carousel_img {
+    min-height: 180px;
+  }
   .wheeler-type-group {
     gap: 8px;
   }
@@ -538,22 +539,22 @@ header.site-header {
   justify-content: space-between;
   gap: 16px;
   padding: 0 clamp(16px, 4vw, 64px);
-  margin-bottom: clamp(24px, 3vw, 36px);
+  margin-bottom: clamp(14px, 3vw, 26px);
   flex-wrap: wrap;
 }
 
 .section-eyebrow {
   color: var(--color-primary-red);
-  font-weight: 700;
-  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-weight: 800;
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
   letter-spacing: 1px;
-  margin: 0 0 8px 0;
+  margin-bottom: 2px;
   text-transform: uppercase;
 }
 
 .section-heading {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 500;
   margin: 0;
   color: var(--color-text-dark);
 }
@@ -600,7 +601,7 @@ header.site-header {
          BENEFITS CAROUSEL SECTION
       ========================================================= */
 .benefits-section {
-  padding: clamp(48px, 6vw, 80px) 0 clamp(40px, 5vw, 64px) 0;
+  padding-block: clamp(1rem, 5vw, 2rem);
 }
 
 .benefits-track-wrap {
@@ -622,7 +623,7 @@ header.site-header {
   background: #f7f8fa;
   border: 1px solid #ecedf0;
   border-radius: var(--radius-lg);
-  padding: clamp(20px, 2vw, 28px);
+  padding: clamp(0.5rem, 1vw, 1rem);
   flex: 0 0 clamp(260px, 22vw, 320px);
   scroll-snap-align: start;
 }
@@ -675,8 +676,8 @@ header.site-header {
   color: var(--color-text-muted);
   font-size: clamp(0.85rem, 1vw, 0.95rem);
   line-height: 1.5;
-  margin: 0 0 20px 0;
-  min-height: 66px;
+  margin: 0 0 10px 0;
+  min-height: 60px;
 }
 
 .benefit-card__pill {
@@ -684,7 +685,7 @@ header.site-header {
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  padding: 8px 14px;
+  padding: 8px 12px;
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--color-text-dark);
@@ -726,8 +727,8 @@ header.site-header {
          VEHICLES SECTION
       ========================================================= */
 .vehicles-section {
-  padding: clamp(40px, 5vw, 64px) clamp(16px, 4vw, 64px) clamp(56px, 6vw, 80px)
-    clamp(16px, 4vw, 64px);
+  padding-inline: clamp(16px, 4vw, 64px);
+  padding-block: clamp(1rem, 5vw, 2rem);
 }
 
 .vehicles-header {
@@ -735,7 +736,7 @@ header.site-header {
   align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: clamp(20px, 2.5vw, 28px);
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
@@ -790,16 +791,16 @@ header.site-header {
 .vehicles-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 10px;
 }
 
 .vehicle-card {
-  background: #f7f8fa;
+  background: #f5f5f5;
   border: 1px solid #ecedf0;
-  border-radius: var(--radius-lg);
-  padding: clamp(18px, 1.6vw, 22px);
+  padding: clamp(0.8rem, 1.6vw, 1rem);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .vehicle-card__badge-row {
@@ -808,13 +809,15 @@ header.site-header {
 
 .vehicle-card__badge {
   display: inline-block;
-  background: #0f9d58;
-  color: #fff;
-  font-size: 0.72rem;
+  background: #008a44;
+  color: var(--white);
+  font-size: 0.7rem;
   font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 3px;
-  position: relative;
+  padding: 2px 12px;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  clip-path: polygon(7.32% 0%, 0% 43.9%, 0% 100%, 92.53% 100%, 100% 58.54%, 100% 0%);
 }
 
 .vehicle-card__img {
@@ -840,9 +843,7 @@ header.site-header {
   position: relative;
   padding-left: 16px;
   color: var(--color-text-muted);
-  font-size: clamp(0.82rem, 0.95vw, 0.92rem);
-  margin-bottom: 8px;
-  line-height: 1.4;
+  font-size: clamp(0.7rem, 0.95vw, 0.8rem);
 }
 
 .vehicle-card__specs li::before {
@@ -857,14 +858,14 @@ header.site-header {
 }
 
 .vehicle-card__price {
-  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   font-weight: 700;
   margin: 0 0 4px 0;
 }
 
 .vehicle-card__price-sub {
   color: var(--color-text-muted);
-  font-size: clamp(0.78rem, 0.9vw, 0.85rem);
+  font-size: clamp(0.78rem, 1.2vw, 0.85rem);
   margin: 0 0 18px 0;
 }
 
@@ -874,10 +875,9 @@ header.site-header {
   background: var(--color-primary-red);
   color: #fff;
   border: none;
-  padding: 14px;
+  padding: 8px;
   font-weight: 600;
   font-size: clamp(0.9rem, 1vw, 1rem);
-  border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -934,8 +934,8 @@ header.site-header {
       ========================================================= */
 .blogs-section {
   background: var(--color-bg-pink);
-  padding: clamp(40px, 5vw, 64px) clamp(16px, 4vw, 64px) clamp(56px, 6vw, 80px)
-    clamp(16px, 4vw, 64px);
+  padding-inline: clamp(16px, 4vw, 64px);
+  padding-block: clamp(1rem, 5vw, 2rem);
 }
 
 .blogs-header {
@@ -964,24 +964,23 @@ header.site-header {
 .blogs-grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
-  gap: 20px;
+  gap: 10px;
 }
 
 .blogs-grid__col {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .blogs-grid__col--small {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
 }
 
 .blog-card {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -1000,7 +999,7 @@ header.site-header {
 }
 
 .blog-card--tall {
-  min-height: clamp(420px, 44vw, 620px);
+  min-height: clamp(420px, 44vw, 490px);
 }
 
 .blog-card--wide {
@@ -1024,6 +1023,10 @@ header.site-header {
   padding: 6px 14px;
   border-radius: 20px;
   margin-bottom: clamp(90px, 12vw, 180px);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-transform: uppercase;
 }
 
 .blog-card--wide .blog-card__badge,
