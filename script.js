@@ -3,70 +3,12 @@
   ========================================================= */
 const CONFIG = {
   heroImages: ["/assets/Default.png", "/assets/Variant2.png", "/assets/Variant3.png"],
-  stats: [
-    {
-      icon: `<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.01783 0.862611C7.04704 0.803585 7.09217 0.7539 7.14813 0.719162C7.20408 0.684423 7.26863 0.666016 7.33449 0.666016C7.40035 0.666016 7.4649 0.684423 7.52086 0.719162C7.57681 0.7539 7.62194 0.803585 7.65116 0.862611L9.19116 3.98194C9.29261 4.18726 9.44237 4.36488 9.62758 4.49958C9.81278 4.63428 10.0279 4.72202 10.2545 4.75528L13.6985 5.25928C13.7637 5.26873 13.8251 5.29626 13.8755 5.33874C13.9259 5.38123 13.9634 5.43698 13.9838 5.49968C14.0042 5.56239 14.0067 5.62955 13.9909 5.69357C13.9751 5.75759 13.9417 5.81591 13.8945 5.86194L11.4038 8.28728C11.2396 8.44735 11.1167 8.64493 11.0457 8.86303C10.9748 9.08113 10.9579 9.3132 10.9965 9.53928L11.5845 12.9659C11.596 13.0312 11.589 13.0983 11.5642 13.1597C11.5394 13.2211 11.4978 13.2744 11.4442 13.3133C11.3906 13.3522 11.3271 13.3753 11.2611 13.3799C11.195 13.3845 11.129 13.3704 11.0705 13.3393L7.99183 11.7206C7.78897 11.6141 7.56328 11.5584 7.33416 11.5584C7.10504 11.5584 6.87935 11.6141 6.67649 11.7206L3.59849 13.3393C3.54005 13.3702 3.47409 13.3841 3.40813 13.3794C3.34216 13.3748 3.27884 13.3517 3.22536 13.3128C3.17187 13.2739 3.13038 13.2207 3.1056 13.1594C3.08081 13.0981 3.07373 13.0311 3.08516 12.9659L3.67249 9.53995C3.71129 9.31377 3.69448 9.08154 3.62352 8.86331C3.55255 8.64508 3.42956 8.44738 3.26516 8.28728L0.774492 5.86261C0.726888 5.81663 0.693155 5.75821 0.677134 5.69399C0.661114 5.62978 0.66345 5.56236 0.683878 5.49941C0.704306 5.43645 0.742004 5.38051 0.792677 5.33793C0.84335 5.29536 0.904961 5.26788 0.970492 5.25861L4.41383 4.75528C4.64066 4.72228 4.85609 4.63465 5.04155 4.49994C5.22701 4.36522 5.37696 4.18746 5.47849 3.98194L7.01783 0.862611Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            `,
-      value: "4.8&#9733;",
-      label: "App Rating",
-      sub: "12K+ reviews",
-    },
-    {
-      icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_1653_4542)">
-            <path d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14.666 13.9993V12.6659C14.6656 12.0751 14.4689 11.5011 14.1069 11.0341C13.7449 10.5672 13.2381 10.2336 12.666 10.0859" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10.666 2.08594C11.2396 2.2328 11.748 2.5664 12.1111 3.03414C12.4742 3.50188 12.6712 4.07716 12.6712 4.66927C12.6712 5.26138 12.4742 5.83666 12.1111 6.3044C11.748 6.77214 11.2396 7.10574 10.666 7.2526" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_1653_4542">
-            <rect width="16" height="16" fill="white"/>
-            </clipPath>
-            </defs>
-            </svg>
-            `,
-      value: "1 Cr+",
-      label: "Happy Customers",
-      sub: "Across India",
-    },
-    {
-      icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.6663 4.66797L8.99967 10.3346L5.66634 7.0013L1.33301 11.3346" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10.667 4.66797H14.667V8.66797" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            `,
-      value: "50L+",
-      label: "Exchanges Done &amp; counting",
-      sub: "",
-    },
-    {
-      icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.3337 8.66566C13.3337 11.999 11.0003 13.6657 8.22699 14.6323C8.08177 14.6815 7.92402 14.6792 7.78033 14.6257C5.00033 13.6657 2.66699 11.999 2.66699 8.66566V3.999C2.66699 3.82219 2.73723 3.65262 2.86225 3.52759C2.98728 3.40257 3.15685 3.33233 3.33366 3.33233C4.66699 3.33233 6.33366 2.53233 7.49366 1.519C7.6349 1.39833 7.81456 1.33203 8.00033 1.33203C8.18609 1.33203 8.36576 1.39833 8.50699 1.519C9.67366 2.539 11.3337 3.33233 12.667 3.33233C12.8438 3.33233 13.0134 3.40257 13.1384 3.52759C13.2634 3.65262 13.3337 3.82219 13.3337 3.999V8.66566Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            `,
-      value: "100%",
-      label: "Secure Process Bank-grade safety",
-      sub: "",
-    },
-    {
-      icon: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.3337 8.66566C13.3337 11.999 11.0003 13.6657 8.22699 14.6323C8.08177 14.6815 7.92402 14.6792 7.78033 14.6257C5.00033 13.6657 2.66699 11.999 2.66699 8.66566V3.999C2.66699 3.82219 2.73723 3.65262 2.86225 3.52759C2.98728 3.40257 3.15685 3.33233 3.33366 3.33233C4.66699 3.33233 6.33366 2.53233 7.49366 1.519C7.6349 1.39833 7.81456 1.33203 8.00033 1.33203C8.18609 1.33203 8.36576 1.39833 8.50699 1.519C9.67366 2.539 11.3337 3.33233 12.667 3.33233C12.8438 3.33233 13.0134 3.40257 13.1384 3.52759C13.2634 3.65262 13.3337 3.82219 13.3337 3.999V8.66566Z" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            `,
-      value: "100%",
-      label: "Secure Process Bank-grade safety",
-      sub: "",
-    },
-  ],
   wheelerTypes: ["motorcycle", "scooter", "moped"],
   vehicleTabs: ["sell", "scrap"],
   benefits: [
     {
       style: "filled",
-      icon: "&#128337;",
+      icon: '<i class="bi bi-clock"></i>',
       tag: "Speed",
       title: "30-Second Valuation",
       desc: "Get an accurate market price for your bike in under 30 seconds — powered by AI.",
@@ -74,7 +16,7 @@ const CONFIG = {
     },
     {
       style: "outline",
-      icon: "&#128196;",
+      icon: '<i class="bi bi-file-earmark-text"></i>',
       tag: "Legal",
       title: "Free RC Transfer",
       desc: "We handle all paperwork — RC transfer, NOC, insurance clearance — at zero cost.",
@@ -82,7 +24,7 @@ const CONFIG = {
     },
     {
       style: "outline",
-      icon: "&#9889;",
+      icon: '<i class="bi bi-lightning-fill"></i>',
       tag: "Payment",
       title: "Instant Payment",
       desc: "Money credited to your bank account within hours of vehicle pickup.",
@@ -90,7 +32,7 @@ const CONFIG = {
     },
     {
       style: "outline",
-      icon: "&#128205;",
+      icon: '<i class="bi bi-geo-alt-fill"></i>',
       tag: "Network",
       title: "5,000+ Dealers",
       desc: "India's largest authorised Hero dealer network at your doorstep.",
@@ -98,7 +40,7 @@ const CONFIG = {
     },
     {
       style: "outline",
-      icon: "&#127968;",
+      icon: '<i class="bi bi-house-door-fill"></i>',
       tag: "Doorstep",
       title: "Doorstep Service",
       desc: "Our experts come to you — no need to visit a showroom or dealership.",
@@ -109,7 +51,7 @@ const CONFIG = {
     {
       category: "scooters",
       badge: "Newly Launched",
-      img: "https://placehold.co/400x260/E9EAED/555?text=XOOM+125",
+      img: "/assets/sale_bike.png",
       name: "XOOM 125",
       specs: [
         "124.66cc Engine Displacement",
@@ -123,7 +65,7 @@ const CONFIG = {
     {
       category: "scooters",
       badge: "Newly Launched",
-      img: "https://placehold.co/400x260/E9EAED/555?text=Destiny+Prime",
+      img: "/assets/sale_bike.png",
       name: "Destiny Prime",
       specs: [
         "124.66cc Engine Displacement",
@@ -137,7 +79,7 @@ const CONFIG = {
     {
       category: "motorcycles",
       badge: "Newly Launched",
-      img: "https://placehold.co/400x260/E9EAED/555?text=X+-+Plus",
+      img: "/assets/sale_bike.png",
       name: "X - Plus",
       specs: [
         "124.66cc Engine Displacement",
@@ -151,7 +93,7 @@ const CONFIG = {
     {
       category: "motorcycles",
       badge: "Newly Launched",
-      img: "https://placehold.co/400x260/E9EAED/555?text=Splendor",
+      img: "/assets/sale_bike.png",
       name: "Splendor",
       specs: [
         "124.66cc Engine Displacement",
@@ -167,35 +109,35 @@ const CONFIG = {
     {
       size: "tall",
       badge: "Gear",
-      img: "https://placehold.co/700x1000/33363d/ffffff?text=Goodlife+Benefits",
+      img: "/assets/blogs/blog_1.png",
       title: "Goodlife Benefits",
       desc: "Earn rewards with every ride. Make the most of your Hero Goodlife Membership.",
     },
     {
       size: "wide",
       badge: "Finance",
-      img: "https://placehold.co/900x520/4a4132/ffffff?text=Finance+Your+Dreams",
+      img: "/assets/blogs/blog_2.png",
       title: "Finance Your Dreams",
       desc: "Easy financing for your perfect ride. Low EMIs, quick approval.",
     },
     {
       size: "small",
       badge: "Gear",
-      img: "https://placehold.co/440x420/1c1c1c/ffffff?text=Ride+in+Style",
+      img: "/assets/blogs/blog_3.png",
       title: "Ride in Style",
       desc: "Premium helmets & accessories built for the road ahead.",
     },
     {
       size: "small",
       badge: "Adventure",
-      img: "https://placehold.co/440x420/2b2f38/ffffff?text=Hit+The+Open+Road",
+      img: "/assets/blogs/blog_4.png",
       title: "Hit The Open Road",
       desc: "Curated routes and riding stories from across India.",
     },
     {
       size: "tall",
       badge: "Exchange",
-      img: "https://placehold.co/700x1000/3d4a37/ffffff?text=Exchange+Your+Bike",
+      img: "/assets/blogs/blog_5.png",
       title: "Exchange Your Bike",
       desc: "Upgrade your ride. Get the best value for your old vehicle.",
     },
@@ -398,8 +340,10 @@ class BenefitsCarouselController {
       .map(
         (item) => `
         <article class="benefit-card benefit-card--${item.style}">
+        <div class="d-flex gap-2 align-items-end">
           <div class="benefit-card__icon">${item.icon}</div>
           <p class="benefit-card__tag">${item.tag}</p>
+        </div>
           <h3 class="benefit-card__title">${item.title}</h3>
           <p class="benefit-card__desc">${item.desc}</p>
           <span class="benefit-card__pill">${item.pill}</span>
@@ -561,14 +505,14 @@ class BlogsController {
 
   init() {
     this.renderGrid();
-    this.renderMobile();
+    // this.renderMobile();
   }
 
   cardMarkup(blog, sizeClass) {
     return `
         <article class="blog-card ${sizeClass}" style="background-image:url('${blog.img}')">
+        <span class="blog-card__badge">${blog.badge}</span>
           <div class="blog-card__content">
-            <span class="blog-card__badge">${blog.badge}</span>
             <h3 class="blog-card__title">${blog.title}</h3>
             <p class="blog-card__desc">${blog.desc}</p>
           </div>
@@ -740,38 +684,6 @@ class FooterController {
 }
 
 /* =========================================================
-     Stats Bar Renderer
-  ========================================================= */
-class StatsBarController {
-  constructor(config) {
-    this.stats = config.stats;
-    this.container = document.getElementById("statsBar");
-  }
-
-  init() {
-    this.render();
-  }
-
-  render() {
-    const html = this.stats
-      .map(
-        (stat) => `
-        <div class="stat-card">
-          <div class="stat-card__icon">${stat.icon}</div>
-          <div>
-            <p class="stat-card__value">${stat.value}</p>
-            <p class="stat-card__label">${stat.label}</p>
-            ${stat.sub ? `<p class="stat-card__sub">${stat.sub}</p>` : ""}
-          </div>
-        </div>
-      `,
-      )
-      .join("");
-    this.container.innerHTML = html;
-  }
-}
-
-/* =========================================================
      App Init Class - entry point
   ========================================================= */
 class App {
@@ -783,7 +695,6 @@ class App {
     new HeroCarouselController(this.config).init();
     new VehicleTabsController().init();
     new WheelerTypeController().init();
-    new StatsBarController(this.config).init();
     new BenefitsCarouselController(this.config).init();
     new VehiclesController(this.config).init();
     new BlogsController(this.config).init();
