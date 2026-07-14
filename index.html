@@ -93,21 +93,24 @@
         </div>
 
         <!-- Right: valuation form card -->
-        <div class="col-12 col-md-6 col-lg-5 hero-valuation-wrap">
-          <div class="valuation-card">
+        <div
+          id="hero_valuation_form"
+          class="col-12 col-md-6 col-lg-5 hero-valuation-wrap"
+        >
+          <div class="valuation-card" id="valuationCard" data-flow="sell">
             <div class="valuation-card__header">
               <div>
                 <h2 class="valuation-card__title">Get Instant Valuation</h2>
                 <p class="valuation-card__subtitle">Fill in your vehicle details below</p>
               </div>
               <div class="valuation-card__step">
-                <span class="step-bar is-active"></span>
-                <span class="step-bar"></span>
-                <span class="step-bar"></span>
-                <span class="step-label">Step 1 of 2</span>
+                <span class="step-bar" data-step-indicator="1"></span>
+                <span class="step-bar" data-step-indicator="2"></span>
+                <span class="step-label" id="stepLabel">Step 1 of 2</span>
               </div>
             </div>
 
+            <!-- Tabs: disabled after step 1 -->
             <div class="vehicle-tabs" id="vehicleTabs">
               <button type="button" class="vehicle-tabs__btn is-active" data-tab="sell">
                 Sell My Vehicle
@@ -117,50 +120,105 @@
               </button>
             </div>
 
-            <div class="form-row">
-              <div class="form-col">
-                <label class="field-label">State <span class="required">*</span></label>
-                <select class="custom-select">
-                  <option>Select State</option>
-                  <option>Delhi</option>
-                  <option>Maharashtra</option>
-                  <option>Karnataka</option>
-                </select>
+            <!-- ============ STEP 1 ============ -->
+            <div class="form-step is-active" data-step="1">
+              <div class="form-row">
+                <div class="form-col">
+                  <label class="field-label">State <span class="required">*</span></label>
+                  <select class="custom-select" name="state" data-required>
+                    <option value="">Select State</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="karnataka">Karnataka</option>
+                  </select>
+                </div>
+                <div class="form-col">
+                  <label class="field-label">City <span class="required">*</span></label>
+                  <select class="custom-select" name="city" data-required>
+                    <option value="">Select City</option>
+                    <option value="new-delhi">New Delhi</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="bengaluru">Bengaluru</option>
+                  </select>
+                </div>
               </div>
-              <div class="form-col">
-                <label class="field-label">City <span class="required">*</span></label>
-                <select class="custom-select">
-                  <option>Select City</option>
-                  <option>New Delhi</option>
-                  <option>Mumbai</option>
-                  <option>Bengaluru</option>
-                </select>
+
+              <div>
+                <label class="field-label"
+                  >Select Two-Wheeler Type <span class="required">*</span></label
+                >
+                <div
+                  class="wheeler-type-group"
+                  id="wheelerTypeGroup"
+                  data-required
+                  data-field="vehicleType"
+                >
+                  <div class="wheeler-type-option is-active" data-type="motorcycle">
+                    <span class="wheeler-type-option__icon">🏍</span>
+                    Motorcycle
+                  </div>
+                  <div class="wheeler-type-option" data-type="scooter">
+                    <span class="wheeler-type-option__icon">🛵</span>
+                    Scooter
+                  </div>
+                  <div class="wheeler-type-option" data-type="moped">
+                    <span class="wheeler-type-option__icon">🚲</span>
+                    Moped
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div>
-              <label class="field-label"
-                >Select Two-Wheeler Type <span class="required">*</span></label
+            <!-- ============ STEP 2 ============ -->
+            <div class="form-step" data-step="2">
+              <div>
+                <label class="field-label">Select Brand</label>
+                <select class="custom-select" name="brand" data-required>
+                  <option value="">Select Brand</option>
+                  <option value="honda">Honda</option>
+                  <option value="bajaj">Bajaj</option>
+                  <option value="hero">Hero</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col">
+                  <label class="field-label">Model <span class="required">*</span></label>
+                  <select class="custom-select" name="model" data-required>
+                    <option value="">Select Model</option>
+                    <option value="honda-001">Honda 001</option>
+                    <option value="bajaj-002">Bajaj 002</option>
+                    <option value="hero-003">Hero 003</option>
+                  </select>
+                </div>
+                <div class="form-col">
+                  <label class="field-label">Year <span class="required">*</span></label>
+                  <select
+                    id="year_select"
+                    class="custom-select"
+                    name="year"
+                    data-required
+                  >
+                    <option value="">Select Year</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============ NAV BUTTONS ============ -->
+            <div class="form-nav">
+              <button
+                class="btn btn-back"
+                type="button"
+                id="backBtn"
+                style="display: none"
               >
-              <div class="wheeler-type-group" id="wheelerTypeGroup">
-                <div class="wheeler-type-option is-active" data-type="motorcycle">
-                  <span class="wheeler-type-option__icon">🏍</span>
-                  Motorcycle
-                </div>
-                <div class="wheeler-type-option" data-type="scooter">
-                  <span class="wheeler-type-option__icon">🛵</span>
-                  Scooter
-                </div>
-                <div class="wheeler-type-option" data-type="moped">
-                  <span class="wheeler-type-option__icon">🚲</span>
-                  Moped
-                </div>
-              </div>
+                <i class="bi bi-chevron-left"></i> Back
+              </button>
+              <button class="btn-continue" type="button" id="continueBtn">
+                Continue <span><i class="bi bi-chevron-right"></i></span>
+              </button>
             </div>
-
-            <button class="btn-continue" type="button" id="continueBtn">
-              Continue <span><i class="bi bi-chevron-right"></i></span>
-            </button>
           </div>
         </div>
       </div>
@@ -234,7 +292,7 @@
             type="button"
             aria-label="Previous"
           >
-            &#8249;
+            <i class="bi bi-chevron-left"></i>
           </button>
           <button
             class="section-nav__btn"
@@ -242,7 +300,7 @@
             type="button"
             aria-label="Next"
           >
-            &#8250;
+            <i class="bi bi-chevron-right"></i>
           </button>
         </div>
       </div>
@@ -325,7 +383,9 @@
       <div class="blogs-header">
         <div>
           <p class="section-eyebrow">Blogs</p>
-          <h2 class="section-heading"> <span class="underline">Make The</span> Most Of Every Ride</h2>
+          <h2 class="section-heading">
+            <span class="underline">Make The</span> Most Of Every Ride
+          </h2>
           <p class="blogs-header__subtitle">
             Programs, offers, and stories crafted exclusively for Hero riders.
           </p>
@@ -595,9 +655,226 @@
       </div>
     </footer>
 
+    <!-- ============================= CHECK BIKE EVALUATION SECTION ============================= -->
     <section class="sticky-button">
-      <button class="mobile-sticky-cta" type="button">Check Bike Evaluation</button>
+      <a href="#hero_valuation_form" class="mobile-sticky-cta" type="button"
+        >Check Bike Evaluation</a
+      >
     </section>
+
+    <!-- ============================= POPOVER FORM FLOW SECTION ============================= -->
+    <div
+      class="offcanvas offcanvas-end vc-offcanvas"
+      data-bs-scroll="false"
+      data-bs-backdrop="true"
+      tabindex="-1"
+      id="vehicleConditionOffcanvas"
+      aria-labelledby="vehicleConditionLabel"
+    >
+      <div class="vc-offcanvas__inner">
+        <!-- Actual offcanvas panel content -->
+        <div class="vc-offcanvas__panel">
+          <div class="offcanvas-header vc-offcanvas__header">
+            <h2 class="offcanvas-title vc-offcanvas__title" id="vehicleConditionLabel">
+              Tell us about Your <span class="text-red">Vehicle Condition</span>
+            </h2>
+            <button
+              type="button"
+              class="btn-close vc-offcanvas__close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="offcanvas-body vc-offcanvas__body">
+            <!-- ===== SUB-STEP A: Condition Questions ===== -->
+            <p class="vc-offcanvas__subtitle">
+              Answer these quick questions for an accurate valuation.
+            </p>
+            <div class="vc-question-set is-active" data-vc-set="condition">
+              <div class="vc-question" data-question="smoke">
+                <p class="vc-question__text">1. Is there any smoke from the silencer?</p>
+                <div class="vc-toggle-group">
+                  <div class="vc-toggle-option is-active" data-value="no_smoke">
+                    <span class="vc-toggle-option__icon">☁</span> No Smoke
+                  </div>
+                  <div class="vc-toggle-option" data-value="smoke">
+                    <span class="vc-toggle-option__icon">☁</span> Smoke
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="starting">
+                <p class="vc-question__text">2. Any problem in starting the vehicle?</p>
+                <div class="vc-toggle-group">
+                  <div class="vc-toggle-option is-active" data-value="starts_normally">
+                    <span class="vc-toggle-option__icon">⚡</span> Starts Normally
+                  </div>
+                  <div class="vc-toggle-option" data-value="not_starting">
+                    <span class="vc-toggle-option__icon">⚡</span> Not Starting
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="lights">
+                <p class="vc-question__text">3. Lights &amp; indicators working fine?</p>
+                <div class="vc-toggle-group">
+                  <div class="vc-toggle-option is-active" data-value="working">
+                    <span class="vc-toggle-option__icon">💡</span> Working
+                  </div>
+                  <div class="vc-toggle-option" data-value="not_working">
+                    <span class="vc-toggle-option__icon">💡</span> Not Working
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="front_tyre">
+                <p class="vc-question__text">
+                  4. What is the condition of the front tyre?
+                </p>
+                <div class="vc-toggle-group">
+                  <div class="vc-toggle-option is-active" data-value="good">
+                    <span class="vc-toggle-option__icon">◎</span> Good
+                  </div>
+                  <div class="vc-toggle-option" data-value="worn_out">
+                    <span class="vc-toggle-option__icon">◎</span> Worn out
+                    /Cracks/Puncture
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="rear_tyre">
+                <p class="vc-question__text">
+                  5. What is the condition of the rear tyre?
+                </p>
+                <div class="vc-toggle-group">
+                  <div class="vc-toggle-option is-active" data-value="good">
+                    <span class="vc-toggle-option__icon">◎</span> Good
+                  </div>
+                  <div class="vc-toggle-option" data-value="worn_out">
+                    <span class="vc-toggle-option__icon">◎</span> Worn out
+                    /Cracks/Puncture
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="body_parts">
+                <p class="vc-question__text">
+                  6. What is the condition of the body parts?
+                </p>
+                <div class="vc-toggle-group">
+                  <div class="vc-toggle-option is-active" data-value="no_damage">
+                    <span class="vc-toggle-option__icon">🛡</span> No Damage
+                  </div>
+                  <div class="vc-toggle-option" data-value="damaged">
+                    <span class="vc-toggle-option__icon">🛡</span> Scratch/Dent/Cracks
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== SUB-STEP B: Legal / Document Questions ===== -->
+            <div class="vc-question-set" data-vc-set="legal">
+              <div class="vc-question" data-question="rc_available">
+                <p class="vc-question__text">
+                  1. Is the original RC (Registration Certificate) available?
+                </p>
+                <div class="vc-toggle-group vc-toggle-group--radio">
+                  <div class="vc-toggle-option is-active" data-value="yes">
+                    <span class="vc-radio-dot"></span> Yes
+                  </div>
+                  <div class="vc-toggle-option" data-value="no">
+                    <span class="vc-radio-dot"></span> No
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="kyc_match">
+                <p class="vc-question__text">
+                  2. Do your KYC details (Aadhaar &amp; PAN) match the RC?
+                </p>
+                <div class="vc-toggle-group vc-toggle-group--radio">
+                  <div class="vc-toggle-option is-active" data-value="yes">
+                    <span class="vc-radio-dot"></span> Yes
+                  </div>
+                  <div class="vc-toggle-option" data-value="no">
+                    <span class="vc-radio-dot"></span> No
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="hypothecation">
+                <p class="vc-question__text">
+                  3. Is there any hypothecation on your vehicle?
+                </p>
+                <div class="vc-toggle-group vc-toggle-group--radio">
+                  <div class="vc-toggle-option" data-value="yes">
+                    <span class="vc-radio-dot"></span> Yes
+                  </div>
+                  <div class="vc-toggle-option is-active" data-value="no">
+                    <span class="vc-radio-dot"></span> No
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="criminal_record">
+                <p class="vc-question__text">
+                  4. Is there any criminal record registered on the vehicle?
+                </p>
+                <div class="vc-toggle-group vc-toggle-group--radio">
+                  <div class="vc-toggle-option" data-value="yes">
+                    <span class="vc-radio-dot"></span> Yes
+                  </div>
+                  <div class="vc-toggle-option is-active" data-value="no">
+                    <span class="vc-radio-dot"></span> No
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="pending_liabilities">
+                <p class="vc-question__text">
+                  5. Are there any pending liabilities on your vehicle?
+                </p>
+                <div class="vc-toggle-group vc-toggle-group--radio">
+                  <div class="vc-toggle-option" data-value="yes">
+                    <span class="vc-radio-dot"></span> Yes
+                  </div>
+                  <div class="vc-toggle-option is-active" data-value="no">
+                    <span class="vc-radio-dot"></span> No
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-question" data-question="running_condition">
+                <p class="vc-question__text">6. Is your vehicle in running condition?</p>
+                <div class="vc-toggle-group vc-toggle-group--radio">
+                  <div class="vc-toggle-option" data-value="yes">
+                    <span class="vc-radio-dot"></span> Yes
+                  </div>
+                  <div class="vc-toggle-option" data-value="no">
+                    <span class="vc-radio-dot"></span> No
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vc-offcanvas__footer">
+            <button
+              class="vc-btn-back"
+              type="button"
+              id="vcBackBtn"
+              style="display: none"
+            >
+              <i class="bi bi-chevron-left"></i> Back
+            </button>
+            <button class="vc-btn-proceed" type="button" id="vcProceedBtn">
+              Proceed to Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="/script.js"></script>
     <script

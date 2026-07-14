@@ -170,6 +170,382 @@ const CONFIG = {
   ],
 };
 
+class YearSelectInput {
+  constructor({
+    selector = "#year_select",
+    startYear = new Date().getFullYear(),
+    endYear = 1950,
+    placeholder = "Select Year",
+  } = {}) {
+    this.selector = selector;
+    this.startYear = startYear;
+    this.endYear = endYear;
+    this.placeholder = placeholder;
+  }
+
+  init() {
+    this.selectInput = document.querySelector(this.selector);
+
+    if (!this.selectInput) return;
+
+    this._generateYear();
+  }
+
+  _generateYear() {
+    // Clear existing options
+    this.selectInput.innerHTML = "";
+
+    // Placeholder
+    const placeholderOption = document.createElement("option");
+    placeholderOption.value = "";
+    placeholderOption.textContent = this.placeholder;
+    placeholderOption.selected = true;
+    placeholderOption.disabled = true;
+
+    this.selectInput.appendChild(placeholderOption);
+
+    // Generate years
+    for (let year = this.startYear; year >= this.endYear; year--) {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      this.selectInput.appendChild(option);
+    }
+  }
+}
+
+//  ======================================================
+// FORM SERVICE
+// =======================================================
+class FormService {
+  /**
+   * @param {Object} config
+   * @param {string} config.formKey - localStorage key for this form's data
+   * @param {string} config.rootSelector - root container selector
+   * @param {number} config.totalSteps - total number of steps
+   */
+  constructor(config) {
+    this.formKey = config.formKey || "vehicleValuationForm";
+    this.root = document.querySelector(config.rootSelector);
+    this.totalSteps = config.totalSteps || 2;
+
+    this.currentStep = 1;
+    this.flow = "sell"; // "sell" | "scrap"
+    this.data = {};
+
+    // DOM refs
+    this.tabsEl = this.root.querySelector("#vehicleTabs");
+    this.continueBtn = this.root.querySelector("#continueBtn");
+    this.backBtn = this.root.querySelector("#backBtn");
+    this.stepLabel = this.root.querySelector("#stepLabel");
+    this.wheelerGroup = this.root.querySelector("#wheelerTypeGroup");
+    const yearSelect = new YearSelectInput();
+    yearSelect.init();
+    this._bindEvents();
+  }
+
+  init() {
+    this._restoreFromStorage();
+    this._restoreFromQueryParams();
+    this._renderStep();
+    this._renderTabs();
+    this._populateFieldsFromData();
+  }
+
+  // ---------- EVENT BINDING ----------
+  _bindEvents() {
+    // Tabs (sell/scrap) - only active on step 1
+    this.tabsEl.querySelectorAll("[data-tab]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (this.currentStep !== 1) return; // locked after step 1
+        this.flow = btn.dataset.tab;
+        this._renderTabs();
+        this._persist();
+        this._syncQueryParams();
+      });
+    });
+
+    // Wheeler type selection (step 1)
+    if (this.wheelerGroup) {
+      this.wheelerGroup.querySelectorAll("[data-type]").forEach((opt) => {
+        opt.addEventListener("click", () => {
+          this.wheelerGroup
+            .querySelectorAll("[data-type]")
+            .forEach((el) => el.classList.remove("is-active"));
+          opt.classList.add("is-active");
+          this.data.vehicleType = opt.dataset.type;
+          this._persist();
+        });
+      });
+    }
+
+    // Generic input/select capture for current step
+    this.root.addEventListener("change", (e) => {
+      const field = e.target;
+      if (field.name) {
+        this.data[field.name] = field.value;
+        this._persist();
+      }
+    });
+
+    // Continue button
+    this.continueBtn.addEventListener("click", () => {
+      if (!this._validateCurrentStep()) return;
+      // Step 2 -> open offcanvas for either flow now (not just sell)
+      if (this.currentStep === 2) {
+        this.vcOffcanvas.open();
+        return;
+      }
+
+      if (this.currentStep < this.totalSteps) {
+        this.currentStep++;
+        this._renderStep();
+        this._syncQueryParams();
+      } else {
+        this._submit();
+      }
+    });
+
+    // Back button
+    this.backBtn.addEventListener("click", () => {
+      if (this.currentStep > 1) {
+        this.currentStep--;
+        this._renderStep();
+        this._syncQueryParams();
+      }
+    });
+  }
+
+  // ---------- STEP RENDERING (toggle only, no HTML generation) ----------
+  _renderStep() {
+    // Show/hide step containers
+    this.root.querySelectorAll("[data-step]").forEach((stepEl) => {
+      const stepNum = parseInt(stepEl.dataset.step, 10);
+      stepEl.classList.toggle("is-active", stepNum === this.currentStep);
+    });
+
+    // Step indicator bars
+    this.root.querySelectorAll("[data-step-indicator]").forEach((bar) => {
+      const stepNum = parseInt(bar.dataset.stepIndicator, 10);
+      bar.classList.toggle("is-active", stepNum <= this.currentStep);
+    });
+
+    if (this.stepLabel) {
+      this.stepLabel.textContent = `Step ${this.currentStep} of ${this.totalSteps}`;
+    }
+
+    // Back button visibility
+    this.backBtn.style.display = this.currentStep > 1 ? "inline-flex" : "none";
+
+    // Continue button label on last step
+    this.continueBtn.innerHTML =
+      this.currentStep === this.totalSteps
+        ? `Submit <span><i class="bi bi-chevron-right"></i></span>`
+        : `Continue <span><i class="bi bi-chevron-right"></i></span>`;
+
+    // Lock tabs after step 1
+    this._renderTabs();
+  }
+
+  _renderTabs() {
+    const isLocked = this.currentStep > 1;
+    this.tabsEl.querySelectorAll("[data-tab]").forEach((btn) => {
+      btn.classList.toggle("is-active", btn.dataset.tab === this.flow);
+      btn.disabled = isLocked;
+      btn.classList.toggle("is-disabled", isLocked);
+    });
+  }
+
+  // ---------- VALIDATION ----------
+  _validateCurrentStep() {
+    const stepEl = this.root.querySelector(`[data-step="${this.currentStep}"]`);
+    let valid = true;
+
+    stepEl.querySelectorAll("[data-required]").forEach((field) => {
+      const isGroup = field.hasAttribute("data-field"); // e.g. wheelerTypeGroup
+      if (isGroup) {
+        const hasActive = field.querySelector(".is-active");
+        this._toggleFieldError(field, !hasActive);
+        if (!hasActive) valid = false;
+      } else {
+        const empty = !field.value;
+        this._toggleFieldError(field, empty);
+        if (empty) valid = false;
+      }
+    });
+
+    return valid;
+  }
+
+  _toggleFieldError(field, hasError) {
+    field.classList.toggle("has-error", hasError);
+  }
+
+  // ---------- DATA COLLECTION ----------
+  _populateFieldsFromData() {
+    Object.entries(this.data).forEach(([key, value]) => {
+      const field = this.root.querySelector(`[name="${key}"]`);
+      if (field) field.value = value;
+    });
+
+    if (this.data.vehicleType && this.wheelerGroup) {
+      this.wheelerGroup.querySelectorAll("[data-type]").forEach((opt) => {
+        opt.classList.toggle("is-active", opt.dataset.type === this.data.vehicleType);
+      });
+    }
+  }
+
+  // ---------- PERSISTENCE ----------
+  _persist() {
+    const payload = {
+      currentStep: this.currentStep,
+      flow: this.flow,
+      data: this.data,
+    };
+    localStorage.setItem(this.formKey, JSON.stringify(payload));
+  }
+
+  _restoreFromStorage() {
+    const raw = localStorage.getItem(this.formKey);
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw);
+      this.currentStep = parsed.currentStep || 1;
+      this.flow = parsed.flow || "sell";
+      this.data = parsed.data || {};
+    } catch (e) {
+      console.warn("Failed to parse stored form data", e);
+    }
+  }
+
+  _clearStorage() {
+    localStorage.removeItem(this.formKey);
+  }
+
+  // ---------- QUERY PARAMS ----------
+  _syncQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    params.set("flow", this.flow);
+    params.set("step", this.currentStep);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.pushState({}, "", newUrl);
+  }
+
+  _restoreFromQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    const step = parseInt(params.get("step"), 10);
+    const flow = params.get("flow");
+
+    if (flow === "sell" || flow === "scrap") this.flow = flow;
+    if (step && step >= 1 && step <= this.totalSteps) this.currentStep = step;
+  }
+
+  // ---------- SUBMIT ----------
+  _submit() {
+    console.log("Final form data:", { flow: this.flow, ...this.data });
+
+    // TODO: replace with actual API call
+    // await api.submitValuation({ flow: this.flow, ...this.data });
+
+    this._clearStorage();
+
+    // Clean up query params after successful submit
+    window.history.pushState({}, "", window.location.pathname);
+
+    // Redirect or show success state
+    // window.location.href = "/valuation-result";
+  }
+}
+
+// ---------- INIT ----------
+document.addEventListener("DOMContentLoaded", () => {
+  const valuationForm = new FormService({
+    formKey: "vehicleValuationForm",
+    rootSelector: "#valuationCard",
+    totalSteps: 3,
+  });
+  valuationForm.vcOffcanvas = new VehicleConditionOffcanvas(valuationForm);
+  valuationForm.init();
+});
+
+// ============================ VEHICLE MODAL =============================
+class VehicleConditionOffcanvas {
+  constructor(formService) {
+    this.form = formService;
+    this.el = document.getElementById("vehicleConditionOffcanvas");
+    this.bsOffcanvas = new bootstrap.Offcanvas(this.el, {
+      backdrop: true,
+      scroll: false,
+    });
+
+    this.proceedBtn = document.getElementById("vcProceedBtn");
+    this.backBtn = document.getElementById("vcBackBtn");
+
+    this._bindEvents();
+  }
+
+  open() {
+    this._renderSetForFlow();
+    this.bsOffcanvas.show();
+  }
+
+  close() {
+    this.bsOffcanvas.hide();
+  }
+
+  // Show the correct question set based on current flow (sell -> condition, scrap -> legal)
+  _renderSetForFlow() {
+    const activeKey = this.form.flow === "sell" ? "condition" : "legal";
+    this.el.querySelectorAll("[data-vc-set]").forEach((setEl) => {
+      setEl.classList.toggle("is-active", setEl.dataset.vcSet === activeKey);
+    });
+  }
+
+  _bindEvents() {
+    this.el.querySelectorAll(".vc-toggle-option").forEach((opt) => {
+      opt.addEventListener("click", () => {
+        const group = opt.closest(".vc-toggle-group");
+        group
+          .querySelectorAll(".vc-toggle-option")
+          .forEach((o) => o.classList.remove("is-active"));
+        opt.classList.add("is-active");
+
+        const questionKey = opt.closest("[data-question]").dataset.question;
+        this.form.data[`vc_${questionKey}`] = opt.dataset.value;
+        this.form._persist();
+      });
+    });
+
+    this.proceedBtn.addEventListener("click", () => {
+      if (!this._validateSet()) return;
+
+      this.close();
+      this.form.currentStep++;
+      this.form._renderStep();
+      this.form._syncQueryParams();
+    });
+
+    // Optional: Back closes the offcanvas and returns to Step 2 (no sub-step navigation anymore)
+    this.backBtn.addEventListener("click", () => {
+      this.close();
+    });
+
+    this.el.addEventListener("hidden.bs.offcanvas", () => {
+      // user dismissed via X / backdrop / ESC — stays on Step 2, answers already saved in this.form.data
+    });
+  }
+
+  // Validate only the currently visible set's questions
+  _validateSet() {
+    const activeSet = this.el.querySelector(".vc-question-set.is-active");
+    let valid = true;
+    activeSet.querySelectorAll(".vc-toggle-group").forEach((group) => {
+      if (!group.querySelector(".is-active")) valid = false;
+    });
+    return valid;
+  }
+}
+
 /* =========================================================
      Hero Carousel Controller
   ========================================================= */

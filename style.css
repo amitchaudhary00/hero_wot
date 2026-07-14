@@ -30,6 +30,11 @@ body {
   background: #fff;
 }
 
+* {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: #999 transparent;
+}
+
 a {
   text-decoration: none;
 }
@@ -376,7 +381,6 @@ header.site-header {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  margin-top: 4rem;
   transition: background 0.2s ease;
 
   i,
@@ -1464,5 +1468,220 @@ header.site-header {
   }
   .site-footer {
     margin-bottom: 4rem;
+  }
+}
+
+/* ============================== FORM CLASSES ============================== */
+.form-step {
+  display: none;
+}
+.form-step.is-active {
+  display: block;
+}
+
+.vehicle-tabs__btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 4rem;
+}
+
+.btn-back {
+  flex: 0 0 auto;
+}
+
+.btn-continue {
+  flex: 1;
+}
+
+.custom-select.has-error,
+.wheeler-type-group.has-error {
+  border-color: red;
+}
+
+/* ========================== FORM OVERLAY ==========================  */
+/* ===== Desktop: wide right-side drawer with hero + panel side by side ===== */
+.vc-offcanvas {
+  width: 520px !important; /* override BS default 400px */
+  border-left: none;
+}
+
+.vc-offcanvas__inner {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.vc-offcanvas__panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  min-width: 0; /* prevent flex overflow */
+  overflow: hidden;
+}
+
+/* Override BS offcanvas-header/body/title defaults */
+.vc-offcanvas__header {
+  padding: 0;
+  flex-shrink: 0;
+}
+.vc-offcanvas__title {
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-border, #eee);
+  margin-right: 1rem;
+  width: 100%;
+}
+.vc-offcanvas__title .text-red {
+  color: var(--color-primary-red);
+}
+
+.vc-offcanvas__close {
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: x-small;
+  border: 1.5px solid black;
+  padding: 4px !important;
+}
+
+.vc-offcanvas__subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  margin: 10px 0 16px;
+  flex-shrink: 0;
+}
+
+.vc-offcanvas__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 4px 0 0;
+}
+
+.vc-question-set {
+  display: none;
+}
+.vc-question-set.is-active {
+  display: block;
+}
+
+.vc-question {
+  margin-bottom: 12px;
+}
+.vc-question__text {
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.vc-toggle-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.vc-toggle-option {
+  border: 1px solid var(--color-border, #ddd);
+  border-radius: 8px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.15s ease;
+  font-size: small;
+}
+.vc-toggle-option.is-active {
+  border-color: #2e9e5b;
+  background: #eafbf1;
+  color: #2e9e5b;
+}
+
+.vc-radio-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #bbb;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+}
+.vc-toggle-option.is-active .vc-radio-dot {
+  border-color: #2e9e5b;
+}
+.vc-toggle-option.is-active .vc-radio-dot::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: #2e9e5b;
+}
+
+.vc-offcanvas__footer {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border, #eee);
+  flex-shrink: 0;
+}
+.vc-btn-proceed {
+  flex: 1;
+  background: var(--color-primary-red);
+  color: #fff;
+  border: none;
+  padding: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.vc-btn-back {
+  border: 1px solid var(--color-primary-navy, #0a1f44);
+  background: none;
+  color: var(--color-primary-navy, #0a1f44);
+  padding: 6px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ===== Mobile: convert side drawer into bottom sheet ===== */
+@media (max-width: 767px) {
+  .vc-offcanvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 92vh;
+    top: auto !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    border-radius: 16px 16px 0 0;
+
+    /* Bootstrap slides offcanvas-end via translateX; override to translateY for bottom-sheet feel */
+    transform: translateY(100%) !important;
+  }
+  .vc-offcanvas.show {
+    transform: translateY(0) !important;
+  }
+  .vc-offcanvas.showing,
+  .vc-offcanvas.hiding {
+    transform: translateY(
+      100%
+    ) !important; /* BS toggles .show at the end of transition; keep consistent direction */
+  }
+
+  .vc-offcanvas__inner {
+    flex-direction: column;
+  }
+  .vc-offcanvas__panel {
+    padding: 16px;
+    max-height: 92vh;
+  }
+  .vc-toggle-group {
+    grid-template-columns: 1fr 1fr;
   }
 }
