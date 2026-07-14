@@ -168,55 +168,6 @@ const CONFIG = {
       rating: 5,
     },
   ],
-  faqs: [
-    {
-      question: "How is the resale value of my two-wheeler calculated?",
-      answer:
-        "We use 3 factors: vehicle age & registration year, brand & model demand, and your city's market conditions. Estimate is real-time.",
-      open: true,
-    },
-    {
-      question: "What documents do I need to sell my bike?",
-      answer:
-        "You'll need the RC (Registration Certificate), a valid ID proof, insurance papers, and PUC certificate to complete the sale.",
-      open: false,
-    },
-    {
-      question: "What is the difference between selling and scrapping?",
-      answer:
-        "Selling transfers ownership of a working vehicle to a new buyer, while scrapping permanently deregisters a vehicle that's no longer roadworthy.",
-      open: false,
-    },
-    {
-      question: "How long does the process take from start to payment?",
-      answer:
-        "Most exchanges are completed within 2-3 hours from valuation to payment, once documentation is verified.",
-      open: false,
-    },
-    {
-      question: "Is there any charge for this service?",
-      answer:
-        "No, our valuation, RC transfer, and pickup services are completely free of charge with zero hidden costs.",
-      open: false,
-    },
-  ],
-  footerQuickLinks: [
-    { label: "Sell", href: "#" },
-    { label: "Exchange", href: "#" },
-    { label: "Scrap", href: "#" },
-    { label: "Blogs", href: "#" },
-    { label: "Sitemap", href: "#" },
-  ],
-  footerContactLinks: [
-    { label: "Contact Us", href: "#" },
-    { label: "Corporate Enquiry", href: "#" },
-  ],
-  footerBottomLinks: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Use", href: "#" },
-    { label: "Cookie Policy", href: "#" },
-    { label: "Sitemap", href: "#" },
-  ],
 };
 
 /* =========================================================
@@ -505,7 +456,8 @@ class BlogsController {
 
   init() {
     this.renderGrid();
-    // this.renderMobile();
+    this.renderMobile();
+    this.startAutoPlay();
   }
 
   cardMarkup(blog, sizeClass) {
@@ -544,8 +496,6 @@ class BlogsController {
     this.mobileCarouselEl.innerHTML = this.blogs
       .map((b) => this.cardMarkup(b, "blog-card--wide"))
       .join("");
-    this.mobileCarouselEl.style.display = "grid";
-    this.mobileCarouselEl.style.gap = "16px";
 
     // show only current index card on mobile
     const cards = this.mobileCarouselEl.querySelectorAll(".blog-card");
@@ -554,6 +504,15 @@ class BlogsController {
     });
 
     this.renderDots();
+  }
+
+  startAutoPlay() {
+    this.timer = setInterval(() => {
+      const next =
+        (this.currentIndex + 1) % this.dotsEl.querySelectorAll(".blogs-dots__dot").length;
+      this.currentIndex = next;
+      this.renderMobile();
+    }, 3000);
   }
 
   renderDots() {
@@ -574,35 +533,6 @@ class BlogsController {
   }
 }
 
-
-
-/* =========================================================
-     Footer Controller
-  ========================================================= */
-class FooterController {
-  constructor(config) {
-    this.quickLinks = config.footerQuickLinks;
-    this.contactLinks = config.footerContactLinks;
-    this.bottomLinks = config.footerBottomLinks;
-
-    this.quickLinksEl = document.getElementById("footerQuickLinks");
-    this.contactLinksEl = document.getElementById("footerContactLinks");
-    this.bottomLinksEl = document.getElementById("footerBottomLinks");
-  }
-
-  init() {
-    this.quickLinksEl.innerHTML = this.linkListMarkup(this.quickLinks);
-    this.contactLinksEl.innerHTML = this.linkListMarkup(this.contactLinks);
-    this.bottomLinksEl.innerHTML = this.bottomLinks
-      .map((l) => `<a href="${l.href}">${l.label}</a>`)
-      .join("");
-  }
-
-  linkListMarkup(links) {
-    return links.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join("");
-  }
-}
-
 /* =========================================================
      App Init Class - entry point
   ========================================================= */
@@ -619,8 +549,6 @@ class App {
     new VehiclesController(this.config).init();
     new BlogsController(this.config).init();
     // new TestimonialsController(this.config).init();
-    // new FaqController(this.config).init();
-    new FooterController(this.config).init();
   }
 }
 
