@@ -489,7 +489,7 @@ class VehicleConditionOffcanvas {
   }
 
   open() {
-    this.subStep = "question"; // remove this with question ---0>
+    this.subStep = "questions"; // remove this with question ---0>
     this._renderSubStep();
     this.bsOffcanvas.show();
   }
