@@ -324,11 +324,81 @@
 
       <div class="benefits-track-wrap" id="benefitsTrackWrap">
         <div class="benefits-track" id="benefitsTrack">
-          <!-- benefit cards injected by JS from CONFIG -->
+          <article class="benefit-card benefit-card--filled">
+            <div class="d-flex gap-2 align-items-end">
+              <div class="benefit-card__icon"><i class="bi bi-clock"></i></div>
+              <p class="benefit-card__tag">Speed</p>
+            </div>
+            <h3 class="benefit-card__title">30-Second Valuation</h3>
+            <p class="benefit-card__desc">
+              Get an accurate market price for your bike in under 30 seconds — powered by
+              AI.
+            </p>
+            <span class="benefit-card__pill">30 sec Instant result</span>
+          </article>
+          <article class="benefit-card benefit-card--outline">
+            <div class="d-flex gap-2 align-items-end">
+              <div class="benefit-card__icon">
+                <i class="bi bi-file-earmark-text"></i>
+              </div>
+              <p class="benefit-card__tag">Legal</p>
+            </div>
+            <h3 class="benefit-card__title">Free RC Transfer</h3>
+            <p class="benefit-card__desc">
+              We handle all paperwork — RC transfer, NOC, insurance clearance — at zero
+              cost.
+            </p>
+            <span class="benefit-card__pill">₹0 Document cost </span>
+          </article>
+          <article class="benefit-card benefit-card--outline">
+            <div class="d-flex gap-2 align-items-end">
+              <div class="benefit-card__icon">
+                <i class="bi bi-lightning-fill"></i>
+              </div>
+              <p class="benefit-card__tag">Payment</p>
+            </div>
+            <h3 class="benefit-card__title">Instant Payment</h3>
+            <p class="benefit-card__desc">
+              Money credited to your bank account within hours of vehicle pickup.
+            </p>
+            <span class="benefit-card__pill">2hrs Avg transfer time </span>
+          </article>
+          <article class="benefit-card benefit-card--outline">
+            <div class="d-flex gap-2 align-items-end">
+              <div class="benefit-card__icon">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <p class="benefit-card__tag">Network</p>
+            </div>
+            <h3 class="benefit-card__title">5,000+ Dealers</h3>
+            <p class="benefit-card__desc">
+              India's largest authorised Hero dealer network at your doorstep.
+            </p>
+            <span class="benefit-card__pill">5,000+ Dealer partners </span>
+          </article>
+          <article class="benefit-card benefit-card--outline">
+            <div class="d-flex gap-2 align-items-end">
+              <div class="benefit-card__icon">
+                <i class="bi bi-house-door-fill"></i>
+              </div>
+              <p class="benefit-card__tag">Doorstep</p>
+            </div>
+            <h3 class="benefit-card__title">Doorstep Service</h3>
+            <p class="benefit-card__desc">
+              Our experts come to you — no need to visit a showroom or dealership.
+            </p>
+            <span class="benefit-card__pill">Free Pickup </span>
+          </article>
         </div>
       </div>
 
-      <div class="benefits-dots" id="benefitsDots"></div>
+      <div class="benefits-dots" id="benefitsDots">
+        <span class="benefits-dots__dot is-active" data-index="0"></span>
+        <span class="benefits-dots__dot" data-index="1"></span>
+        <span class="benefits-dots__dot" data-index="2"></span>
+        <span class="benefits-dots__dot" data-index="3"></span>
+        <span class="benefits-dots__dot" data-index="4"></span>
+      </div>
     </section>
 
     <!-- ============================= VEHICLES SECTION ============================= -->
@@ -385,7 +455,149 @@
 
       <!-- desktop / tablet grid -->
       <div class="vehicles-grid" id="vehiclesGrid">
-        <!-- vehicle cards injected by JS from CONFIG -->
+        <article class="vehicle-card" data-category="scooters">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img class="vehicle-card__img" src="/assets/sale_bike.png" alt="XOOM 125" />
+          <h3 class="vehicle-card__name">XOOM 125</h3>
+          <ul class="vehicle-card__specs">
+            <li>124.66cc Engine Displacement</li>
+            <li>Max Power 9.8 BHP @7250 Rpm</li>
+            <li>5 L Fuel Tank</li>
+            <li>Digital Speedometer With TBT Navigation</li>
+          </ul>
+          <p class="vehicle-card__price">₹82,194</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
+
+        <article class="vehicle-card" data-category="scooters">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img
+            class="vehicle-card__img"
+            src="/assets/sale_bike.png"
+            alt="Destiny Prime"
+          />
+          <h3 class="vehicle-card__name">Destiny Prime</h3>
+          <ul class="vehicle-card__specs">
+            <li>124.66cc Engine Displacement</li>
+            <li>Max Power 9.8 BHP @7250 Rpm</li>
+            <li>5 L Fuel Tank</li>
+            <li>Digital Speedometer With TBT Navigation</li>
+          </ul>
+          <p class="vehicle-card__price">₹82,194</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
+
+        <article class="vehicle-card" data-category="motorcycles">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img class="vehicle-card__img" src="/assets/sale_bike.png" alt="X - Plus" />
+          <h3 class="vehicle-card__name">X - Plus</h3>
+          <ul class="vehicle-card__specs">
+            <li>124.66cc Engine Displacement</li>
+            <li>Max Power 9.8 BHP @7250 Rpm</li>
+            <li>5 L Fuel Tank</li>
+            <li>Digital Speedometer With TBT Navigation</li>
+          </ul>
+          <p class="vehicle-card__price">₹82,194</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
+
+        <article class="vehicle-card" data-category="motorcycles">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img class="vehicle-card__img" src="/assets/sale_bike.png" alt="Splendor" />
+          <h3 class="vehicle-card__name">Splendor</h3>
+          <ul class="vehicle-card__specs">
+            <li>124.66cc Engine Displacement</li>
+            <li>Max Power 9.8 BHP @7250 Rpm</li>
+            <li>5 L Fuel Tank</li>
+            <li>Digital Speedometer With TBT Navigation</li>
+          </ul>
+          <p class="vehicle-card__price">₹82,194</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
+
+        <article class="vehicle-card" data-category="mopeds">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img
+            class="vehicle-card__img"
+            src="/assets/sale_bike.png"
+            alt="Pleasure Plus"
+          />
+          <h3 class="vehicle-card__name">Pleasure Plus</h3>
+          <ul class="vehicle-card__specs">
+            <li>110.9cc Engine Displacement</li>
+            <li>Max Power 8.02 BHP @7000 Rpm</li>
+            <li>5.1 L Fuel Tank</li>
+            <li>Digital-Analog Speedometer</li>
+          </ul>
+          <p class="vehicle-card__price">₹68,499</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
+
+        <article class="vehicle-card" data-category="mopeds">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img class="vehicle-card__img" src="/assets/sale_bike.png" alt="Maestro Edge" />
+          <h3 class="vehicle-card__name">Maestro Edge</h3>
+          <ul class="vehicle-card__specs">
+            <li>110.9cc Engine Displacement</li>
+            <li>Max Power 8.02 BHP @7000 Rpm</li>
+            <li>5.1 L Fuel Tank</li>
+            <li>LED Headlamp With DRL</li>
+          </ul>
+          <p class="vehicle-card__price">₹75,199</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
+
+        <article class="vehicle-card" data-category="mopeds">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img class="vehicle-card__img" src="/assets/sale_bike.png" alt="Duet" />
+          <h3 class="vehicle-card__name">Duet</h3>
+          <ul class="vehicle-card__specs">
+            <li>110.9cc Engine Displacement</li>
+            <li>Max Power 8.02 BHP @7000 Rpm</li>
+            <li>5.1 L Fuel Tank</li>
+            <li>External Fuel Fill</li>
+          </ul>
+          <p class="vehicle-card__price">₹71,899</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
+
+        <article class="vehicle-card" data-category="scooters">
+          <div class="vehicle-card__badge-row">
+            <span class="vehicle-card__badge">Newly Launched</span>
+          </div>
+          <img class="vehicle-card__img" src="/assets/sale_bike.png" alt="Pleasure Nxt" />
+          <h3 class="vehicle-card__name">Pleasure Nxt</h3>
+          <ul class="vehicle-card__specs">
+            <li>124.66cc Engine Displacement</li>
+            <li>Max Power 9.8 BHP @7250 Rpm</li>
+            <li>5 L Fuel Tank</li>
+            <li>Digital Speedometer With TBT Navigation</li>
+          </ul>
+          <p class="vehicle-card__price">₹82,194</p>
+          <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
+          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+        </article>
       </div>
 
       <!-- mobile single-card carousel -->
@@ -427,12 +639,158 @@
 
       <!-- desktop / tablet asymmetric grid -->
       <div class="blogs-grid" id="blogsGrid">
-        <!-- injected by JS from CONFIG.blogs -->
+        <div class="blogs-grid__col">
+          <article
+            class="blog-card blog-card--tall"
+            style="background-image: url(&quot;/assets/blogs/blog_1.png&quot;)"
+          >
+            <span class="blog-card__badge">Gear</span>
+            <div class="blog-card__content">
+              <h3 class="blog-card__title">Goodlife Benefits</h3>
+              <p class="blog-card__desc">
+                Earn rewards with every ride. Make the most of your Hero Goodlife
+                Membership.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="blogs-grid__col">
+          <article
+            class="blog-card blog-card--wide"
+            style="background-image: url(&quot;/assets/blogs/blog_2.png&quot;)"
+          >
+            <span class="blog-card__badge">Finance</span>
+            <div class="blog-card__content">
+              <h3 class="blog-card__title">Finance Your Dreams</h3>
+              <p class="blog-card__desc">
+                Easy financing for your perfect ride. Low EMIs, quick approval.
+              </p>
+            </div>
+          </article>
+
+          <div class="blogs-grid__col--small">
+            <article
+              class="blog-card blog-card--small"
+              style="background-image: url(&quot;/assets/blogs/blog_3.png&quot;)"
+            >
+              <span class="blog-card__badge">Gear</span>
+              <div class="blog-card__content">
+                <h3 class="blog-card__title">Ride in Style</h3>
+                <p class="blog-card__desc">
+                  Premium helmets & accessories built for the road ahead.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="blog-card blog-card--small"
+              style="background-image: url(&quot;/assets/blogs/blog_4.png&quot;)"
+            >
+              <span class="blog-card__badge">Adventure</span>
+              <div class="blog-card__content">
+                <h3 class="blog-card__title">Hit The Open Road</h3>
+                <p class="blog-card__desc">
+                  Curated routes and riding stories from across India.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="blogs-grid__col">
+          <article
+            class="blog-card blog-card--tall"
+            style="background-image: url(&quot;/assets/blogs/blog_5.png&quot;)"
+          >
+            <span class="blog-card__badge">Exchange</span>
+            <div class="blog-card__content">
+              <h3 class="blog-card__title">Exchange Your Bike</h3>
+              <p class="blog-card__desc">
+                Upgrade your ride. Get the best value for your old vehicle.
+              </p>
+            </div>
+          </article>
+        </div>
       </div>
 
       <!-- mobile single-card carousel -->
-      <div class="blogs-mobile-carousel" id="blogsMobileCarousel"></div>
-      <div class="blogs-dots" id="blogsDots"></div>
+      <div class="blogs-mobile-carousel" id="blogsMobileCarousel">
+        <article
+          class="blog-card blog-card--wide"
+          style="background-image: url(&quot;/assets/blogs/blog_1.png&quot;)"
+        >
+          <span class="blog-card__badge">Gear</span>
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Goodlife Benefits</h3>
+            <p class="blog-card__desc">
+              Earn rewards with every ride. Make the most of your Hero Goodlife
+              Membership.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="blog-card blog-card--wide"
+          style="background-image: url(&quot;/assets/blogs/blog_2.png&quot;)"
+        >
+          <span class="blog-card__badge">Finance</span>
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Finance Your Dreams</h3>
+            <p class="blog-card__desc">
+              Easy financing for your perfect ride. Low EMIs, quick approval.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="blog-card blog-card--wide"
+          style="background-image: url(&quot;/assets/blogs/blog_3.png&quot;)"
+        >
+          <span class="blog-card__badge">Gear</span>
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Ride in Style</h3>
+            <p class="blog-card__desc">
+              Premium helmets & accessories built for the road ahead.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="blog-card blog-card--wide"
+          style="background-image: url(&quot;/assets/blogs/blog_4.png&quot;)"
+        >
+          <span class="blog-card__badge">Adventure</span>
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Hit The Open Road</h3>
+            <p class="blog-card__desc">
+              Curated routes and riding stories from across India.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="blog-card blog-card--wide"
+          style="background-image: url(&quot;/assets/blogs/blog_5.png&quot;)"
+        >
+          <span class="blog-card__badge">Exchange</span>
+          <div class="blog-card__content">
+            <h3 class="blog-card__title">Exchange Your Bike</h3>
+            <p class="blog-card__desc">
+              Upgrade your ride. Get the best value for your old vehicle.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogs-dots" id="blogsDots">
+        <span class="blogs-dots__dot is-active" data-index="0"></span>
+        <span class="blogs-dots__dot" data-index="1"></span>
+        <span class="blogs-dots__dot" data-index="2"></span>
+        <span class="blogs-dots__dot" data-index="3"></span>
+        <span class="blogs-dots__dot" data-index="4"></span>
+      </div>
+
       <a href="#" class="blogs-view-all-mobile blogs-view-all">View All &rarr;</a>
     </section>
 
