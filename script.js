@@ -466,7 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   valuationForm.vcOffcanvas = new VehicleConditionOffcanvas(valuationForm);
   valuationForm.init();
-  valuationForm.vcOffcanvas.open(); // ---0>
+  // valuationForm.vcOffcanvas.open(); // ---0>
 });
 
 // ============================ VEHICLE MODAL =============================
@@ -489,7 +489,7 @@ class VehicleConditionOffcanvas {
   }
 
   open() {
-    this.subStep = "thankyou"; // remove this with question ---0>
+    this.subStep = "question"; // remove this with question ---0>
     this._renderSubStep();
     this.bsOffcanvas.show();
   }
