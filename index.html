@@ -44,14 +44,34 @@
           <!-- Right controls -->
           <div class="nav-right d-flex align-items-center gap-lg-3 gap-1">
             <a href="#" class="nav-faq d-none d-lg-inline">FAQs</a>
-            <button
-              id="openLanguageSwitcher"
-              class="btn lang-switcher d-flex align-items-center gap-1"
-            >
-              <span class="flag"> <img src="/assets/globe.svg" alt="" /> </span>
-              <span class="fw-bold">EN</span>
-              <span class="arrow-down">▾</span>
-            </button>
+            <div class="lang-switcher-wrap">
+              <!-- Real select: accessible, keyboard-friendly, form-compatible -->
+              <select id="languageSwitcher" class="lang-select-native">
+                <option value="en" data-code="EN" selected>English</option>
+                <option value="hi" data-code="हिन्दी">हिन्दी</option>
+                <option value="ta" data-code="தமிழ்">தமிழ்</option>
+                <option value="te" data-code="తెలుగు">తెలుగు</option>
+                <option value="mr" data-code="मराठी">मराठी</option>
+                <option value="kn" data-code="ಕನ್ನಡ">ಕನ್ನಡ</option>
+                <option value="bn" data-code="বাংলা">বাংলা</option>
+                <option value="gu" data-code="ગુજરાતી">ગુજરાતી</option>
+              </select>
+
+              <!-- Trigger button -->
+              <button
+                id="openLanguageSwitcher"
+                class="btn lang-switcher d-flex align-items-center gap-1"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span class="flag"><img src="/assets/globe.svg" alt="" /></span>
+                <span class="fw-bold" id="langSwitcherLabel">EN</span>
+                <span class="arrow-down">▾</span>
+              </button>
+
+              <!-- Custom visual dropdown, generated from the select above -->
+              <ul class="lang-dropdown" id="langDropdown" role="listbox" hidden></ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -318,9 +338,15 @@
           <p class="section-eyebrow">Discover Your Ride</p>
           <h2 class="section-heading">Vehicles</h2>
         </div>
-        <button class="vehicles-city-select" type="button">
-          Delhi <span>&#9662;</span>
-        </button>
+        <select
+          class="custom-select discover_vehicle d-block d-lg-none"
+          name="city"
+          data-required
+        >
+          <option value="delhi">Delhi</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="bengaluru">Bengaluru</option>
+        </select>
       </div>
 
       <div class="vehicles-filterbar">
@@ -346,6 +372,15 @@
             Mopeds
           </button>
         </div>
+        <select
+          class="custom-select discover_vehicle d-none d-lg-block"
+          name="city"
+          data-required
+        >
+          <option value="delhi">Delhi</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="bengaluru">Bengaluru</option>
+        </select>
       </div>
 
       <!-- desktop / tablet grid -->
@@ -886,6 +921,38 @@
                   maxlength="10"
                   data-required
                 />
+              </div>
+
+              <div class="vc-form-group otp_group">
+                <label class="field-label" for="otp">Please Enter OTP</label>
+                <div>
+                  <div id="otp_input_box" class="otp_inputs">
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div class="vc-form-group">

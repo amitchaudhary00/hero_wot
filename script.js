@@ -605,11 +605,13 @@ class VehicleConditionOffcanvas {
     document.getElementById("sendOtpWhatsapp").addEventListener("click", () => {
       console.log("Send OTP via WhatsApp to", this.form.data.mobileNumber);
       // TODO: call OTP API
+      document.querySelector(".otp_group").style = "display:block;";
     });
     document.getElementById("sendOtpSms").addEventListener("click", (e) => {
       e.preventDefault();
       console.log("Send OTP via SMS to", this.form.data.mobileNumber);
       // TODO: call OTP API
+      document.querySelector(".otp_group").style = "display:block;";
     });
 
     // Proceed / Next button
@@ -1188,6 +1190,143 @@ class BlogsController {
 }
 
 /* =========================================================
+     Language select 
+  ========================================================= */
+class LanguageSelect {
+  constructor({
+    selectId = "languageSwitcher",
+    triggerId = "openLanguageSwitcher",
+    labelId = "langSwitcherLabel",
+    dropdownId = "langDropdown",
+  } = {}) {
+    this.nativeSelect = document.getElementById(selectId);
+    this.triggerBtn = document.getElementById(triggerId);
+    this.label = document.getElementById(labelId);
+    this.dropdown = document.getElementById(dropdownId);
+
+    if (!this.nativeSelect || !this.triggerBtn || !this.label || !this.dropdown) {
+      console.warn("LanguageSelect: one or more required elements not found");
+      return;
+    }
+
+    // Bind so `this` is preserved when used as event listeners
+    this._handleOutsideClick = this._handleOutsideClick.bind(this);
+
+    this._bindEvents();
+    this._buildDropdown();
+    this._syncUI();
+  }
+
+  _bindEvents() {
+    this.triggerBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.dropdown.hidden ? this._openDropdown() : this._closeDropdown();
+    });
+
+    // If something else changes the select programmatically (e.g. i18n init), stay in sync
+    this.nativeSelect.addEventListener("change", () => this._syncUI());
+  }
+
+  _buildDropdown() {
+    this.dropdown.innerHTML = "";
+    Array.from(this.nativeSelect.options).forEach((option) => {
+      const li = document.createElement("li");
+      li.setAttribute("role", "option");
+      li.dataset.value = option.value;
+      li.setAttribute("aria-selected", option.selected ? "true" : "false");
+      if (option.selected) li.classList.add("is-selected");
+
+      li.innerHTML = `
+        <span class="lang-dropdown__name">${option.textContent}</span>
+        <span class="check"><i class="bi bi-check2"></i></span>
+      `;
+
+      li.addEventListener("click", () => this._selectLanguage(option.value));
+      this.dropdown.appendChild(li);
+    });
+  }
+
+  _selectLanguage(value) {
+    this.nativeSelect.value = value;
+    this.nativeSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    this._syncUI();
+    this._closeDropdown();
+  }
+
+  _syncUI() {
+    const selectedOption = this.nativeSelect.options[this.nativeSelect.selectedIndex];
+    this.label.textContent = selectedOption.dataset.code;
+
+    this.dropdown.querySelectorAll("li").forEach((li) => {
+      const isSelected = li.dataset.value === this.nativeSelect.value;
+      li.classList.toggle("is-selected", isSelected);
+      li.setAttribute("aria-selected", isSelected ? "true" : "false");
+    });
+  }
+
+  _openDropdown() {
+    this.dropdown.hidden = false;
+    this.triggerBtn.setAttribute("aria-expanded", "true");
+    document.addEventListener("click", this._handleOutsideClick);
+  }
+
+  _closeDropdown() {
+    this.dropdown.hidden = true;
+    this.triggerBtn.setAttribute("aria-expanded", "false");
+    document.removeEventListener("click", this._handleOutsideClick);
+  }
+
+  _handleOutsideClick(e) {
+    if (!this.dropdown.contains(e.target) && !this.triggerBtn.contains(e.target)) {
+      this._closeDropdown();
+    }
+  }
+}
+
+/* =========================================================
+     OTP INPUT BOX
+  ========================================================= */
+class OTPInput {
+  constructor() {
+    this.init();
+  }
+  init() {
+    const inputs = document.getElementById("otp_input_box");
+
+    inputs.addEventListener("input", function (e) {
+      const target = e.target;
+      const val = target.value;
+
+      if (isNaN(val)) {
+        target.value = "";
+        return;
+      }
+
+      if (val != "") {
+        const next = target.nextElementSibling;
+        if (next) {
+          next.focus();
+        }
+      }
+    });
+
+    inputs.addEventListener("keyup", function (e) {
+      const target = e.target;
+      const key = e.key.toLowerCase();
+
+      if (key == "backspace" || key == "delete") {
+        target.value = "";
+        const prev = target.previousElementSibling;
+        if (prev) {
+          prev.focus();
+        }
+        return;
+      }
+    });
+  }
+}
+
+/* =========================================================
      App Init Class - entry point
   ========================================================= */
 class App {
@@ -1202,6 +1341,8 @@ class App {
     new BenefitsCarouselController(this.config).init();
     new VehiclesController(this.config).init();
     new BlogsController(this.config).init();
+    new LanguageSelect();
+    new OTPInput();
     // new TestimonialsController(this.config).init();
   }
 }
