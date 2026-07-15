@@ -686,10 +686,10 @@
           </div>
 
           <div class="offcanvas-body vc-offcanvas__body">
-            <!-- ===== SUB-STEP A: Condition Questions ===== -->
             <p class="vc-offcanvas__subtitle">
               Answer these quick questions for an accurate valuation.
             </p>
+            <!-- ===== SUB-STEP A: Condition Questions ===== -->
             <div class="vc-question-set is-active" data-vc-set="condition">
               <div class="vc-question" data-question="smoke">
                 <p class="vc-question__text">1. Is there any smoke from the silencer?</p>
@@ -978,11 +978,79 @@
                   </label>
                 </div>
               </div>
+
+              <div class="vc-benefits-block">
+                <div class="vc-benefits-alert">
+                  <span class="vc-benefits-alert__icon">!</span>
+                  <p class="vc-benefits-alert__text">
+                    Don't stop at <span id="scrapValueInline">₹4,104</span>! Unlock
+                    additional benefits on the purchase of a new Hero two-wheeler.
+                  </p>
+                </div>
+
+                <h3 class="vc-benefits-heading">Additional Benefits</h3>
+
+                <div class="vc-benefits-table" id="additionalBenefitsTable">
+                  <div class="vc-benefit-row">
+                    <span class="vc-benefit-row__label">Scrap Value</span>
+                    <span class="vc-benefit-row__value" id="benefitScrapValue"
+                      >₹ 4,104*</span
+                    >
+                  </div>
+
+                  <div class="vc-benefit-row">
+                    <span class="vc-benefit-row__label">Rebate on Road Tax</span>
+                    <span
+                      class="vc-benefit-row__value vc-benefit-row__value--locked"
+                      id="benefitRoadTax"
+                    >
+                      <svg
+                        class="vc-benefit-lock-icon"
+                        viewBox="0 0 16 16"
+                        width="14"
+                        height="14"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M4 7V5a4 4 0 118 0v2h1a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h1zm2 0h4V5a2 2 0 10-4 0v2z"
+                        />
+                      </svg>
+                      Select new model to unlock*
+                    </span>
+                  </div>
+
+                  <div class="vc-benefit-row">
+                    <span class="vc-benefit-row__label">Green Discount</span>
+                    <span
+                      class="vc-benefit-row__value vc-benefit-row__value--locked"
+                      id="benefitGreenDiscount"
+                    >
+                      <svg
+                        class="vc-benefit-lock-icon"
+                        viewBox="0 0 16 16"
+                        width="14"
+                        height="14"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M4 7V5a4 4 0 118 0v2h1a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V8a1 1 0 011-1h1zm2 0h4V5a2 2 0 10-4 0v2z"
+                        />
+                      </svg>
+                      Select new model to unlock*
+                    </span>
+                  </div>
+                </div>
+
+                <p class="vc-benefits-disclaimer">
+                  * All listed benefits and discounts are estimates; for exact pricing
+                  kindly connect with the dealership.
+                </p>
+              </div>
             </div>
 
             <!-- ===== SUB-STEP E: Dealer Selection ===== -->
             <div class="vc-question-set" data-vc-set="dealer">
-              <div class="vc-result-price-card">
+              <div class="vc-next-card vc-result-price-card">
                 <p class="vc-result-vehicle-name" id="resultVehicleNameDealer">
                   TVS XL BS6
                 </p>

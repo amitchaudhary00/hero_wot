@@ -618,6 +618,12 @@ class VehicleConditionOffcanvas {
         if (!this._validateQuestionSet()) return;
         this.subStep = "auth";
         this._renderSubStep();
+        const canvas_title = document.querySelector(".vc-offcanvas__title");
+        const canvas_subtitle = document.querySelector(".vc-offcanvas__subtitle");
+        canvas_title.style = "visibility: visible;";
+        canvas_title.innerHTML =
+          'Authenticate to  <span class="text-red">unlock price</span>';
+        canvas_subtitle.innerText = "Verify your details to get your vehicle estimate​";
         return;
       }
 
@@ -625,7 +631,22 @@ class VehicleConditionOffcanvas {
         if (!this._validateAuthStep()) return;
         this.subStep = "result";
         this._renderSubStep();
-        this._fetchValuation();
+        const canvas_title = document.querySelector(".vc-offcanvas__title");
+        const canvas_subtitle = document.querySelector(".vc-offcanvas__subtitle");
+        const canvas_card = document.querySelector(".vc-result-price-card");
+        const canvas_additional_benefit_card =
+          document.querySelector(".vc-benefits-block");
+        canvas_title.innerHTML =
+          'Here is the estimated Resale Value of your   <span class="text-red">two-wheeler</span>';
+        canvas_subtitle.innerHTML = "";
+        if (this.form.flow === "sell") return;
+        canvas_card.innerHTML = `
+                <p class="vc-result-vehicle-name" id="resultVehicleName">TVS XL BS6</p>
+                <p class="vc-result-price">
+                  <span class="vc-result-price__currency">₹</span><span id="resultPriceMin">10,000</span>
+                </p>
+              `;
+        canvas_additional_benefit_card.style = "display:block;";
         return;
       }
 
@@ -633,6 +654,14 @@ class VehicleConditionOffcanvas {
         this._saveNewVehicleInterest();
         this.subStep = this.form.data.newVehicleInterest ? "dealer" : "thankyou";
         this._renderSubStep();
+        const canvas_card = document.querySelector(".vc-next-card.vc-result-price-card");
+        if (this.form.flow === "sell") return;
+        canvas_card.innerHTML = `
+                <p class="vc-result-vehicle-name" id="resultVehicleName">TVS XL BS6</p>
+                <p class="vc-result-price">
+                  <span class="vc-result-price__currency">₹</span><span id="resultPriceMin">10,000</span>
+                </p>
+              `;
         return;
       }
 
@@ -640,6 +669,10 @@ class VehicleConditionOffcanvas {
         this._saveDealerSelection();
         this.subStep = "thankyou";
         this._renderSubStep();
+        const canvas_title = document.querySelector(".vc-offcanvas__title");
+        const canvas_subtitle = document.querySelector(".vc-offcanvas__subtitle");
+        canvas_title.style = "visibility: hidden;";
+        canvas_subtitle.innerHTML = "";
         return;
       }
     });
