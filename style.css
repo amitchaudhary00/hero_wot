@@ -1679,8 +1679,8 @@ header.site-header {
     flex-direction: column;
   }
   .vc-offcanvas__panel {
-    padding: 16px;
-    max-height: 92vh;
+    padding: 14px;
+    max-height: 85vh;
   }
   .vc-toggle-group {
     grid-template-columns: 1fr 1fr;
