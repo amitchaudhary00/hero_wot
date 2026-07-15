@@ -59,7 +59,7 @@
 
     <!-- ============================= HERO SECTION ============================= -->
     <section class="hero-section container-fluid">
-      <div class="row">
+      <div class="row" id="hero_valuation_form">
         <!-- Left: motorcycle image carousel -->
         <div class="col-12 col-md-6 col-lg-7 p-0 position-relative" id="heroMedia">
           <figure class="hero_carousel_img">
@@ -93,10 +93,7 @@
         </div>
 
         <!-- Right: valuation form card -->
-        <div
-          id="hero_valuation_form"
-          class="col-12 col-md-6 col-lg-5 hero-valuation-wrap"
-        >
+        <div class="col-12 col-md-6 col-lg-5 hero-valuation-wrap">
           <div class="valuation-card" id="valuationCard" data-flow="sell">
             <div class="valuation-card__header">
               <div>
@@ -678,12 +675,14 @@
             <h2 class="offcanvas-title vc-offcanvas__title" id="vehicleConditionLabel">
               Tell us about Your <span class="text-red">Vehicle Condition</span>
             </h2>
-            <button
-              type="button"
-              class="btn-close vc-offcanvas__close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
+            <div class="button_wrapper">
+              <button
+                type="button"
+                class="btn-close vc-offcanvas__close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
           </div>
 
           <div class="offcanvas-body vc-offcanvas__body">
@@ -857,6 +856,412 @@
                 </div>
               </div>
             </div>
+
+            <!-- ===== SUB-STEP C: Authentication ===== -->
+            <div class="vc-question-set" data-vc-set="auth">
+              <div class="vc-form-group">
+                <label class="field-label" for="authFullName"
+                  >Full Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="custom-input"
+                  id="authFullName"
+                  name="fullName"
+                  placeholder="Enter your full name"
+                  data-required
+                />
+              </div>
+
+              <div class="vc-form-group">
+                <label class="field-label" for="authMobile"
+                  >Mobile Number <span class="required">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="custom-input"
+                  id="authMobile"
+                  name="mobileNumber"
+                  placeholder="Enter mobile number"
+                  maxlength="10"
+                  data-required
+                />
+              </div>
+
+              <div class="vc-form-group">
+                <label class="field-label">Send OTP via</label>
+                <button type="button" class="btn-otp-whatsapp" id="sendOtpWhatsapp">
+                  <i class="bi bi-whatsapp"></i> Share OTP via WhatsApp
+                </button>
+                <a href="#" class="link-otp-sms" id="sendOtpSms">Share OTP Via SMS</a>
+              </div>
+
+              <div class="vc-terms-box">
+                <label class="vc-checkbox">
+                  <input type="checkbox" id="authTerms" checked data-required />
+                  <span class="vc-checkbox__box"><i class="bi bi-check"></i></span>
+                  <span class="vc-checkbox__label">
+                    I agree to the
+                    <a href="/terms" target="_blank">Terms &amp; Conditions</a> and
+                    <a href="/privacy" target="_blank">Privacy Policy</a>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- ===== SUB-STEP D: Estimated Resale Value / Result ===== -->
+            <div class="vc-question-set" data-vc-set="result">
+              <div class="vc-result-price-card">
+                <p class="vc-result-vehicle-name" id="resultVehicleName">TVS XL BS6</p>
+                <p class="vc-result-price">
+                  <span class="vc-result-price__currency">₹</span
+                  ><span id="resultPriceMin">40,000</span> –
+                  <span class="vc-result-price__high" id="resultPriceMax">45,000*</span>
+                </p>
+                <p class="vc-result-disclaimer">
+                  *Final price may vary after physical inspection
+                </p>
+              </div>
+
+              <div class="vc-offers-block">
+                <h3 class="vc-offers-heading">Offers</h3>
+                <div class="vc-offers-scroll" id="offersScroll">
+                  <div class="vc-offer-card">
+                    <p class="vc-offer-card__amount">₹5,000 OFF</p>
+                    <p class="vc-offer-card__desc">on Hero Splendor Plus</p>
+                  </div>
+                  <div class="vc-offer-card">
+                    <p class="vc-offer-card__amount">₹5,000 OFF</p>
+                    <p class="vc-offer-card__desc">on Hero Splendor Plus</p>
+                  </div>
+                  <div class="vc-offer-card">
+                    <p class="vc-offer-card__amount">₹5,000 OFF</p>
+                    <p class="vc-offer-card__desc">on Hero Splendor Plus</p>
+                  </div>
+                  <div class="vc-offer-card">
+                    <p class="vc-offer-card__amount">₹5,000 OFF</p>
+                    <p class="vc-offer-card__desc">on Hero Splendor Plus</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vc-new-vehicle-block">
+                <p class="vc-new-vehicle-question">
+                  Are you interested in also purchasing a New Hero two-wheeler?
+                </p>
+
+                <div class="vc-model-table" id="newVehicleModelTable">
+                  <div class="vc-model-table__header">
+                    <span>Select Model</span>
+                    <span>Ex-Showroom Price*</span>
+                  </div>
+
+                  <label class="vc-model-row is-active">
+                    <input type="radio" name="newVehicleModel" value="glamour" checked />
+                    <span class="vc-model-row__radio"></span>
+                    <span class="vc-model-row__name">Glamour</span>
+                    <span class="vc-model-row__price">₹ 87,284</span>
+                  </label>
+
+                  <label class="vc-model-row">
+                    <input type="radio" name="newVehicleModel" value="glamour_x" />
+                    <span class="vc-model-row__radio"></span>
+                    <span class="vc-model-row__name">Glamour X</span>
+                    <span class="vc-model-row__price">₹ 67,900</span>
+                  </label>
+
+                  <label class="vc-model-row">
+                    <input type="radio" name="newVehicleModel" value="harley_x440" />
+                    <span class="vc-model-row__radio"></span>
+                    <span class="vc-model-row__name">HARLEY X440</span>
+                    <span class="vc-model-row__price">₹ 60,000</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== SUB-STEP E: Dealer Selection ===== -->
+            <div class="vc-question-set" data-vc-set="dealer">
+              <div class="vc-result-price-card">
+                <p class="vc-result-vehicle-name" id="resultVehicleNameDealer">
+                  TVS XL BS6
+                </p>
+                <p class="vc-result-price">
+                  <span class="vc-result-price__currency">₹</span
+                  ><span id="resultPriceMinDealer">40,000</span> –
+                  <span class="vc-result-price__high" id="resultPriceMaxDealer"
+                    >45,000*</span
+                  >
+                </p>
+                <p class="vc-result-disclaimer">
+                  *Final price may vary after physical inspection
+                </p>
+              </div>
+
+              <div class="vc-dealer-block">
+                <p class="vc-dealer-heading">Select your preferred dealer</p>
+
+                <div class="vc-dealer-grid" id="dealerGrid">
+                  <label class="vc-dealer-card is-active">
+                    <input type="radio" name="preferredDealer" value="dealer_1" checked />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Contact No.</span>
+                        <span class="vc-dealer-field__value">9289922709</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="vc-dealer-card">
+                    <input type="radio" name="preferredDealer" value="dealer_2" />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="vc-dealer-card">
+                    <input type="radio" name="preferredDealer" value="dealer_3" />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Contact No.</span>
+                        <span class="vc-dealer-field__value">9289922709</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="vc-dealer-card">
+                    <input type="radio" name="preferredDealer" value="dealer_4" />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <div class="vc-dealer-grid" id="dealerGrid">
+                  <label class="vc-dealer-card">
+                    <input type="radio" name="preferredDealer" value="dealer_1" checked />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Contact No.</span>
+                        <span class="vc-dealer-field__value">9289922709</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="vc-dealer-card">
+                    <input type="radio" name="preferredDealer" value="dealer_2" />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="vc-dealer-card">
+                    <input type="radio" name="preferredDealer" value="dealer_3" />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Contact No.</span>
+                        <span class="vc-dealer-field__value">9289922709</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="vc-dealer-card">
+                    <input type="radio" name="preferredDealer" value="dealer_4" />
+                    <span class="vc-dealer-card__radio"></span>
+                    <div class="vc-dealer-card__content">
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Name</span>
+                        <span class="vc-dealer-field__value">Sri Jayaram Motors</span>
+                      </div>
+                      <div class="vc-dealer-field">
+                        <span class="vc-dealer-field__label">Address</span>
+                        <span class="vc-dealer-field__value">Edarapalli, 533201</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== SUB-STEP F: Thank You / Confirmation ===== -->
+            <div class="vc-question-set" data-vc-set="thankyou">
+              <div class="vc-thankyou-icon">
+                <i class="bi bi-check-lg position-relative z-10"></i>
+              </div>
+              <h2 class="vc-thankyou-title">Thank You!</h2>
+
+              <a href="#" class="vc-brochure-link" id="downloadBrochureLink">
+                <i class="bi bi-download"></i>
+                <p class="m-0 text-decoration-underline">
+                  Download <span id="brochureModelName">{Glamour X}</span> Brochure
+                </p>
+              </a>
+
+              <div class="vc-rate-block">
+                <p class="vc-rate-heading">Rate your experience</p>
+                <div class="vc-star-rating" id="starRating">
+                  <span class="vc-star" data-value="1"
+                    ><i class="bi bi-star-fill"></i
+                  ></span>
+                  <span class="vc-star" data-value="2"
+                    ><i class="bi bi-star-fill"></i
+                  ></span>
+                  <span class="vc-star" data-value="3"
+                    ><i class="bi bi-star-fill"></i
+                  ></span>
+                  <span class="vc-star" data-value="4"
+                    ><i class="bi bi-star-fill"></i
+                  ></span>
+                  <span class="vc-star" data-value="5"
+                    ><i class="bi bi-star-fill"></i
+                  ></span>
+                </div>
+
+                <label class="field-label" for="templateSelect">Select Template</label>
+                <select class="custom-select" id="templateSelect" name="template">
+                  <option value="">Choose a template...</option>
+                  <option value="template_1">Template 1</option>
+                  <option value="template_2">Template 2</option>
+                </select>
+
+                <button
+                  type="button"
+                  class="vc-btn-submit-feedback"
+                  id="submitFeedbackBtn"
+                >
+                  Submit
+                </button>
+              </div>
+
+              <div class="vc-referral-block">
+                <p class="vc-referral-heading">Know a friend looking to upgrade?</p>
+
+                <div class="vc-referral-input">
+                  <input
+                    type="text"
+                    class="vc-referral-input__field"
+                    id="referralLink"
+                    value="referral.brand.com/Katty2024"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="vc-referral-input__copy"
+                    id="copyReferralBtn"
+                  >
+                    Copy
+                  </button>
+                </div>
+
+                <div class="vc-referral-share">
+                  <span>Or</span>
+                  <a
+                    href="#"
+                    class="vc-share-icon vc-share-icon--whatsapp"
+                    id="shareWhatsapp"
+                    aria-label="Share on WhatsApp"
+                  >
+                    <i class="bi bi-whatsapp"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="vc-share-icon vc-share-icon--facebook"
+                    id="shareFacebook"
+                    aria-label="Share on Facebook"
+                  >
+                    <i class="bi bi-facebook"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="vc-share-icon vc-share-icon--twitter"
+                    id="shareTwitter"
+                    aria-label="Share on Twitter"
+                  >
+                    <i class="bi bi-twitter"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="vc-selected-vehicle-bar"
+            id="selectedVehicleBar"
+            style="display: none"
+          >
+            <span class="vc-selected-vehicle-bar__name" id="selectedVehicleName"
+              >Glamour</span
+            >
+            <button
+              type="button"
+              class="vc-selected-vehicle-bar__edit"
+              id="editSelectedVehicle"
+              aria-label="Edit selection"
+            >
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <span class="vc-selected-vehicle-bar__price" id="selectedVehiclePrice"
+              >₹ 87,284</span
+            >
           </div>
 
           <div class="vc-offcanvas__footer">

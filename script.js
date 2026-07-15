@@ -462,10 +462,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const valuationForm = new FormService({
     formKey: "vehicleValuationForm",
     rootSelector: "#valuationCard",
-    totalSteps: 3,
+    totalSteps: 2,
   });
   valuationForm.vcOffcanvas = new VehicleConditionOffcanvas(valuationForm);
   valuationForm.init();
+  valuationForm.vcOffcanvas.open(); // ---0>
 });
 
 // ============================ VEHICLE MODAL =============================
@@ -478,6 +479,9 @@ class VehicleConditionOffcanvas {
       scroll: false,
     });
 
+    // sub-flow: 'questions' (condition or legal, based on this.form.flow) -> 'auth'
+    this.subStep = "questions";
+
     this.proceedBtn = document.getElementById("vcProceedBtn");
     this.backBtn = document.getElementById("vcBackBtn");
 
@@ -485,7 +489,8 @@ class VehicleConditionOffcanvas {
   }
 
   open() {
-    this._renderSetForFlow();
+    this.subStep = "thankyou"; // remove this with question ---0>
+    this._renderSubStep();
     this.bsOffcanvas.show();
   }
 
@@ -493,15 +498,76 @@ class VehicleConditionOffcanvas {
     this.bsOffcanvas.hide();
   }
 
-  // Show the correct question set based on current flow (sell -> condition, scrap -> legal)
-  _renderSetForFlow() {
-    const activeKey = this.form.flow === "sell" ? "condition" : "legal";
+  _questionSetKey() {
+    return this.form.flow === "sell" ? "condition" : "legal";
+  }
+
+  _renderSubStep() {
+    const setKeyMap = {
+      questions: this._questionSetKey(),
+      auth: "auth",
+      result: "result",
+      dealer: "dealer",
+      thankyou: "thankyou",
+    };
+    const activeKey = setKeyMap[this.subStep];
+
     this.el.querySelectorAll("[data-vc-set]").forEach((setEl) => {
       setEl.classList.toggle("is-active", setEl.dataset.vcSet === activeKey);
     });
+
+    const footer = this.el.querySelector(".vc-offcanvas__footer");
+    const bar = document.getElementById("selectedVehicleBar");
+
+    if (this.subStep === "thankyou") {
+      footer.style.display = "none";
+      bar.style.display = "none";
+      return; // no back/proceed logic needed on this screen
+    }
+
+    footer.style.display = "flex";
+    this.backBtn.style.display = this.subStep !== "questions" ? "inline-flex" : "none";
+
+    const labelMap = {
+      questions: "Proceed to Next",
+      auth: "Next",
+      result: "Proceed to Next",
+      dealer: "Proceed to Next",
+    };
+    this.proceedBtn.textContent = labelMap[this.subStep];
+
+    if (this.subStep === "dealer" && this.form.data.newVehicleInterest) {
+      bar.style.display = "flex";
+      this._populateSelectedVehicleBar();
+    } else {
+      bar.style.display = "none";
+    }
+  }
+
+  _saveNewVehicleInterest() {
+    const selected = this.el.querySelector('.vc-model-row input[type="radio"]:checked');
+    if (selected) {
+      this.form.data.newVehicleInterest = selected.value;
+      this.form._persist();
+    }
+  }
+
+  _populateSelectedVehicleBar() {
+    // Pull label/price from the previously selected radio in the result step
+    const selectedRow = this.el
+      .querySelector(`.vc-model-row input[value="${this.form.data.newVehicleInterest}"]`)
+      ?.closest(".vc-model-row");
+
+    if (selectedRow) {
+      document.getElementById("selectedVehicleName").textContent =
+        selectedRow.querySelector(".vc-model-row__name").textContent;
+      document.getElementById("selectedVehiclePrice").textContent =
+        selectedRow.querySelector(".vc-model-row__price").textContent;
+    }
   }
 
   _bindEvents() {
+    // Toggle option selection (condition/legal sets)
     this.el.querySelectorAll(".vc-toggle-option").forEach((opt) => {
       opt.addEventListener("click", () => {
         const group = opt.closest(".vc-toggle-group");
@@ -516,32 +582,211 @@ class VehicleConditionOffcanvas {
       });
     });
 
-    this.proceedBtn.addEventListener("click", () => {
-      if (!this._validateSet()) return;
+    // Auth field capture
+    this.el
+      .querySelectorAll(
+        '[data-vc-set="auth"] input[type="text"], [data-vc-set="auth"] input[type="tel"]',
+      )
+      .forEach((input) => {
+        input.addEventListener("input", () => {
+          this.form.data[input.name] = input.value;
+          this.form._persist();
+        });
+      });
 
-      this.close();
-      this.form.currentStep++;
-      this.form._renderStep();
-      this.form._syncQueryParams();
+    // Checkbox capture
+    const termsCheckbox = document.getElementById("authTerms");
+    termsCheckbox.addEventListener("change", () => {
+      this.form.data.termsAccepted = termsCheckbox.checked;
+      this.form._persist();
     });
 
-    // Optional: Back closes the offcanvas and returns to Step 2 (no sub-step navigation anymore)
+    // OTP buttons (placeholder — wire to real API later)
+    document.getElementById("sendOtpWhatsapp").addEventListener("click", () => {
+      console.log("Send OTP via WhatsApp to", this.form.data.mobileNumber);
+      // TODO: call OTP API
+    });
+    document.getElementById("sendOtpSms").addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("Send OTP via SMS to", this.form.data.mobileNumber);
+      // TODO: call OTP API
+    });
+
+    // Proceed / Next button
+    this.proceedBtn.addEventListener("click", () => {
+      if (this.subStep === "questions") {
+        if (!this._validateQuestionSet()) return;
+        this.subStep = "auth";
+        this._renderSubStep();
+        return;
+      }
+
+      if (this.subStep === "auth") {
+        if (!this._validateAuthStep()) return;
+        this.subStep = "result";
+        this._renderSubStep();
+        this._fetchValuation();
+        return;
+      }
+
+      if (this.subStep === "result") {
+        this._saveNewVehicleInterest();
+        this.subStep = this.form.data.newVehicleInterest ? "dealer" : "thankyou";
+        this._renderSubStep();
+        return;
+      }
+
+      if (this.subStep === "dealer") {
+        this._saveDealerSelection();
+        this.subStep = "thankyou";
+        this._renderSubStep();
+        return;
+      }
+    });
+
+    // Back button
     this.backBtn.addEventListener("click", () => {
+      const order = ["questions", "auth", "result", "dealer"];
+      const idx = order.indexOf(this.subStep);
+      if (idx > 0) {
+        this.subStep = order[idx - 1];
+        this._renderSubStep();
+      }
+    });
+
+    this.el.querySelectorAll('.vc-dealer-card input[type="radio"]').forEach((radio) => {
+      radio.addEventListener("change", () => {
+        this.el
+          .querySelectorAll(".vc-dealer-card")
+          .forEach((card) => card.classList.remove("is-active"));
+        radio.closest(".vc-dealer-card").classList.add("is-active");
+      });
+    });
+
+    this.el.querySelectorAll('.vc-model-row input[type="radio"]').forEach((radio) => {
+      radio.addEventListener("change", () => {
+        this.el
+          .querySelectorAll(".vc-model-row")
+          .forEach((row) => row.classList.remove("is-active"));
+        radio.closest(".vc-model-row").classList.add("is-active");
+        this.form.data.newVehicleInterest = radio.value;
+        this.form._persist();
+      });
+    });
+    // Edit selected vehicle
+    document.getElementById("editSelectedVehicle").addEventListener("click", () => {
+      this.subStep = "result";
+      this._renderSubStep();
+    });
+
+    // Star rating
+    this.el.querySelectorAll(".vc-star").forEach((star) => {
+      star.addEventListener("click", () => {
+        const value = parseInt(star.dataset.value, 10);
+        this.form.data.rating = value;
+        this.form._persist();
+
+        this.el.querySelectorAll(".vc-star").forEach((s) => {
+          s.classList.toggle("is-filled", parseInt(s.dataset.value, 10) <= value);
+        });
+      });
+    });
+
+    // Template select capture
+    document.getElementById("templateSelect").addEventListener("change", (e) => {
+      this.form.data.selectedTemplate = e.target.value;
+      this.form._persist();
+    });
+
+    // Submit feedback — this is the actual final submission of the whole form
+    document.getElementById("submitFeedbackBtn").addEventListener("click", () => {
+      this.form._submit(); // finalizes, clears localStorage
       this.close();
+    });
+
+    // Copy referral link
+    document.getElementById("copyReferralBtn").addEventListener("click", () => {
+      const input = document.getElementById("referralLink");
+      navigator.clipboard.writeText(input.value).then(() => {
+        const btn = document.getElementById("copyReferralBtn");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = original), 1500);
+      });
+    });
+
+    // Share buttons (basic share URLs — adjust as needed)
+    document.getElementById("shareWhatsapp").addEventListener("click", (e) => {
+      e.preventDefault();
+      const url = encodeURIComponent(document.getElementById("referralLink").value);
+      window.open(`https://wa.me/?text=${url}`, "_blank");
+    });
+    document.getElementById("shareFacebook").addEventListener("click", (e) => {
+      e.preventDefault();
+      const url = encodeURIComponent(document.getElementById("referralLink").value);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
+    });
+    document.getElementById("shareTwitter").addEventListener("click", (e) => {
+      e.preventDefault();
+      const url = encodeURIComponent(document.getElementById("referralLink").value);
+      window.open(`https://twitter.com/intent/tweet?url=${url}`, "_blank");
     });
 
     this.el.addEventListener("hidden.bs.offcanvas", () => {
-      // user dismissed via X / backdrop / ESC — stays on Step 2, answers already saved in this.form.data
+      // stays on Step 2, answers preserved in this.form.data
     });
   }
 
-  // Validate only the currently visible set's questions
-  _validateSet() {
+  _saveDealerSelection() {
+    const selected = this.el.querySelector('.vc-dealer-card input[type="radio"]:checked');
+    if (selected) {
+      this.form.data.preferredDealer = selected.value;
+      this.form._persist();
+    }
+  }
+
+  _finish() {
+    this.close();
+    this.form.currentStep++;
+    this.form._renderStep();
+    this.form._syncQueryParams();
+  }
+
+  _validateQuestionSet() {
     const activeSet = this.el.querySelector(".vc-question-set.is-active");
     let valid = true;
     activeSet.querySelectorAll(".vc-toggle-group").forEach((group) => {
       if (!group.querySelector(".is-active")) valid = false;
     });
+    return valid;
+  }
+
+  _validateAuthStep() {
+    let valid = true;
+
+    const fullName = document.getElementById("authFullName");
+    const mobile = document.getElementById("authMobile");
+    const terms = document.getElementById("authTerms");
+
+    if (!fullName.value.trim()) {
+      fullName.classList.add("has-error");
+      valid = false;
+    } else {
+      fullName.classList.remove("has-error");
+    }
+
+    if (!/^\d{10}$/.test(mobile.value.trim())) {
+      mobile.classList.add("has-error");
+      valid = false;
+    } else {
+      mobile.classList.remove("has-error");
+    }
+
+    if (!terms.checked) {
+      valid = false;
+      // optionally highlight the terms box
+    }
+
     return valid;
   }
 }

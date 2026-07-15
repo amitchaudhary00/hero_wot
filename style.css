@@ -8,7 +8,7 @@
   --color-primary-navy: #0b1f3a;
   --color-navy-dark: #012349;
   --color-text-dark: #1a1a1a;
-  --color-text-muted: #6b7280;
+  --color-text-muted: #9aa0a6;
   --color-border: #e5e7eb;
   --color-bg-pink: #fff2f2;
   --font-family: Play, "Poppins", sans-serif;
@@ -1534,7 +1534,8 @@ header.site-header {
 .vc-offcanvas__title {
   font-size: 1rem;
   font-weight: 500;
-  border-bottom: 1px solid var(--color-border, #eee);
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--color-border, #eee);
   margin-right: 1rem;
   width: 100%;
 }
@@ -1684,4 +1685,550 @@ header.site-header {
   .vc-toggle-group {
     grid-template-columns: 1fr 1fr;
   }
+
+  .button_wrapper {
+    position: absolute;
+    top: -2.5rem;
+    opacity: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vc-offcanvas__close {
+    margin: 1px 0 0 1px !important;
+  }
+}
+
+/* ======================== Authentication Card ============================ */
+.vc-offcanvas__subtitle-inline {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin: 0 0 20px;
+}
+
+.vc-form-group {
+  margin-bottom: 15px;
+}
+
+.custom-input {
+  width: 100%;
+  border: 1px solid var(--color-border, #ddd);
+  background: #f7f8fa;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  color: #222;
+}
+.custom-input::placeholder {
+  color: #9aa0aa;
+}
+.custom-input:focus {
+  outline: none;
+  border-color: var(--color-primary-red);
+  background: #fff;
+}
+.custom-input.has-error {
+  border-color: red;
+}
+
+.btn-otp-whatsapp {
+  width: 100%;
+  background: linear-gradient(180deg, #4ac14b 0%, #06853a 100%);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.link-otp-sms {
+  display: block;
+  color: var(--color-primary-red);
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.vc-terms-box {
+  background: linear-gradient(90deg, #fff2f2 0%, #ffffff 100%);
+  padding: 7px 16px;
+  margin-top: 20px;
+}
+
+.vc-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #333;
+}
+.vc-checkbox input[type="checkbox"] {
+  display: none;
+}
+.vc-checkbox__box {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--color-primary-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.vc-checkbox input[type="checkbox"]:not(:checked) + .vc-checkbox__box {
+  background: #fff;
+  border: 1px solid var(--color-border, #ccc);
+  color: transparent;
+}
+.vc-checkbox__label a {
+  color: var(--color-primary-red);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ========================== RESALE VALUE OFFCANVAS ============================ */
+.vc-result-price-card {
+  background: linear-gradient(90deg, #fff2f2 0%, #ffffff 100%);
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.vc-result-vehicle-name {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+  letter-spacing: 1.5px;
+}
+.vc-result-price {
+  font-size: clamp(1.8rem, 2.3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-primary-navy, #0a1f44);
+  margin: 0;
+}
+.vc-result-price__currency {
+  font-weight: 600;
+}
+.vc-result-price__high {
+  color: var(--color-primary-red);
+}
+.vc-result-disclaimer {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.vc-offers-block {
+  margin-bottom: 14px;
+}
+.vc-offers-heading {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+.vc-offers-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.vc-offer-card {
+  flex: 0 0 auto;
+  width: 130px;
+  background: linear-gradient(90deg, #ffffff 0%, #c2ffdc 100%);
+  border-left: 4px solid #2e9e5b;
+  border-radius: 6px;
+  padding: 8px;
+}
+.vc-offer-card__amount {
+  color: #2e9e5b;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 0;
+}
+.vc-offer-card__desc {
+  font-size: 0.8rem;
+  color: #222;
+  margin: 0;
+  line-height: 14px;
+}
+
+.vc-new-vehicle-block {
+  background: #f5f5f5;
+  padding: 10px;
+}
+.vc-new-vehicle-question {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 14px;
+}
+
+.vc-model-table {
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid var(--color-border, #eee);
+}
+.vc-model-table__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--color-primary-navy, #0a1f44);
+  border-bottom: 1px solid var(--color-border, #eee);
+}
+
+.vc-model-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--color-border, #eee);
+  cursor: pointer;
+  position: relative;
+}
+.vc-model-row:last-child {
+  border-bottom: none;
+}
+.vc-model-row input[type="radio"] {
+  display: none;
+}
+
+.vc-model-row__radio {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  flex-shrink: 0;
+  position: relative;
+}
+.vc-model-row.is-active .vc-model-row__radio {
+  border-color: var(--color-primary-red);
+  background: var(--color-primary-red);
+}
+.vc-model-row.is-active .vc-model-row__radio::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.vc-model-row__name {
+  flex: 1;
+  font-size: 0.8rem;
+  color: #333;
+}
+.vc-model-row.is-active {
+  background: #fff5f5;
+}
+.vc-model-row.is-active .vc-model-row__name {
+  color: var(--color-primary-red);
+}
+
+.vc-model-row__price {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #222;
+}
+
+@media (max-width: 767px) {
+  .vc-offer-card {
+    width: 160px;
+  }
+}
+
+/* =================== PREFERRED DEALER OFFCANVAS ===========================  */
+.vc-dealer-block {
+  background: #f5f5f5;
+  padding: 4px 10px;
+}
+.vc-dealer-heading {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 4px;
+}
+
+.vc-dealer-grid {
+  display: flex;
+  gap: 12px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.vc-dealer-card {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--color-border, #ddd);
+  padding: 16px;
+  cursor: pointer;
+  position: relative;
+  width: 300px;
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+.vc-dealer-card input[type="radio"] {
+  display: none;
+}
+
+.vc-dealer-card__radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  flex-shrink: 0;
+  margin-top: 2px;
+  position: relative;
+}
+.vc-dealer-card.is-active {
+  border-color: var(--color-primary-red);
+  background: #fff5f5;
+}
+.vc-dealer-card.is-active .vc-dealer-card__radio {
+  border-color: var(--color-primary-red);
+  background: var(--color-primary-red);
+}
+.vc-dealer-card.is-active .vc-dealer-card__radio::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.vc-dealer-card__content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  flex: 1;
+}
+.vc-dealer-field {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vc-dealer-field__label {
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.vc-dealer-field__value {
+  font-size: 0.8rem;
+  color: #222;
+  line-height: 14px;
+}
+
+.vc-selected-vehicle-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff5f5;
+  padding: 6px 16px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+.vc-selected-vehicle-bar__name {
+  color: var(--color-primary-red);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.vc-selected-vehicle-bar__edit {
+  background: none;
+  border: none;
+  color: var(--color-primary-red);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.vc-selected-vehicle-bar__price {
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #222;
+}
+
+@media (max-width: 767px) {
+  .vc-dealer-grid {
+    flex-direction: column;
+  }
+  .vc-dealer-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .vc-dealer-card__content {
+    gap: 4px;
+  }
+}
+
+/* ========================== THANKYOU SECTION */
+.vc-thankyou-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1f9d55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  &::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #008a44;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+  }
+}
+
+.vc-thankyou-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.vc-brochure-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed var(--color-primary-red);
+  background: #fff5f5;
+  padding: 6px 14px;
+  color: var(--color-primary-red);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.vc-rate-block {
+  background: #f5f6f8;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.vc-rate-heading {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.vc-star-rating {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 7px;
+  font-size: 1.2rem;
+}
+.vc-star {
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.vc-star.is-filled {
+  color: #f5a623;
+}
+
+.vc-btn-submit-feedback {
+  width: 100%;
+  background: var(--color-primary-red);
+  color: #fff;
+  border: none;
+  padding: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.vc-referral-block {
+  background: linear-gradient(90deg, #fff2f2 0%, #ffffff 100%);
+  padding: 10px;
+}
+.vc-referral-heading {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 10px;
+}
+
+.vc-referral-input {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--color-border, #ddd);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.vc-referral-input__field {
+  flex: 1;
+  border: none;
+  padding: 5px 14px;
+  color: #555;
+  background: transparent;
+  font-size: small;
+}
+.vc-referral-input__field:focus {
+  outline: none;
+}
+.vc-referral-input__copy {
+  border: none;
+  background: none;
+  color: var(--color-primary-red);
+  font-weight: 700;
+  padding: 5px 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: small;
+}
+
+.vc-referral-share {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 600;
+  color: #333;
+}
+.vc-share-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+}
+.vc-share-icon--whatsapp {
+  color: #25d366;
+}
+.vc-share-icon--facebook {
+  color: #1877f2;
+}
+.vc-share-icon--twitter {
+  color: #1da1f2;
 }
