@@ -1212,8 +1212,10 @@ header.site-header {
     display: none;
   }
   .blogs-mobile-carousel {
+    position: relative;
     display: grid;
     gap: 16px;
+    min-height: 225px;
   }
   .blogs-dots {
     display: flex;

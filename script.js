@@ -938,9 +938,15 @@ class BlogsController {
   update() {
     // Show only the active card
     this.cards.forEach((card, i) => {
-      card.style.display = i === this.currentIndex ? "flex" : "none";
+      const isActive = i === this.currentIndex;
+      card.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+      card.style.transform = isActive ? "translateX(0)" : "translateX(-50px)";
+      card.style.opacity = isActive ? "1" : "0";
+      card.style.pointerEvents = isActive ? "auto" : "none"; // prevent interacting with hidden cards
+      card.style.position = "absolute"; // stack cards so hidden ones don't take up layout space
+      card.style.top = "0";
+      card.style.left = "0";
     });
-
     // Sync active dot
     this.dots.forEach((dot, i) => {
       dot.classList.toggle("is-active", i === this.currentIndex);
