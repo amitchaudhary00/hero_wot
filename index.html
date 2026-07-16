@@ -7,8 +7,8 @@
     <link rel="preload" as="image" href="/assets/hero_carousel_1.png" />
     <link rel="preload" as="image" href="/assets/hero_carousel_2.png" />
     <link rel="preload" as="image" href="/assets/hero_carousel_3.png" />
-    <link rel="preload" as="image" href="/assets/logo_main.png" />
-    <link rel="preload" as="image" href="/assets/logo.png" />
+    <link rel="preload" as="image" href="/assets/logo_main.svg" />
+    <link rel="preload" as="image" href="/assets/logo.svg" />
     <link rel="preload" href="/style.css" as="style" />
     <link rel="preload" href="/script.js" as="script" />
     <link
@@ -33,14 +33,14 @@
         <div class="container-xl nav-inner">
           <!-- Brand Left: Wheels of Trust -->
           <a class="navbar-brand brand-wot" href="/">
-            <img src="/assets/logo.png" alt="Wheels of Trust logo" class="brand-icon" />
+            <img src="/assets/logo.svg" alt="Wheels of Trust logo" class="brand-icon" />
           </a>
 
           <!-- Center: Hero Logo -->
           <a class="navbar-brand brand-hero mx-auto" href="/">
-            <img src="/assets/logo_main.png" alt="Hero" />
+            <img src="/assets/logo_main.svg" alt="Hero" />
           </a>
-
+          <!-- var(--color-primary-navy, #0a1f44) -->
           <!-- Right controls -->
           <div class="nav-right d-flex align-items-center gap-lg-3 gap-1">
             <a href="#" class="nav-faq d-none d-lg-inline">FAQs</a>
@@ -48,13 +48,13 @@
               <!-- Real select: accessible, keyboard-friendly, form-compatible -->
               <select id="languageSwitcher" class="lang-select-native">
                 <option value="en" data-code="EN" selected>English</option>
-                <option value="hi" data-code="हिन्दी">हिन्दी</option>
-                <option value="ta" data-code="தமிழ்">தமிழ்</option>
-                <option value="te" data-code="తెలుగు">తెలుగు</option>
-                <option value="mr" data-code="मराठी">मराठी</option>
-                <option value="kn" data-code="ಕನ್ನಡ">ಕನ್ನಡ</option>
-                <option value="bn" data-code="বাংলা">বাংলা</option>
-                <option value="gu" data-code="ગુજરાતી">ગુજરાતી</option>
+                <option value="hi" data-code="हिन्दी">हिन्दी (Hindi)</option>
+                <option value="ta" data-code="தமிழ்">தமிழ் (Tamil)</option>
+                <option value="te" data-code="తెలుగు">తెలుగు (Telugu)</option>
+                <option value="mr" data-code="मराठी">मराठी (Marathi)</option>
+                <option value="kn" data-code="ಕನ್ನಡ">ಕನ್ನಡ (Kannada)</option>
+                <option value="bn" data-code="বাংলা">বাংলা (Bengali)</option>
+                <option value="gu" data-code="ગુજરાતી">ગુજરાતી (Gujarati)</option>
               </select>
 
               <!-- Trigger button -->
@@ -188,7 +188,7 @@
 
             <!-- ============ STEP 2 ============ -->
             <div class="form-step" data-step="2">
-              <div>
+              <div class="mb-2">
                 <label class="field-label">Select Brand</label>
                 <select class="custom-select" name="brand" data-required>
                   <option value="">Select Brand</option>
@@ -731,7 +731,7 @@
           </article>
         </div>
       </div>
-  
+
       <!-- mobile single-card carousel m -->
       <div class="blogs-mobile-carousel" id="blogsMobileCarousel">
         <article

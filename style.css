@@ -166,6 +166,8 @@ header.site-header {
     margin: 0;
     padding: 8px 0;
     z-index: 1000;
+    max-height: 320px;
+    overflow-y: auto;
   }
 
   .lang-dropdown li {
@@ -894,9 +896,6 @@ header.site-header {
   scroll-behavior: smooth;
   scrollbar-color: transparent transparent;
   transition: all 0.3s ease-in-out;
-  &:hover {
-    scrollbar-color: #999 transparent;
-  }
 }
 
 .vehicle-card {
@@ -1781,6 +1780,9 @@ header.site-header {
 
 /* ===== Mobile: convert side drawer into bottom sheet ===== */
 @media (max-width: 767px) {
+  .form-nav {
+    margin-top: 1.5rem;
+  }
   .vc-offcanvas {
     width: 100% !important;
     height: auto !important;
