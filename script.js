@@ -448,7 +448,7 @@ class VehicleConditionOffcanvas {
         const canvas_title = document.querySelector(".vc-offcanvas__title");
         const canvas_subtitle = document.querySelector(".vc-offcanvas__subtitle");
         const canvas_header = document.querySelector(".vc-offcanvas__header");
-        canvas_header.style = "display:inline-block;";
+        canvas_header.style = "display:flex;";
         canvas_title.style = "visibility: visible;";
         canvas_title.innerHTML =
           'Authenticate to  <span class="text-red">unlock price</span>';
