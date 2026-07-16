@@ -294,18 +294,6 @@ class FormService {
   }
 }
 
-// ---------- INIT ----------
-document.addEventListener("DOMContentLoaded", () => {
-  const valuationForm = new FormService({
-    formKey: "vehicleValuationForm",
-    rootSelector: "#valuationCard",
-    totalSteps: 2,
-  });
-  valuationForm.vcOffcanvas = new VehicleConditionOffcanvas(valuationForm);
-  valuationForm.init();
-  // valuationForm.vcOffcanvas.open(); // ---0>
-});
-
 // ============================ VEHICLE MODAL =============================
 class VehicleConditionOffcanvas {
   constructor(formService) {
@@ -793,10 +781,29 @@ class BenefitsCarouselController {
   }
 
   scroll(direction) {
-    this.trackWrap.scrollBy({
-      left: direction * this.scrollStep,
-      behavior: "smooth",
-    });
+    const step = this.scrollStep;
+    this.animatedScrollBy(this.trackWrap, direction * step, 350);
+  }
+
+  animatedScrollBy(el, distance, duration = 350) {
+    const start = el.scrollLeft;
+    const startTime = performance.now();
+
+    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutQuad(progress);
+
+      el.scrollLeft = start + distance * eased;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
   }
 
   syncDots() {
@@ -842,6 +849,10 @@ class VehiclesController {
     this.mobilePrevBtn = document.getElementById("vehiclePrevBtn");
     this.mobileNextBtn = document.getElementById("vehicleNextBtn");
 
+    // Desktop grid prev/next buttons
+    this.desktopPrevBtn = document.getElementById("vehiclesDesktopPrevBtn");
+    this.desktopNextBtn = document.getElementById("vehiclesDesktopNextBtn");
+
     // Read the already-rendered cards from the static HTML
     this.allCards = Array.from(this.gridEl.querySelectorAll(".vehicle-card"));
   }
@@ -852,6 +863,11 @@ class VehiclesController {
     });
     this.mobilePrevBtn.addEventListener("click", () => this.stepMobile(-1));
     this.mobileNextBtn.addEventListener("click", () => this.stepMobile(1));
+
+    this.desktopPrevBtn.addEventListener("click", () => this.stepDesktop(-1));
+    this.desktopNextBtn.addEventListener("click", () => this.stepDesktop(1));
+    this.gridEl.addEventListener("scroll", () => this.updateDesktopNavState());
+
     this.render();
   }
 
@@ -879,7 +895,60 @@ class VehiclesController {
     this.allCards.forEach((card) => {
       card.hidden = !visibleCards.includes(card);
     });
+    // reset scroll position and nav state whenever the filtered set changes
+    this.gridEl.scrollTo({ left: 0 });
+    this.updateDesktopNavState();
   }
+
+  // ---------- DESKTOP GRID SCROLL ----------
+
+  stepDesktop(direction) {
+    const visibleCards = this.getFilteredCards();
+    if (!visibleCards.length) return;
+
+    const card = visibleCards[0];
+    const cardWidth = card.getBoundingClientRect().width;
+    const gap = this.getGridGap();
+    const step = cardWidth + gap;
+
+    this.animatedScrollBy(this.gridEl, direction * step, 350);
+  }
+
+  animatedScrollBy(el, distance, duration = 350) {
+    const start = el.scrollLeft;
+    const startTime = performance.now();
+
+    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutQuad(progress);
+
+      el.scrollLeft = start + distance * eased;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  }
+
+  getGridGap() {
+    const styles = window.getComputedStyle(this.gridEl);
+    // "column-gap" (or fallback "gap") is what your CSS `gap: 10px` maps to
+    const gapValue = styles.columnGap || styles.gap || "0";
+    return parseFloat(gapValue) || 0;
+  }
+
+  updateDesktopNavState() {
+    const maxScroll = this.gridEl.scrollWidth - this.gridEl.clientWidth;
+    this.desktopPrevBtn.disabled = this.gridEl.scrollLeft <= 4;
+    this.desktopNextBtn.disabled = this.gridEl.scrollLeft >= maxScroll - 4;
+  }
+
+  // ---------- MOBILE CAROUSEL ----------
 
   renderMobileCard(visibleCards) {
     this.mobileCardWrap.innerHTML = "";
@@ -901,12 +970,6 @@ class VehiclesController {
     this.renderMobileCard(cards);
   }
 }
-
-// Instantiate — no config/data needed, it reads from the static DOM
-document.addEventListener("DOMContentLoaded", () => {
-  const controller = new VehiclesController();
-  controller.init();
-});
 
 /* =========================================================
      Blogs Section Controller (asymmetric grid + mobile carousel)
@@ -964,11 +1027,6 @@ class BlogsController {
     clearInterval(this.timer);
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const controller = new BlogsController();
-  controller.init();
-});
 
 /* =========================================================
      Language select 
@@ -1124,6 +1182,13 @@ class App {
     new BlogsController(this.config).init();
     new LanguageSelect();
     new OTPInput();
+    const valuationForm = new FormService({
+      formKey: "vehicleValuationForm",
+      rootSelector: "#valuationCard",
+      totalSteps: 2,
+    });
+    valuationForm.vcOffcanvas = new VehicleConditionOffcanvas(valuationForm);
+    valuationForm.init();
   }
 }
 

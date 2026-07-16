@@ -225,7 +225,7 @@
             <!-- ============ NAV BUTTONS ============ -->
             <div class="form-nav">
               <button
-                class="btn btn-back"
+                class="btn btn-back vc-btn-back"
                 type="button"
                 id="backBtn"
                 style="display: none"
@@ -407,6 +407,24 @@
         <div>
           <p class="section-eyebrow">Discover Your Ride</p>
           <h2 class="section-heading">Vehicles</h2>
+        </div>
+        <div class="section-nav">
+          <button
+            class="section-nav__btn"
+            id="vehiclesDesktopPrevBtn"
+            type="button"
+            aria-label="Previous"
+          >
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button
+            class="section-nav__btn"
+            id="vehiclesDesktopNextBtn"
+            type="button"
+            aria-label="Next"
+          >
+            <i class="bi bi-chevron-right"></i>
+          </button>
         </div>
         <select
           class="custom-select discover_vehicle d-block d-lg-none"
@@ -795,7 +813,7 @@
     </section>
 
     <!-- ============================= TESTIMONIALS SECTION ============================= -->
-    <section class="testimonials-section d-none d-lg-block">
+    <section class="testimonials-section d-none">
       <div class="testimonials-track" id="testimonialsTrack">
         <div class="testimonial-card">
           <img
