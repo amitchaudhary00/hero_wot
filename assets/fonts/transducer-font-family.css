@@ -1,0 +1,239 @@
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-400-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-400-normal.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-400-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-400-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-500-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-500-normal.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-500-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-500-italic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-700-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-700-normal.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-700-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-700-italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-900-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-900-normal.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer";
+  src:
+    url("/assets/fonts/woff2/transducer-normal-900-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-normal-900-italic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-400-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-400-normal.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-400-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-400-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-500-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-500-normal.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-500-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-500-italic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-700-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-700-normal.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-700-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-700-italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-900-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-900-normal.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Condensed";
+  src:
+    url("/assets/fonts/woff2/transducer-condensed-900-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-condensed-900-italic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-400-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-400-normal.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-400-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-400-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-500-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-500-normal.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-500-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-500-italic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-700-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-700-normal.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-700-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-700-italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-900-normal.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-900-normal.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Transducer Extended";
+  src:
+    url("/assets/fonts/woff2/transducer-extended-900-italic.woff2") format("woff2"),
+    url("/assets/fonts/woff/transducer-extended-900-italic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}

@@ -9,6 +9,13 @@
     <link rel="preload" as="image" href="/assets/hero_carousel_3.png" />
     <link rel="preload" as="image" href="/assets/logo_main.svg" />
     <link rel="preload" as="image" href="/assets/logo.svg" />
+    <link
+      rel="preload"
+      href="/assets/fonts/transducer-normalregular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="preload" href="/style.css" as="style" />
     <link rel="preload" href="/script.js" as="script" />
     <link
@@ -43,7 +50,7 @@
           <!-- var(--color-primary-navy, #0a1f44) -->
           <!-- Right controls -->
           <div class="nav-right d-flex align-items-center gap-lg-3 gap-1">
-            <a href="#" class="nav-faq d-none d-lg-inline">FAQs</a>
+            <a href="#" class="nav-faq d-none">FAQs</a>
             <div class="lang-switcher-wrap">
               <!-- Real select: accessible, keyboard-friendly, form-compatible -->
               <select id="languageSwitcher" class="lang-select-native">
@@ -118,7 +125,7 @@
             <div class="valuation-card__header">
               <div>
                 <h2 class="valuation-card__title">Get Instant Valuation</h2>
-                <p class="valuation-card__subtitle">Fill in your vehicle details below</p>
+                <p class="valuation-card__subtitle">Check bike resale value online</p>
               </div>
               <div class="valuation-card__step">
                 <span class="step-bar" data-step-indicator="1"></span>
@@ -130,7 +137,7 @@
             <!-- Tabs: disabled after step 1 -->
             <div class="vehicle-tabs" id="vehicleTabs">
               <button type="button" class="vehicle-tabs__btn is-active" data-tab="sell">
-                Sell My Vehicle
+                Sell / Exchange
               </button>
               <button type="button" class="vehicle-tabs__btn" data-tab="scrap">
                 Scrap Vehicle
@@ -143,7 +150,7 @@
                 <div class="form-col">
                   <label class="field-label">State <span class="required">*</span></label>
                   <select class="custom-select" name="state" data-required>
-                    <option value="">Select State</option>
+                    <option value="" disabled selected hidden>Select State</option>
                     <option value="delhi">Delhi</option>
                     <option value="maharashtra">Maharashtra</option>
                     <option value="karnataka">Karnataka</option>
@@ -152,7 +159,7 @@
                 <div class="form-col">
                   <label class="field-label">City <span class="required">*</span></label>
                   <select class="custom-select" name="city" data-required>
-                    <option value="">Select City</option>
+                    <option value="" disabled selected hidden>Select City</option>
                     <option value="new-delhi">New Delhi</option>
                     <option value="mumbai">Mumbai</option>
                     <option value="bengaluru">Bengaluru</option>
@@ -191,7 +198,7 @@
               <div class="mb-2">
                 <label class="field-label">Select Brand</label>
                 <select class="custom-select" name="brand" data-required>
-                  <option value="">Select Brand</option>
+                  <option value="" disabled selected hidden>Select Brand</option>
                   <option value="honda">Honda</option>
                   <option value="bajaj">Bajaj</option>
                   <option value="hero">Hero</option>
@@ -202,7 +209,7 @@
                 <div class="form-col">
                   <label class="field-label">Model <span class="required">*</span></label>
                   <select class="custom-select" name="model" data-required>
-                    <option value="">Select Model</option>
+                    <option value="" disabled selected hidden>Select Model</option>
                     <option value="honda-001">Honda 001</option>
                     <option value="bajaj-002">Bajaj 002</option>
                     <option value="hero-003">Hero 003</option>
@@ -216,7 +223,7 @@
                     name="year"
                     data-required
                   >
-                    <option value="">Select Year</option>
+                    <option value="" disabled selected hidden>Select Year</option>
                   </select>
                 </div>
               </div>
@@ -233,7 +240,7 @@
                 <i class="bi bi-chevron-left"></i> Back
               </button>
               <button class="btn-continue" type="button" id="continueBtn">
-                Continue <span><i class="bi bi-chevron-right"></i></span>
+                Calculate Resale Value <span><i class="bi bi-chevron-right"></i></span>
               </button>
             </div>
           </div>
@@ -249,9 +256,9 @@
             <img src="/assets/star.svg" alt="star" />
           </div>
           <div>
-            <p class="stat-card__value">4.8 &#9733;</p>
-            <p class="stat-card__label">App Rating</p>
-            <p class="stat-card__sub">12K+ reviews</p>
+            <p class="stat-card__value">125 Mn+</p>
+            <p class="stat-card__label">Two-Wheelers Sold</p>
+            <!-- <p class="stat-card__sub">12K+ reviews</p> -->
           </div>
         </div>
         <div class="stat-card">
@@ -259,9 +266,9 @@
             <img src="/assets/people.svg" alt="" />
           </div>
           <div>
-            <p class="stat-card__value">1 Cr+</p>
-            <p class="stat-card__label">Happy Customers</p>
-            <p class="stat-card__sub">Across India</p>
+            <p class="stat-card__value">25 Years</p>
+            <p class="stat-card__label">Consecutive Leadership in Two-Wheelers</p>
+            <!-- <p class="stat-card__sub">Across India</p> -->
           </div>
         </div>
         <div class="stat-card">
@@ -269,8 +276,8 @@
             <img src="assets/uptrend.svg" alt="" />
           </div>
           <div>
-            <p class="stat-card__value">50L+</p>
-            <p class="stat-card__label">Exchanges Done &amp; counting</p>
+            <p class="stat-card__value">1000+</p>
+            <p class="stat-card__label">Authorized Channel Partners</p>
           </div>
         </div>
 
@@ -279,11 +286,11 @@
             <img src="/assets/shield.svg" alt="" />
           </div>
           <div>
-            <p class="stat-card__value">100%</p>
-            <p class="stat-card__label">Secure Process Bank-grade safety</p>
+            <p class="stat-card__value">100% Compliant</p>
+            <p class="stat-card__label">Government-Approved Scrappage Process</p>
           </div>
         </div>
-        <div class="stat-card">
+        <!-- <div class="stat-card">
           <div class="stat-card__icon">
             <img src="/assets/shield.svg" alt="" />
           </div>
@@ -291,7 +298,7 @@
             <p class="stat-card__value">100%</p>
             <p class="stat-card__label">Secure Process Bank-grade safety</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -299,8 +306,8 @@
     <section class="benefits-section">
       <div class="section-header">
         <div>
-          <p class="section-eyebrow">Why Choose Hero Exchange</p>
-          <h2 class="section-heading">Everything Built For Your Benefit</h2>
+          <p class="section-eyebrow">THE HERO ADVANTAGE</p>
+          <h2 class="section-heading">India's Best Old Bike Exchange Platform</h2>
         </div>
         <div class="section-nav">
           <button
@@ -331,10 +338,9 @@
             </div>
             <h3 class="benefit-card__title">30-Second Valuation</h3>
             <p class="benefit-card__desc">
-              Get an accurate market price for your bike in under 30 seconds — powered by
-              AI.
+              Get your bike's estimated resale value in just 30 seconds.
             </p>
-            <span class="benefit-card__pill">30 sec Instant result</span>
+            <span class="benefit-card__pill">Resale Calculator</span>
           </article>
           <article class="benefit-card benefit-card--outline">
             <div class="d-flex gap-2 align-items-end">
@@ -343,12 +349,11 @@
               </div>
               <p class="benefit-card__tag">Legal</p>
             </div>
-            <h3 class="benefit-card__title">Free RC Transfer</h3>
+            <h3 class="benefit-card__title">All Brands Accepted</h3>
             <p class="benefit-card__desc">
-              We handle all paperwork — RC transfer, NOC, insurance clearance — at zero
-              cost.
+              Get a fair resale price for any make or model
             </p>
-            <span class="benefit-card__pill">₹0 Document cost </span>
+            <span class="benefit-card__pill">Accepts All Brands</span>
           </article>
           <article class="benefit-card benefit-card--outline">
             <div class="d-flex gap-2 align-items-end">
@@ -357,11 +362,11 @@
               </div>
               <p class="benefit-card__tag">Payment</p>
             </div>
-            <h3 class="benefit-card__title">Instant Payment</h3>
+            <h3 class="benefit-card__title">1,000+ Channel Partners</h3>
             <p class="benefit-card__desc">
-              Money credited to your bank account within hours of vehicle pickup.
+              Access India's largest authorized Hero dealer network
             </p>
-            <span class="benefit-card__pill">2hrs Avg transfer time </span>
+            <span class="benefit-card__pill">All-India Presence</span>
           </article>
           <article class="benefit-card benefit-card--outline">
             <div class="d-flex gap-2 align-items-end">
@@ -370,11 +375,11 @@
               </div>
               <p class="benefit-card__tag">Network</p>
             </div>
-            <h3 class="benefit-card__title">5,000+ Dealers</h3>
+            <h3 class="benefit-card__title">Easy Exchange Process</h3>
             <p class="benefit-card__desc">
-              India's largest authorised Hero dealer network at your doorstep.
+              Connect with a nearby authorized dealer to upgrade quickly
             </p>
-            <span class="benefit-card__pill">5,000+ Dealer partners </span>
+            <span class="benefit-card__pill">Quick Exchange </span>
           </article>
           <article class="benefit-card benefit-card--outline">
             <div class="d-flex gap-2 align-items-end">
@@ -383,11 +388,11 @@
               </div>
               <p class="benefit-card__tag">Doorstep</p>
             </div>
-            <h3 class="benefit-card__title">Doorstep Service</h3>
+            <h3 class="benefit-card__title">World's Number 1</h3>
             <p class="benefit-card__desc">
-              Our experts come to you — no need to visit a showroom or dealership.
+              Four decades of trust, 25 consecutive years of leadership
             </p>
-            <span class="benefit-card__pill">Free Pickup </span>
+            <span class="benefit-card__pill">World's No. 1</span>
           </article>
         </div>
       </div>
@@ -405,7 +410,7 @@
     <section class="vehicles-section">
       <div class="vehicles-header">
         <div>
-          <p class="section-eyebrow">Discover Your Ride</p>
+          <p class="section-eyebrow">Find Your New Upgrade</p>
           <h2 class="section-heading">Vehicles</h2>
         </div>
         <div class="section-nav">
@@ -456,9 +461,9 @@
           <button class="vehicle-tabs-filter__item" data-filter="scooters" type="button">
             Scooters
           </button>
-          <button class="vehicle-tabs-filter__item" data-filter="mopeds" type="button">
+          <!-- <button class="vehicle-tabs-filter__item" data-filter="mopeds" type="button">
             Mopeds
-          </button>
+          </button> -->
         </div>
         <select
           class="custom-select discover_vehicle d-none d-lg-block"
@@ -487,7 +492,9 @@
           </ul>
           <p class="vehicle-card__price">₹82,194</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+          <a class="vehicle-card__btn" href="#hero_valuation_form"
+            >Exchange & Unlock Offers</a
+          >
         </article>
 
         <article class="vehicle-card" data-category="scooters">
@@ -508,7 +515,9 @@
           </ul>
           <p class="vehicle-card__price">₹82,194</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+          <a class="vehicle-card__btn" href="#hero_valuation_form"
+            >Exchange & Unlock Offers</a
+          >
         </article>
 
         <article class="vehicle-card" data-category="motorcycles">
@@ -525,7 +534,9 @@
           </ul>
           <p class="vehicle-card__price">₹82,194</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+          <a class="vehicle-card__btn" href="#hero_valuation_form"
+            >Exchange & Unlock Offers</a
+          >
         </article>
 
         <article class="vehicle-card" data-category="motorcycles">
@@ -542,10 +553,12 @@
           </ul>
           <p class="vehicle-card__price">₹82,194</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+          <a class="vehicle-card__btn" href="#hero_valuation_form"
+            >Exchange & Unlock Offers</a
+          >
         </article>
 
-        <article class="vehicle-card" data-category="mopeds">
+        <!-- <article class="vehicle-card" data-category="mopeds">
           <div class="vehicle-card__badge-row">
             <span class="vehicle-card__badge">Newly Launched</span>
           </div>
@@ -563,7 +576,7 @@
           </ul>
           <p class="vehicle-card__price">₹68,499</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+          <a class="vehicle-card__btn" href="#hero_valuation_form">Exchange & Unlock Offers</a>
         </article>
 
         <article class="vehicle-card" data-category="mopeds">
@@ -580,7 +593,7 @@
           </ul>
           <p class="vehicle-card__price">₹75,199</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+          <a class="vehicle-card__btn" href="#hero_valuation_form">Exchange & Unlock Offers</a>
         </article>
 
         <article class="vehicle-card" data-category="mopeds">
@@ -597,8 +610,8 @@
           </ul>
           <p class="vehicle-card__price">₹71,899</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
-        </article>
+          <a class="vehicle-card__btn" href="#hero_valuation_form">Exchange & Unlock Offers</a>
+        </article> -->
 
         <article class="vehicle-card" data-category="scooters">
           <div class="vehicle-card__badge-row">
@@ -614,7 +627,9 @@
           </ul>
           <p class="vehicle-card__price">₹82,194</p>
           <p class="vehicle-card__price-sub">Ex - Showroom Price, DELHI</p>
-          <button class="vehicle-card__btn" type="button">Exchange Now</button>
+          <a class="vehicle-card__btn" href="#hero_valuation_form"
+            >Exchange & Unlock Offers</a
+          >
         </article>
       </div>
 
@@ -644,15 +659,15 @@
     <section class="blogs-section">
       <div class="blogs-header">
         <div>
-          <p class="section-eyebrow">Blogs</p>
+          <p class="section-eyebrow">EXPERT GUIDES</p>
           <h2 class="section-heading">
-            <span class="underline">Make The</span> Most Of Every Ride
+            <span class="underline">Smart Tips</span> for Used Two-Wheeler Resale & Care
           </h2>
           <p class="blogs-header__subtitle">
             Programs, offers, and stories crafted exclusively for Hero riders.
           </p>
         </div>
-        <a href="#" class="blogs-view-all">View All &rarr;</a>
+        <a href="#" class="blogs-view-all">View All Articles &rarr;</a>
       </div>
 
       <!-- desktop / tablet asymmetric grid -->
@@ -900,7 +915,7 @@
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  How is the resale value of my two-wheeler calculated?
+                  How does the Wheels of Trust valuation platform work?
                 </button>
               </h2>
               <div
@@ -909,8 +924,9 @@
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">
-                  We use 3 factors: vehicle age & registration year, brand & model demand,
-                  and your city's market conditions. Estimate is real-time.
+                  It is a fully phygitalprocess (physical & digital). You input your
+                  two-wheeler details online for a 30-second estimate, a brief evaluation
+                  checks the vehicle condition and you close the deal at a nearby dealer.
                 </div>
               </div>
             </div>
@@ -924,7 +940,7 @@
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  What documents do I need to sell my bike?
+                  Can I submit a two-wheeler from any automotive brand?
                 </button>
               </h2>
               <div
@@ -933,8 +949,8 @@
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">
-                  You'll need the RC (Registration Certificate), a valid ID proof,
-                  insurance papers, and PUC certificate to complete the sale.
+                  Yes, we evaluate and accept vehicles from all brands across India, not
+                  just Hero MotoCorp models.
                 </div>
               </div>
             </div>
@@ -948,7 +964,7 @@
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  What is the difference between selling and scrapping?
+                  What legal documents are mandatory to complete the process?
                 </button>
               </h2>
               <div
@@ -957,12 +973,12 @@
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">
-                  Selling transfers ownership of a working vehicle to a new buyer, while
-                  scrapping permanently deregisters a vehicle that's no longer roadworthy.
+                  You will need your Registration Certificate (RC) along with ID proof and
+                  basic vehicle documents.
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
+            <!-- <div class="accordion-item">
               <h2 class="accordion-header">
                 <button
                   class="accordion-button collapsed"
@@ -1009,7 +1025,7 @@
                   of charge with zero hidden costs.
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -1031,11 +1047,11 @@
         <div class="footer-col">
           <p class="footer-col__heading">Quick Links</p>
           <ul class="footer-col__list" id="footerQuickLinks">
-            <li><a href="#">Sell</a></li>
-            <li><a href="#">Exchange</a></li>
-            <li><a href="#">Scrap</a></li>
-            <li><a href="#">Blogs</a></li>
-            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Sell My Vehicle </a></li>
+            <li><a href="#"> Old Bike Exchange</a></li>
+            <li><a href="#">Scrap Program</a></li>
+            <li><a href="#"> Expert Guides</a></li>
+            <li><a href="#">Website Sitemap</a></li>
           </ul>
         </div>
 
@@ -1043,7 +1059,6 @@
           <p class="footer-col__heading">Contact</p>
           <ul class="footer-col__list" id="footerContactLinks">
             <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Corporate Enquiry</a></li>
           </ul>
         </div>
       </div>
@@ -1052,7 +1067,7 @@
 
       <div class="footer-bottom">
         <p class="footer-bottom__copyright">
-          &copy; 2024 Hero MotoCorp Ltd. All rights reserved.
+           Copyrights © 2026. All Rights Reserved by Wheels of Trust
         </p>
         <div class="footer-bottom__links" id="footerBottomLinks">
           <a href="#">Privacy Policy</a>
@@ -1103,7 +1118,7 @@
             <!-- ===== SUB-STEP A: Condition Questions ===== -->
             <div class="vc-question-set is-active" data-vc-set="condition">
               <div class="vc-question" data-question="smoke">
-                <p class="vc-question__text">1. Is there any smoke from the silencer?</p>
+                <p class="vc-question__text">1. Is there any black or white smoke?</p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="no_smoke">
                     <span class="vc-toggle-option__icon">☁</span> No Smoke
@@ -1115,7 +1130,7 @@
               </div>
 
               <div class="vc-question" data-question="starting">
-                <p class="vc-question__text">2. Any problem in starting the vehicle?</p>
+                <p class="vc-question__text">2. Is there any problem in starting the vehicle?</p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="starts_normally">
                     <span class="vc-toggle-option__icon">⚡</span> Starts Normally
@@ -1127,7 +1142,7 @@
               </div>
 
               <div class="vc-question" data-question="lights">
-                <p class="vc-question__text">3. Lights &amp; indicators working fine?</p>
+                <p class="vc-question__text">3.  Is there any problem in the working of lights & indicators?</p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="working">
                     <span class="vc-toggle-option__icon">💡</span> Working
@@ -1174,7 +1189,7 @@
                 </p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="no_damage">
-                    <span class="vc-toggle-option__icon">🛡</span> No Damage
+                    <span class="vc-toggle-option__icon">🛡</span> No Scratch / Dent / Cracks
                   </div>
                   <div class="vc-toggle-option" data-value="damaged">
                     <span class="vc-toggle-option__icon">🛡</span> Scratch/Dent/Cracks
@@ -1279,7 +1294,7 @@
                   class="custom-input"
                   id="authFullName"
                   name="fullName"
-                  placeholder="Enter your full name"
+                  placeholder="Enter your first and last name"
                   data-required
                 />
               </div>
@@ -1293,7 +1308,7 @@
                   class="custom-input"
                   id="authMobile"
                   name="mobileNumber"
-                  placeholder="Enter mobile number"
+                  placeholder="Enter 10-digit mobile number"
                   maxlength="10"
                   data-required
                 />
@@ -1704,7 +1719,7 @@
               </div>
 
               <div class="vc-referral-block">
-                <p class="vc-referral-heading">Know a friend looking to upgrade?</p>
+                <p class="vc-referral-heading">Share to a friend looking to sell or upgrade</p>
 
                 <div class="vc-referral-input">
                   <input

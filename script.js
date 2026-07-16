@@ -178,7 +178,7 @@ class FormService {
     this.continueBtn.innerHTML =
       this.currentStep === this.totalSteps
         ? `Submit <span><i class="bi bi-chevron-right"></i></span>`
-        : `Continue <span><i class="bi bi-chevron-right"></i></span>`;
+        : `Calculate Resale Value <span><i class="bi bi-chevron-right"></i></span>`;
 
     // Lock tabs after step 1
     this._renderTabs();
@@ -498,7 +498,9 @@ class VehicleConditionOffcanvas {
         this._renderSubStep();
         const canvas_title = document.querySelector(".vc-offcanvas__title");
         const canvas_subtitle = document.querySelector(".vc-offcanvas__subtitle");
+        const canvas_header = document.querySelector(".vc-offcanvas__header");
         canvas_title.style = "visibility: hidden;";
+        canvas_header.style = "display:none;";
         canvas_subtitle.innerHTML = "";
         return;
       }
@@ -1166,6 +1168,99 @@ class OTPInput {
 }
 
 /* =========================================================
+     Sticky button in mobile
+  ========================================================= */
+class StickyCtaController {
+  constructor({
+    heroSelector = "#hero_valuation_form",
+    stickyButtonSelector = ".sticky-button",
+  } = {}) {
+    this.hero = document.querySelector(heroSelector);
+    this.stickyButton = document.querySelector(stickyButtonSelector);
+
+    if (!this.hero || !this.stickyButton) {
+      console.warn("StickyCtaController: hero or sticky button element not found");
+      return;
+    }
+  }
+
+  init() {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        this.toggleButton(!entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0,
+      },
+    );
+
+    observer.observe(this.hero);
+  }
+
+  toggleButton(shouldShow) {
+    this.stickyButton.classList.toggle("is-visible", shouldShow);
+  }
+}
+
+/* =========================================================
+     VALUATION CARD GLOW
+  ========================================================= */
+class ValuationCardGlowController {
+  constructor({
+    targetId = "valuationCard",
+    triggerSelectors = [".vehicle-card__btn", ".mobile-sticky-cta"],
+  } = {}) {
+    this.target = document.getElementById(targetId);
+    this.triggerSelectors = triggerSelectors;
+    this.glowDuration = 4500; // ms
+    this.glowTimeoutId = null;
+  }
+
+  init() {
+    if (!this.target) {
+      console.warn(
+        `ValuationCardGlowController: no element found with id "${this.target}"`,
+      );
+      return;
+    }
+
+    // Event delegation on document — covers all buttons, including
+    // dynamically cloned ones (e.g. mobile carousel clones added after init)
+    this.triggerSelectors.forEach((triggerSelector) => {
+      document.addEventListener("click", (e) => {
+        const trigger = e.target.closest(triggerSelector);
+        if (!trigger) return;
+
+        e.preventDefault();
+        this.scrollAndGlow();
+      });
+    });
+  }
+
+  scrollAndGlow() {
+    this.target.scrollIntoView({ behavior: "smooth", block: "start" });
+    this.triggerGlow();
+  }
+
+  triggerGlow() {
+    // Clear any glow already in progress so rapid re-clicks restart cleanly
+    if (this.glowTimeoutId) {
+      clearTimeout(this.glowTimeoutId);
+      this.target.classList.remove("is-highlighted");
+      void this.target.offsetWidth; // force reflow to restart the CSS animation
+    }
+
+    this.target.classList.add("is-highlighted");
+
+    this.glowTimeoutId = setTimeout(() => {
+      this.target.classList.remove("is-highlighted");
+      this.glowTimeoutId = null;
+    }, this.glowDuration);
+  }
+}
+
+/* =========================================================
      App Init Class - entry point
   ========================================================= */
 class App {
@@ -1181,6 +1276,8 @@ class App {
     new VehiclesController(this.config).init();
     new BlogsController(this.config).init();
     new LanguageSelect();
+    new StickyCtaController().init();
+    new ValuationCardGlowController().init();
     new OTPInput();
     const valuationForm = new FormService({
       formKey: "vehicleValuationForm",
