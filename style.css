@@ -7,7 +7,7 @@
   --color-primary-red: #fe0000;
   --color-primary-navy: #0b1f3a;
   --color-navy-dark: #012349;
-  --color-text-dark: #1a1a1a;
+  --color-text-dark: #464646;
   --color-text-muted: #9aa0a6;
   --color-border: #e5e7eb;
   --color-bg-pink: #fff2f2;
@@ -16,6 +16,7 @@
   --radius-lg: 16px;
   --white: #ffffff;
   --border-gray: #e0e0e0;
+  --canvas-valuation-card: rgba(128, 128, 128, 0.311);
 }
 
 * {
@@ -349,7 +350,7 @@ header.site-header {
 
 .valuation-card__subtitle {
   color: var(--color-text-dark);
-  font-size: clamp(0.65rem, 1vw, 0.7rem);
+  font-size: clamp(0.6rem, 1vw, 0.7rem);
   margin: 0;
 }
 
@@ -658,9 +659,9 @@ header.site-header {
 .section-eyebrow {
   color: var(--color-primary-red);
   font-weight: 700;
-  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  font-size: clamp(0.7rem, 2vw, 1.1rem);
   letter-spacing: 1px;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   text-transform: uppercase;
 }
 
@@ -668,7 +669,8 @@ header.site-header {
   font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-weight: 500;
   margin: 0;
-  color: var(--color-text-dark);
+  color: black;
+      line-height: 24px;
 }
 
 .section-nav {
@@ -789,7 +791,7 @@ header.site-header {
   font-size: clamp(0.65rem, 1vw, 0.7rem);
   line-height: 1.5;
   margin: 0 0 10px 0;
-  min-height: 60px;
+  min-height: 40px;
 }
 
 .benefit-card__pill {
@@ -797,9 +799,8 @@ header.site-header {
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 0.82rem;
-  font-weight: 500;
+  padding: 6px 12px;
+  font-size: 0.7rem;
   color: var(--color-text-dark);
 }
 
@@ -925,6 +926,7 @@ header.site-header {
   flex-direction: column;
   position: relative;
   scroll-snap-align: start;
+  color: black;
 }
 .section-nav__btn:disabled {
   opacity: 0.35;
@@ -1008,6 +1010,7 @@ header.site-header {
   font-size: clamp(0.8rem, 1vw, 0.9rem);
   cursor: pointer;
   transition: background 0.2s ease;
+  text-align: center;
 }
 .vehicle-card__btn:hover {
   background: #c9181e;
@@ -1347,7 +1350,7 @@ header.site-header {
   font-size: clamp(1.6rem, 3vw, 1.7rem);
   font-weight: 500;
   margin: 0 0 clamp(24px, 3vw, 36px) 0;
-  color: var(--color-text-dark);
+  color: black;
   max-width: 300px;
 }
 
@@ -1361,6 +1364,7 @@ header.site-header {
   font-size: clamp(1.3rem, 2vw, 1.45rem);
   font-weight: 400;
   margin: 0 0 12px 0;
+  color: black;
 }
 
 .faq-contact-card__desc {
@@ -1395,6 +1399,7 @@ header.site-header {
 
 .accordion-body {
   font-size: 0.8rem;
+  text-align: start;
 }
 
 @media (max-width: 991px) {
@@ -1409,6 +1414,12 @@ header.site-header {
 @media (max-width: 575px) {
   .faq-heading {
     font-size: clamp(1.5rem, 5vw, 1.8rem);
+  }
+  .faq-contact-card {
+    display: none;
+  }
+  .faq-grid {
+    text-align: center;
   }
 }
 
@@ -1604,6 +1615,9 @@ header.site-header {
   .site-footer {
     margin-bottom: 4rem;
   }
+  .footer-bottom__copyright {
+    text-align: center;
+  }
 }
 
 /* ============================== FORM CLASSES ============================== */
@@ -1672,7 +1686,7 @@ header.site-header {
   padding-bottom: 6px;
   border-bottom: 1.5px solid var(--color-border, #eee);
   margin-right: 1rem;
-  width: 100%;
+  width: 90%;
 }
 .vc-offcanvas__title .text-red {
   color: var(--color-primary-red);
@@ -1732,7 +1746,7 @@ header.site-header {
   font-weight: 500;
   color: #333;
   transition: all 0.15s ease;
-  font-size: clamp(0.6rem, 1vw, 0.75rem);
+  font-size: clamp(0.65rem, 1vw, 0.75rem);
 }
 
 .vc-toggle-option.is-active {
@@ -1743,7 +1757,7 @@ header.site-header {
 
 .vc-toggle-option.is-active:last-child {
   border-color: var(--color-text-dark);
-  background-color: var(--color-text-muted);
+  background-color: var(--canvas-valuation-card);
   color: var(--color-text-dark);
 
   .vc-radio-dot {
@@ -1786,7 +1800,7 @@ header.site-header {
   background: var(--color-primary-red);
   color: #fff;
   border: none;
-  padding: 6px;
+  padding: 8px;
   font-weight: 600;
   font-size: clamp(0.8rem, 1vw, 0.9rem);
   cursor: pointer;
@@ -1795,7 +1809,7 @@ header.site-header {
   border: 1.5px solid var(--color-primary-navy, #0a1f44);
   background: none;
   color: var(--color-primary-navy, #0a1f44);
-  padding: 6px 20px;
+  padding: 8px 20px;
   font-weight: 600;
   font-size: clamp(0.8rem, 1vw, 0.9rem);
   cursor: pointer;
@@ -1805,6 +1819,21 @@ header.site-header {
     background: var(--color-primary-navy, #0a1f44);
     color: white;
   }
+}
+
+.button_wrapper {
+  position: absolute;
+  top: 1rem;
+  opacity: 1;
+  right: 1rem;
+  transform: translateX(-50%);
+  background-color: white;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ===== Mobile: convert side drawer into bottom sheet ===== */
@@ -1841,28 +1870,24 @@ header.site-header {
   .vc-offcanvas__panel {
     padding: 14px;
     max-height: 85vh;
+    min-height: 85vh;
   }
   .vc-toggle-group {
     grid-template-columns: 1fr 1fr;
   }
 
   .button_wrapper {
-    position: absolute;
     top: -2.5rem;
     opacity: 1;
     left: 50%;
     transform: translateX(-50%);
-    background-color: white;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .vc-offcanvas__close {
     margin: 0px 0 0 1px !important;
+  }
+  .vc-offcanvas__title {
+    width: 100%;
   }
 }
 
@@ -1974,7 +1999,7 @@ header.site-header {
   letter-spacing: 1.5px;
 }
 .vc-result-price {
-  font-size: clamp(1.3rem, 1.7vw, 1.8rem);
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
   font-weight: 600;
   color: var(--color-primary-navy, #0a1f44);
   margin: 0;

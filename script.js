@@ -189,7 +189,7 @@ class FormService {
     this.tabsEl.querySelectorAll("[data-tab]").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.tab === this.flow);
       btn.disabled = isLocked;
-      btn.classList.toggle("is-disabled", isLocked);
+      // btn.classList.toggle("is-disabled", isLocked);
     });
   }
 
@@ -288,7 +288,7 @@ class FormService {
 
     // Clean up query params after successful submit
     window.history.pushState({}, "", window.location.pathname);
-
+    window.location.reload();
     // Redirect or show success state
     // window.location.href = "/valuation-result";
   }
