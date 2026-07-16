@@ -1862,7 +1862,7 @@ header.site-header {
   }
 
   .vc-offcanvas__close {
-    margin: 1px 0 0 1px !important;
+    margin: 0px 0 0 1px !important;
   }
 }
 
@@ -1904,7 +1904,7 @@ header.site-header {
   border: none;
   padding: 10px;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1918,7 +1918,7 @@ header.site-header {
   color: var(--color-primary-red);
   font-weight: 500;
   text-decoration: underline;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .vc-terms-box {
@@ -1932,7 +1932,7 @@ header.site-header {
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #333;
 }
 .vc-checkbox input[type="checkbox"] {
@@ -2147,7 +2147,7 @@ header.site-header {
 
 .vc-benefits-alert__text {
   color: #e02020;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.2;
   margin: 0;
 }
@@ -2177,13 +2177,13 @@ header.site-header {
 }
 
 .vc-benefit-row__label {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   color: #1a1a1a;
 }
 
 .vc-benefit-row__value {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   color: #1a1a1a;
 }
@@ -2200,7 +2200,7 @@ header.site-header {
 }
 
 .vc-benefits-disclaimer {
-  font-size: 12px;
+  font-size: 10px;
   color: #8a8a8a;
   margin-top: 10px;
   line-height: 1.4;
@@ -2379,7 +2379,7 @@ header.site-header {
   padding: 6px 14px;
   color: var(--color-primary-red);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin-bottom: 5px;
 }
 
@@ -2428,7 +2428,7 @@ header.site-header {
 }
 .vc-referral-heading {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 0 0 10px;
 }
 
