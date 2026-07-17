@@ -393,7 +393,7 @@ header.site-header {
   background: #f3f4f6;
   color: var(--color-text-dark);
   font-weight: 600;
-  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  font-size: clamp(0.65rem, 1vw, 0.9rem);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -630,7 +630,7 @@ header.site-header {
     margin-bottom: 0;
   }
   .vehicle-tabs__btn {
-    padding: 12px 6px;
+    padding: 8px 6px;
   }
   .form-row {
     gap: 10px;
@@ -918,7 +918,7 @@ header.site-header {
 }
 
 .vehicle-card {
-  min-width: 300px;
+  min-width: 285px;
   background: #f5f5f5;
   border: 1px solid #ecedf0;
   padding: clamp(0.8rem, 1.6vw, 1rem);
@@ -1681,8 +1681,8 @@ header.site-header {
   flex-shrink: 0;
 }
 .vc-offcanvas__title {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
   padding-bottom: 6px;
   border-bottom: 1.5px solid var(--color-border, #eee);
   margin-right: 1rem;
@@ -1999,8 +1999,8 @@ header.site-header {
   letter-spacing: 1.5px;
 }
 .vc-result-price {
-  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
-  font-weight: 600;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 500;
   color: var(--color-primary-navy, #0a1f44);
   margin: 0;
 }
@@ -2238,8 +2238,8 @@ header.site-header {
   padding: 4px 10px;
 }
 .vc-dealer-heading {
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 0.8rem;
   margin: 4px;
 }
 
@@ -2247,20 +2247,28 @@ header.site-header {
   display: flex;
   gap: 12px;
   overflow: auto;
-  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  /* smooth touch scrolling */
+  -webkit-overflow-scrolling: touch; /* momentum/inertia scroll on iOS Safari */
+  touch-action: pan-x; /* restricts touch gesture to horizontal only */
+  scroll-behavior: smooth;
+
+  /* optional: snap each card into place after a swipe */
+  scroll-snap-type: x proximity;
 }
 
 .vc-dealer-card {
+  scroll-snap-align: start;
   display: flex;
   gap: 12px;
   background: #fff;
-  border: 1px solid var(--color-border, #ddd);
+  border: 1.5px solid var(--color-border, #ddd);
   padding: 16px;
   cursor: pointer;
   position: relative;
   width: 300px;
   flex-shrink: 0;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .vc-dealer-card input[type="radio"] {
   display: none;
@@ -2306,11 +2314,11 @@ header.site-header {
 
 .vc-dealer-field__label {
   font-weight: 600;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  color: var(--color-text-dark);
 }
 .vc-dealer-field__value {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #222;
   line-height: 14px;
 }
