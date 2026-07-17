@@ -52,6 +52,133 @@ class YearSelectInput {
 }
 
 //  ======================================================
+// HELPER JS FUNCTIONS
+// =======================================================
+
+/**
+ * SwipeGestureController
+ * Detects horizontal swipe gestures (touch + mouse drag) on any element
+ * and fires onSwipeLeft / onSwipeRight callbacks. Reusable across any
+ * carousel/gallery in the project.
+ */
+class SwipeGestureController {
+  constructor(element, { onSwipeLeft, onSwipeRight, threshold = 50 } = {}) {
+    this.element = element;
+    this.onSwipeLeft = onSwipeLeft || (() => {});
+    this.onSwipeRight = onSwipeRight || (() => {});
+    this.threshold = threshold;
+
+    this.startX = 0;
+    this.startY = 0;
+    this.isDragging = false;
+
+    this.handlePointerDown = this.handlePointerDown.bind(this);
+    this.handlePointerMove = this.handlePointerMove.bind(this);
+    this.handlePointerUp = this.handlePointerUp.bind(this);
+  }
+
+  init() {
+    this.element.addEventListener("pointerdown", this.handlePointerDown);
+    window.addEventListener("pointermove", this.handlePointerMove);
+    window.addEventListener("pointerup", this.handlePointerUp);
+    window.addEventListener("pointercancel", this.handlePointerUp);
+  }
+
+  handlePointerDown(e) {
+    this.startX = e.clientX;
+    this.startY = e.clientY;
+    this.isDragging = true;
+  }
+
+  handlePointerMove(e) {
+    if (!this.isDragging) return;
+    // prevent vertical page scroll from also triggering if the drag is clearly horizontal
+    const deltaX = Math.abs(e.clientX - this.startX);
+    const deltaY = Math.abs(e.clientY - this.startY);
+    if (deltaX > deltaY) {
+      e.preventDefault();
+    }
+  }
+
+  handlePointerUp(e) {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+
+    const deltaX = e.clientX - this.startX;
+    const deltaY = e.clientY - this.startY;
+
+    // ignore mostly-vertical drags (those are page scrolls, not swipes)
+    if (Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (Math.abs(deltaX) < this.threshold) return;
+
+    if (deltaX < 0) {
+      this.onSwipeLeft();
+    } else {
+      this.onSwipeRight();
+    }
+  }
+
+  destroy() {
+    this.element.removeEventListener("pointerdown", this.handlePointerDown);
+    window.removeEventListener("pointermove", this.handlePointerMove);
+    window.removeEventListener("pointerup", this.handlePointerUp);
+    window.removeEventListener("pointercancel", this.handlePointerUp);
+  }
+}
+
+
+/**
+ * DoubleClickController
+ * Detects double-click (desktop) and double-tap (mobile) on an element,
+ * splitting the element into left-half / right-half zones so a
+ * double-tap on the left advances backward and right advances forward
+ * — the standard "double-tap to skip" pattern (like Instagram Stories,
+ * YouTube's seek-forward/back).
+ */
+class DoubleClickController {
+  constructor(element, { onDoubleClickLeft, onDoubleClickRight, delay = 300 } = {}) {
+    this.element = element;
+    this.onDoubleClickLeft = onDoubleClickLeft || (() => {});
+    this.onDoubleClickRight = onDoubleClickRight || (() => {});
+    this.delay = delay;
+
+    this.lastTapTime = 0;
+    this.lastTapX = 0;
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  init() {
+    this.element.addEventListener("click", this.handleClick);
+  }
+
+  handleClick(e) {
+    const now = Date.now();
+    const timeSinceLastTap = now - this.lastTapTime;
+    const rect = this.element.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const isLeftHalf = clickX < rect.width / 2;
+
+    if (timeSinceLastTap < this.delay && timeSinceLastTap > 0) {
+      // registered as a double-click/tap
+      if (isLeftHalf) {
+        this.onDoubleClickLeft();
+      } else {
+        this.onDoubleClickRight();
+      }
+      this.lastTapTime = 0; // reset so a third rapid click doesn't chain-trigger
+    } else {
+      this.lastTapTime = now;
+      this.lastTapX = clickX;
+    }
+  }
+
+  destroy() {
+    this.element.removeEventListener("click", this.handleClick);
+  }
+}
+
+//  ======================================================
 // FORM SERVICE
 // =======================================================
 class FormService {
@@ -666,19 +793,70 @@ class HeroCarouselController {
     this.dots = document.querySelectorAll("#heroDots .hero-media__dot");
     this.autoPlayInterval = 4000;
     this.timer = null;
+
+    this.mediaContainer = document.getElementById("heroMedia");
   }
 
   init() {
     this.allImagesArray.forEach((img, idx) => {
       img.style.zIndex = idx;
     });
+
     this.dots.forEach((dot) => {
       dot.addEventListener("click", () => {
         const index = parseInt(dot.dataset.index, 10);
         this.goTo(index);
       });
     });
+
+    this.setupSwipe();
+    this.setupDoubleClick();
+
     this.startAutoPlay();
+  }
+
+  setupSwipe() {
+    if (!this.mediaContainer) return;
+
+    this.swipeController = new SwipeGestureController(this.mediaContainer, {
+      onSwipeLeft: () => {
+        this.pauseAndScheduleResume();
+        this.next();
+      },
+      onSwipeRight: () => {
+        this.pauseAndScheduleResume();
+        this.prev();
+      },
+      threshold: 50,
+    });
+    this.swipeController.init();
+  }
+
+  setupDoubleClick() {
+    if (!this.mediaContainer) return;
+
+    this.doubleClickController = new DoubleClickController(this.mediaContainer, {
+      onDoubleClickLeft: () => {
+        this.pauseAndScheduleResume();
+        this.prev();
+      },
+      onDoubleClickRight: () => {
+        this.pauseAndScheduleResume();
+        this.next();
+      },
+      delay: 300,
+    });
+    this.doubleClickController.init();
+  }
+
+  next() {
+    const nextIndex = (this.currentIndex + 1) % this.dots.length;
+    this.goTo(nextIndex);
+  }
+
+  prev() {
+    const prevIndex = (this.currentIndex - 1 + this.dots.length) % this.dots.length;
+    this.goTo(prevIndex);
   }
 
   goTo(index) {
@@ -699,12 +877,30 @@ class HeroCarouselController {
   }
 
   startAutoPlay() {
+    this.stopAutoPlay();
     this.timer = setInterval(() => {
-      const next = (this.currentIndex + 1) % this.dots.length;
-      this.goTo(next);
+      this.next();
     }, this.autoPlayInterval);
   }
+
+  stopAutoPlay() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+
+  pauseAndScheduleResume(resumeDelay = 5000) {
+    this.stopAutoPlay();
+    if (this.resumeTimeoutId) clearTimeout(this.resumeTimeoutId);
+    this.resumeTimeoutId = setTimeout(() => this.startAutoPlay(), resumeDelay);
+  }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const controller = new HeroCarouselController({ heroImages: [] });
+  controller.init();
+});
 
 /* =========================================================
      Vehicle Tabs Controller (Sell / Scrap)
