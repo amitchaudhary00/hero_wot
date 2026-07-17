@@ -177,7 +177,6 @@ class DoubleClickController {
   }
 }
 
-
 class AuthStepValidator {
   constructor(formEl) {
     this.formEl = formEl;
@@ -300,7 +299,6 @@ class AuthStepValidator {
   }
 }
 
-
 //  ======================================================
 // FORM SERVICE
 // =======================================================
@@ -356,12 +354,8 @@ class FormService {
     if (this.wheelerGroup) {
       this.wheelerGroup.querySelectorAll("[data-type]").forEach((opt) => {
         opt.addEventListener("click", () => {
-          this.wheelerGroup
-            .querySelectorAll("[data-type]")
-            .forEach((el) => el.classList.remove("is-active"));
-          opt.classList.add("is-active");
-          this.data.vehicleType = opt.dataset.type;
-          this._persist();
+          const config = this._fieldErrorMap().vehicleType;
+          this._toggleFieldError(this.wheelerGroup, false, config);
         });
       });
     }
@@ -369,9 +363,11 @@ class FormService {
     // Generic input/select capture for current step
     this.root.addEventListener("change", (e) => {
       const field = e.target;
-      if (field.name) {
-        this.data[field.name] = field.value;
-        this._persist();
+      if (!field.name) return;
+
+      const config = this._fieldErrorMap()[field.name];
+      if (config && field.value) {
+        this._toggleFieldError(field, false, config);
       }
     });
 
@@ -444,28 +440,60 @@ class FormService {
   }
 
   // ---------- VALIDATION ----------
+  _fieldErrorMap() {
+    return {
+      state: { errorId: "stateError", message: "Please select your state" },
+      city: { errorId: "cityError", message: "Please select your city" },
+      vehicleType: {
+        errorId: "wheelerTypeError",
+        message: "Please select a two-wheeler type",
+      },
+      brand: { errorId: "brandError", message: "Please select a brand" },
+      model: { errorId: "modelError", message: "Please select a model" },
+      year: { errorId: "yearError", message: "Please select the manufacturing year" },
+    };
+  }
   _validateCurrentStep() {
     const stepEl = this.root.querySelector(`[data-step="${this.currentStep}"]`);
     let valid = true;
+    const errorMap = this._fieldErrorMap();
 
     stepEl.querySelectorAll("[data-required]").forEach((field) => {
       const isGroup = field.hasAttribute("data-field"); // e.g. wheelerTypeGroup
+      const fieldKey = isGroup ? field.dataset.field : field.name;
+      const config = errorMap[fieldKey];
+
+      let hasError;
       if (isGroup) {
         const hasActive = field.querySelector(".is-active");
-        this._toggleFieldError(field, !hasActive);
-        if (!hasActive) valid = false;
+        hasError = !hasActive;
       } else {
-        const empty = !field.value;
-        this._toggleFieldError(field, empty);
-        if (empty) valid = false;
+        hasError = !field.value;
       }
+
+      this._toggleFieldError(field, hasError, config);
+      if (hasError) valid = false;
     });
 
     return valid;
   }
 
-  _toggleFieldError(field, hasError) {
+  _toggleFieldError(field, hasError, config) {
     field.classList.toggle("has-error", hasError);
+    field.classList.toggle("is-invalid", hasError);
+
+    if (!config) return; // no matching error span configured for this field
+
+    const errorEl = document.getElementById(config.errorId);
+    if (!errorEl) return;
+
+    if (hasError) {
+      errorEl.textContent = config.message;
+      errorEl.classList.add("is-visible");
+    } else {
+      errorEl.textContent = "";
+      errorEl.classList.remove("is-visible");
+    }
   }
 
   // ---------- DATA COLLECTION ----------
@@ -673,6 +701,10 @@ class VehicleConditionOffcanvas {
     termsCheckbox.addEventListener("change", () => {
       this.form.data.termsAccepted = termsCheckbox.checked;
       this.form._persist();
+    });
+
+    document.getElementById("authMobile").addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
     });
 
     // OTP buttons (placeholder — wire to real API later)
@@ -995,11 +1027,6 @@ class HeroCarouselController {
     this.resumeTimeoutId = setTimeout(() => this.startAutoPlay(), resumeDelay);
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const controller = new HeroCarouselController({ heroImages: [] });
-  controller.init();
-});
 
 /* =========================================================
      Vehicle Tabs Controller (Sell / Scrap)

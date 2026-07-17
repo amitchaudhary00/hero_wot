@@ -148,22 +148,33 @@
             <div class="form-step is-active" data-step="1">
               <div class="form-row">
                 <div class="form-col">
-                  <label class="field-label">State <span class="required">*</span></label>
-                  <select class="custom-select" name="state" data-required>
+                  <label class="field-label" for="stateSelect"
+                    >State <span class="required">*</span></label
+                  >
+                  <select
+                    class="custom-select"
+                    id="stateSelect"
+                    name="state"
+                    data-required
+                  >
                     <option value="" disabled selected hidden>Select State</option>
                     <option value="delhi">Delhi</option>
                     <option value="maharashtra">Maharashtra</option>
                     <option value="karnataka">Karnataka</option>
                   </select>
+                  <span class="field-error" id="stateError"></span>
                 </div>
                 <div class="form-col">
-                  <label class="field-label">City <span class="required">*</span></label>
-                  <select class="custom-select" name="city" data-required>
+                  <label class="field-label" for="citySelect"
+                    >City <span class="required">*</span></label
+                  >
+                  <select class="custom-select" id="citySelect" name="city" data-required>
                     <option value="" disabled selected hidden>Select City</option>
                     <option value="new-delhi">New Delhi</option>
                     <option value="mumbai">Mumbai</option>
                     <option value="bengaluru">Bengaluru</option>
                   </select>
+                  <span class="field-error" id="cityError"></span>
                 </div>
               </div>
 
@@ -190,33 +201,45 @@
                     Moped
                   </div>
                 </div>
+                <span class="field-error" id="wheelerTypeError"></span>
               </div>
             </div>
 
             <!-- ============ STEP 2 ============ -->
             <div class="form-step" data-step="2">
               <div class="mb-2">
-                <label class="field-label">Select Brand</label>
-                <select class="custom-select" name="brand" data-required>
+                <label class="field-label" for="brandSelect">Select Brand</label>
+                <select class="custom-select" id="brandSelect" name="brand" data-required>
                   <option value="" disabled selected hidden>Select Brand</option>
                   <option value="honda">Honda</option>
                   <option value="bajaj">Bajaj</option>
                   <option value="hero">Hero</option>
                 </select>
+                <span class="field-error" id="brandError"></span>
               </div>
 
               <div class="form-row">
                 <div class="form-col">
-                  <label class="field-label">Model <span class="required">*</span></label>
-                  <select class="custom-select" name="model" data-required>
+                  <label class="field-label" for="modelSelect"
+                    >Model <span class="required">*</span></label
+                  >
+                  <select
+                    class="custom-select"
+                    id="modelSelect"
+                    name="model"
+                    data-required
+                  >
                     <option value="" disabled selected hidden>Select Model</option>
                     <option value="honda-001">Honda 001</option>
                     <option value="bajaj-002">Bajaj 002</option>
                     <option value="hero-003">Hero 003</option>
                   </select>
+                  <span class="field-error" id="modelError"></span>
                 </div>
                 <div class="form-col">
-                  <label class="field-label">Year <span class="required">*</span></label>
+                  <label class="field-label" for="year_select"
+                    >Year <span class="required">*</span></label
+                  >
                   <select
                     id="year_select"
                     class="custom-select"
@@ -225,6 +248,7 @@
                   >
                     <option value="" disabled selected hidden>Select Year</option>
                   </select>
+                  <span class="field-error" id="yearError"></span>
                 </div>
               </div>
             </div>
@@ -1324,71 +1348,94 @@
 
             <!-- ===== SUB-STEP C: Authentication ===== -->
             <div class="vc-question-set" data-vc-set="auth">
-  <div class="vc-form-group">
-    <label class="field-label" for="authFullName"
-      >Full Name <span class="required">*</span></label
-    >
-    <input
-      type="text"
-      class="custom-input"
-      id="authFullName"
-      name="fullName"
-      placeholder="Enter your first and last name"
-      data-required
-    />
-    <span class="field-error" id="authFullNameError"></span>
-  </div>
+              <div class="vc-form-group">
+                <label class="field-label" for="authFullName"
+                  >Full Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="custom-input"
+                  id="authFullName"
+                  name="fullName"
+                  placeholder="Enter your first and last name"
+                  data-required
+                />
+                <span class="field-error" id="authFullNameError"></span>
+              </div>
 
-  <div class="vc-form-group">
-    <label class="field-label" for="authMobile"
-      >Mobile Number <span class="required">*</span></label
-    >
-    <input
-      type="tel"
-      class="custom-input"
-      id="authMobile"
-      name="mobileNumber"
-      placeholder="Enter 10-digit mobile number"
-      maxlength="10"
-      data-required
-    />
-    <span class="field-error" id="authMobileError"></span>
-  </div>
+              <div class="vc-form-group">
+                <label class="field-label" for="authMobile"
+                  >Mobile Number <span class="required">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="custom-input"
+                  id="authMobile"
+                  name="mobileNumber"
+                  placeholder="Enter 10-digit mobile number"
+                  maxlength="10"
+                  data-required
+                  max="10"
+                  inputmode="numeric"
+                  pattern="[6-9][0-9]{9}"
+                />
+                <span class="field-error" id="authMobileError"></span>
+              </div>
 
-  <div class="vc-form-group otp_group">
-    <label class="field-label" for="otp">Please Enter OTP</label>
-    <div>
-      <div id="otp_input_box" class="otp_inputs">
-        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
-        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
-        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
-        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
-      </div>
-    </div>
-    <span class="field-error" id="otpError"></span>
-  </div>
+              <div class="vc-form-group otp_group">
+                <label class="field-label" for="otp">Please Enter OTP</label>
+                <div>
+                  <div id="otp_input_box" class="otp_inputs">
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                    <input
+                      class="otp_input"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="1"
+                    />
+                  </div>
+                </div>
+                <span class="field-error" id="otpError"></span>
+              </div>
 
-  <div class="vc-form-group">
-    <label class="field-label">Send OTP via</label>
-    <button type="button" class="btn-otp-whatsapp" id="sendOtpWhatsapp">
-      <i class="bi bi-whatsapp"></i> Share OTP via WhatsApp
-    </button>
-    <a href="#" class="link-otp-sms" id="sendOtpSms">Share OTP Via SMS</a>
-  </div>
+              <div class="vc-form-group">
+                <label class="field-label">Send OTP via</label>
+                <button type="button" class="btn-otp-whatsapp" id="sendOtpWhatsapp">
+                  <i class="bi bi-whatsapp"></i> Share OTP via WhatsApp
+                </button>
+                <a href="#" class="link-otp-sms" id="sendOtpSms">Share OTP Via SMS</a>
+              </div>
 
-  <div class="vc-terms-box">
-    <label class="vc-checkbox">
-      <input type="checkbox" id="authTerms" checked data-required />
-      <span class="vc-checkbox__box"><i class="bi bi-check"></i></span>
-      <span class="vc-checkbox__label">
-        I agree to the
-        <a href="/terms" target="_blank">Terms &amp; Conditions</a> and
-        <a href="/privacy" target="_blank">Privacy Policy</a>
-      </span>
-    </label>
-    <span class="field-error" id="authTermsError"></span>
-  </div>
-</div>
+              <div class="vc-terms-box">
+                <label class="vc-checkbox">
+                  <input type="checkbox" id="authTerms" checked data-required />
+                  <span class="vc-checkbox__box"><i class="bi bi-check"></i></span>
+                  <span class="vc-checkbox__label">
+                    I agree to the
+                    <a href="/terms" target="_blank">Terms &amp; Conditions</a> and
+                    <a href="/privacy" target="_blank">Privacy Policy</a>
+                  </span>
+                </label>
+                <span class="field-error" id="authTermsError"></span>
+              </div>
+            </div>
 
             <!-- ===== SUB-STEP D: Estimated Resale Value / Result ===== -->
             <div class="vc-question-set" data-vc-set="result">
