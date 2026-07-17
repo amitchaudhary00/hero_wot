@@ -246,6 +246,34 @@ header.site-header {
   }
 }
 
+/* ERROR MESSAGE ======================================== */
+
+.field-error {
+  display: none;
+  color: var(--color-primary-red, #e02020);
+  font-size: 0.65rem;
+  margin-top: 4px;
+  min-height: 1em; /* reserves space so layout doesn't jump when error appears */
+}
+
+.field-error.is-visible {
+  display: block;
+}
+
+/* highlight the input itself when invalid */
+.custom-input.is-invalid {
+  border-color: var(--color-primary-red, #e02020);
+}
+
+.otp_inputs.is-invalid .otp_input {
+  border-color: var(--color-primary-red, #e02020);
+}
+
+.vc-checkbox.is-invalid .vc-checkbox__box {
+  border-color: var(--color-primary-red, #e02020);
+}
+/* ======================= END ERROR MESSAGE ======================================== */
+
 /* =========================================================
          HERO SECTION
       ========================================================= */
@@ -516,6 +544,7 @@ header.site-header {
   padding: clamp(14px, 2.5vw, 20px) clamp(16px, 4vw, 64px);
   overflow: hidden;
   overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .stats-bar__inner {
@@ -934,7 +963,23 @@ header.site-header {
   position: relative;
   scroll-snap-align: start;
   color: black;
+  transition: transform 0.3s ease;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
 }
+
+.vehicle-card.is-dragging {
+  transition: none; /* no easing while actively being dragged */
+  cursor: grabbing;
+}
+
+.vehicle-card.is-swiping-out {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+}
+
 .section-nav__btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
@@ -1027,6 +1072,8 @@ header.site-header {
 .vehicles-mobile-carousel {
   display: none;
   position: relative;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .vehicles-mobile-carousel .section-nav__btn {
@@ -1201,6 +1248,8 @@ header.site-header {
 }
 
 .blogs-mobile-carousel {
+  touch-action: pan-y;
+  user-select: none;
   display: none;
 }
 
@@ -1343,13 +1392,13 @@ header.site-header {
       ========================================================= */
 .faq-section {
   background: linear-gradient(0deg, rgba(255, 218, 218, 0) 0%, #fbdfdf 100%);
-  padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 64px);
+  padding: clamp(30px, 6vw, 80px) clamp(16px, 4vw, 64px);
 }
 
 .faq-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 4vw, 60px);
+  gap: clamp(20px, 4vw, 60px);
   align-items: start;
 }
 
@@ -1359,6 +1408,7 @@ header.site-header {
   margin: 0 0 clamp(24px, 3vw, 36px) 0;
   color: black;
   max-width: 300px;
+  text-align: start;
 }
 
 .faq-contact-card {
@@ -1421,6 +1471,7 @@ header.site-header {
 @media (max-width: 575px) {
   .faq-heading {
     font-size: clamp(1.5rem, 5vw, 1.8rem);
+    margin-bottom: 0;
   }
   .faq-contact-card {
     display: none;
@@ -1865,7 +1916,6 @@ header.site-header {
   .vc-offcanvas.show {
     transform: none !important;
   }
-  
 
   .vc-offcanvas__inner {
     flex-direction: column;
@@ -1989,12 +2039,39 @@ header.site-header {
 }
 
 /* ========================== RESALE VALUE OFFCANVAS ============================ */
+
+@keyframes text-shimmer-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 .vc-result-price-card {
   background: linear-gradient(90deg, #fff2f2 0%, #ffffff 100%);
   padding: 12px;
   text-align: center;
   margin-bottom: 14px;
+  position: relative;
 }
+
+.vc-result-price-card .vc-result-price {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-navy, #0a1f44) 25%,
+    #fe0000bc 50%,
+    var(--color-primary-navy, #0a1f44) 75%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: text-shimmer-sweep 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
 .vc-result-vehicle-name {
   font-size: 0.8rem;
   color: #333;
@@ -2003,7 +2080,7 @@ header.site-header {
 }
 .vc-result-price {
   font-size: clamp(1.3rem, 2vw, 1.8rem);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-primary-navy, #0a1f44);
   margin: 0;
 }

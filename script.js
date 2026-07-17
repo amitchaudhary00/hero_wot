@@ -177,6 +177,130 @@ class DoubleClickController {
   }
 }
 
+
+class AuthStepValidator {
+  constructor(formEl) {
+    this.formEl = formEl;
+
+    this.fields = {
+      fullName: {
+        input: document.getElementById("authFullName"),
+        error: document.getElementById("authFullNameError"),
+        validate: (value) => {
+          if (!value.trim()) return "Full name is required";
+          if (value.trim().length < 3) return "Please enter your full name";
+          if (!/^[a-zA-Z\s.'-]+$/.test(value.trim()))
+            return "Name contains invalid characters";
+          return null;
+        },
+      },
+      mobile: {
+        input: document.getElementById("authMobile"),
+        error: document.getElementById("authMobileError"),
+        validate: (value) => {
+          if (!value.trim()) return "Mobile number is required";
+          if (!/^[6-9]\d{9}$/.test(value.trim()))
+            return "Enter a valid 10-digit mobile number";
+          return null;
+        },
+      },
+      otp: {
+        input: document.getElementById("otp_input_box"),
+        error: document.getElementById("otpError"),
+        validate: () => {
+          const otpDigits = Array.from(
+            document.querySelectorAll("#otp_input_box .otp_input"),
+          ).map((el) => el.value.trim());
+          const otpValue = otpDigits.join("");
+          if (otpValue.length < 4) return "Please enter the complete 4-digit OTP";
+          if (!/^\d{4}$/.test(otpValue)) return "OTP must contain only numbers";
+          return null;
+        },
+      },
+      terms: {
+        input: document.getElementById("authTerms"),
+        error: document.getElementById("authTermsError"),
+        validate: (checked) => {
+          if (!checked)
+            return "You must agree to the Terms & Conditions and Privacy Policy";
+          return null;
+        },
+      },
+    };
+  }
+
+  validateField(key) {
+    const field = this.fields[key];
+    if (!field) return true;
+
+    let value;
+    if (key === "terms") {
+      value = field.input.checked;
+    } else if (key === "otp") {
+      value = null; // validate() reads DOM directly for OTP
+    } else {
+      value = field.input.value;
+    }
+
+    const errorMessage = field.validate(value);
+    this.setFieldError(field, errorMessage);
+    return !errorMessage;
+  }
+
+  validateAll() {
+    const results = Object.keys(this.fields).map((key) => this.validateField(key));
+    return results.every(Boolean);
+  }
+
+  setFieldError(field, message) {
+    if (!field.error) return;
+
+    if (message) {
+      field.error.textContent = message;
+      field.error.classList.add("is-visible");
+      field.input?.classList.add("is-invalid");
+      field.input?.closest(".otp_inputs")?.classList.add("is-invalid");
+      field.input?.closest(".vc-checkbox")?.classList.add("is-invalid");
+    } else {
+      field.error.textContent = "";
+      field.error.classList.remove("is-visible");
+      field.input?.classList.remove("is-invalid");
+      field.input?.closest(".otp_inputs")?.classList.remove("is-invalid");
+      field.input?.closest(".vc-checkbox")?.classList.remove("is-invalid");
+    }
+  }
+
+  clearAllErrors() {
+    Object.values(this.fields).forEach((field) => this.setFieldError(field, null));
+  }
+
+  bindLiveValidation() {
+    // Full name & mobile: validate on blur (after user leaves the field)
+    this.fields.fullName.input?.addEventListener("blur", () =>
+      this.validateField("fullName"),
+    );
+    this.fields.mobile.input?.addEventListener("blur", () =>
+      this.validateField("mobile"),
+    );
+
+    // OTP: validate once all 4 digits are filled
+    document.querySelectorAll("#otp_input_box .otp_input").forEach((input) => {
+      input.addEventListener("input", () => {
+        const allFilled = Array.from(
+          document.querySelectorAll("#otp_input_box .otp_input"),
+        ).every((el) => el.value.trim().length === 1);
+        if (allFilled) this.validateField("otp");
+      });
+    });
+
+    // Terms checkbox: validate immediately on change
+    this.fields.terms.input?.addEventListener("change", () =>
+      this.validateField("terms"),
+    );
+  }
+}
+
+
 //  ======================================================
 // FORM SERVICE
 // =======================================================
@@ -751,32 +875,9 @@ class VehicleConditionOffcanvas {
   }
 
   _validateAuthStep() {
-    let valid = true;
-
-    const fullName = document.getElementById("authFullName");
-    const mobile = document.getElementById("authMobile");
-    const terms = document.getElementById("authTerms");
-
-    if (!fullName.value.trim()) {
-      fullName.classList.add("has-error");
-      valid = false;
-    } else {
-      fullName.classList.remove("has-error");
-    }
-
-    if (!/^\d{10}$/.test(mobile.value.trim())) {
-      mobile.classList.add("has-error");
-      valid = false;
-    } else {
-      mobile.classList.remove("has-error");
-    }
-
-    if (!terms.checked) {
-      valid = false;
-      // optionally highlight the terms box
-    }
-
-    return valid;
+    const validator = new AuthStepValidator(this.el);
+    validator.bindLiveValidation(); // call once, e.g. in init/constructor
+    return validator.validateAll();
   }
 }
 
@@ -1043,6 +1144,7 @@ class VehiclesController {
       ".vehicle-tabs-filter__item",
     );
     this.gridEl = document.getElementById("vehiclesGrid");
+    this.mobileCarouselEl = document.querySelector(".vehicles-mobile-carousel");
     this.mobileCardWrap = document.getElementById("vehicleMobileCardWrap");
     this.mobilePrevBtn = document.getElementById("vehiclePrevBtn");
     this.mobileNextBtn = document.getElementById("vehicleNextBtn");
@@ -1066,7 +1168,31 @@ class VehiclesController {
     this.desktopNextBtn.addEventListener("click", () => this.stepDesktop(1));
     this.gridEl.addEventListener("scroll", () => this.updateDesktopNavState());
 
+    this.setupSwipe();
+
     this.render();
+  }
+
+  setupSwipe() {
+    // Desktop grid: swipe advances by one card, same as the arrow buttons
+    if (this.gridEl) {
+      this.desktopSwipeController = new SwipeGestureController(this.gridEl, {
+        onSwipeLeft: () => this.stepDesktop(1),
+        onSwipeRight: () => this.stepDesktop(-1),
+        threshold: 50,
+      });
+      this.desktopSwipeController.init();
+    }
+
+    // Mobile single-card carousel: swipe steps to next/prev card
+    if (this.mobileCarouselEl) {
+      this.mobileSwipeController = new SwipeGestureController(this.mobileCarouselEl, {
+        onSwipeLeft: () => this.stepMobile(1),
+        onSwipeRight: () => this.stepMobile(-1),
+        threshold: 50,
+      });
+      this.mobileSwipeController.init();
+    }
   }
 
   setFilter(activeBtn) {
@@ -1135,7 +1261,6 @@ class VehiclesController {
 
   getGridGap() {
     const styles = window.getComputedStyle(this.gridEl);
-    // "column-gap" (or fallback "gap") is what your CSS `gap: 10px` maps to
     const gapValue = styles.columnGap || styles.gap || "0";
     return parseFloat(gapValue) || 0;
   }
@@ -1154,7 +1279,6 @@ class VehiclesController {
 
     if (this.mobileIndex >= visibleCards.length) this.mobileIndex = 0;
 
-    // Clone the real static card node instead of regenerating markup
     const original = visibleCards[this.mobileIndex];
     const clone = original.cloneNode(true);
     clone.hidden = false;
@@ -1182,6 +1306,11 @@ class BlogsController {
     // Read already-rendered cards/dots from static HTML
     this.cards = Array.from(this.mobileCarouselEl.querySelectorAll(".blog-card"));
     this.dots = Array.from(this.dotsEl.querySelectorAll(".blogs-dots__dot"));
+
+    this.autoPlayInterval = 3000;
+    this.resumeDelay = 4000;
+    this.timer = null;
+    this.resumeTimeoutId = null;
   }
 
   init() {
@@ -1189,11 +1318,41 @@ class BlogsController {
       dot.addEventListener("click", () => {
         this.currentIndex = parseInt(dot.dataset.index, 10);
         this.update();
+        this.pauseAndScheduleResume();
       });
     });
 
+    this.setupSwipe();
+
     this.update();
     this.startAutoPlay();
+  }
+
+  setupSwipe() {
+    if (!this.mobileCarouselEl) return;
+
+    this.swipeController = new SwipeGestureController(this.mobileCarouselEl, {
+      onSwipeLeft: () => {
+        this.next();
+        this.pauseAndScheduleResume();
+      },
+      onSwipeRight: () => {
+        this.prev();
+        this.pauseAndScheduleResume();
+      },
+      threshold: 50,
+    });
+    this.swipeController.init();
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+    this.update();
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    this.update();
   }
 
   update() {
@@ -1215,17 +1374,25 @@ class BlogsController {
   }
 
   startAutoPlay() {
+    this.stopAutoPlay();
     this.timer = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.cards.length;
-      this.update();
-    }, 3000);
+      this.next();
+    }, this.autoPlayInterval);
   }
 
   stopAutoPlay() {
-    clearInterval(this.timer);
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+
+  pauseAndScheduleResume() {
+    this.stopAutoPlay();
+    if (this.resumeTimeoutId) clearTimeout(this.resumeTimeoutId);
+    this.resumeTimeoutId = setTimeout(() => this.startAutoPlay(), this.resumeDelay);
   }
 }
-
 /* =========================================================
      Language select 
   ========================================================= */

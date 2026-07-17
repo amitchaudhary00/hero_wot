@@ -1324,87 +1324,71 @@
 
             <!-- ===== SUB-STEP C: Authentication ===== -->
             <div class="vc-question-set" data-vc-set="auth">
-              <div class="vc-form-group">
-                <label class="field-label" for="authFullName"
-                  >Full Name <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  class="custom-input"
-                  id="authFullName"
-                  name="fullName"
-                  placeholder="Enter your first and last name"
-                  data-required
-                />
-              </div>
+  <div class="vc-form-group">
+    <label class="field-label" for="authFullName"
+      >Full Name <span class="required">*</span></label
+    >
+    <input
+      type="text"
+      class="custom-input"
+      id="authFullName"
+      name="fullName"
+      placeholder="Enter your first and last name"
+      data-required
+    />
+    <span class="field-error" id="authFullNameError"></span>
+  </div>
 
-              <div class="vc-form-group">
-                <label class="field-label" for="authMobile"
-                  >Mobile Number <span class="required">*</span></label
-                >
-                <input
-                  type="tel"
-                  class="custom-input"
-                  id="authMobile"
-                  name="mobileNumber"
-                  placeholder="Enter 10-digit mobile number"
-                  maxlength="10"
-                  data-required
-                />
-              </div>
+  <div class="vc-form-group">
+    <label class="field-label" for="authMobile"
+      >Mobile Number <span class="required">*</span></label
+    >
+    <input
+      type="tel"
+      class="custom-input"
+      id="authMobile"
+      name="mobileNumber"
+      placeholder="Enter 10-digit mobile number"
+      maxlength="10"
+      data-required
+    />
+    <span class="field-error" id="authMobileError"></span>
+  </div>
 
-              <div class="vc-form-group otp_group">
-                <label class="field-label" for="otp">Please Enter OTP</label>
-                <div>
-                  <div id="otp_input_box" class="otp_inputs">
-                    <input
-                      class="otp_input"
-                      type="text"
-                      inputmode="numeric"
-                      maxlength="1"
-                    />
-                    <input
-                      class="otp_input"
-                      type="text"
-                      inputmode="numeric"
-                      maxlength="1"
-                    />
-                    <input
-                      class="otp_input"
-                      type="text"
-                      inputmode="numeric"
-                      maxlength="1"
-                    />
-                    <input
-                      class="otp_input"
-                      type="text"
-                      inputmode="numeric"
-                      maxlength="1"
-                    />
-                  </div>
-                </div>
-              </div>
+  <div class="vc-form-group otp_group">
+    <label class="field-label" for="otp">Please Enter OTP</label>
+    <div>
+      <div id="otp_input_box" class="otp_inputs">
+        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
+        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
+        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
+        <input class="otp_input" type="text" inputmode="numeric" maxlength="1" />
+      </div>
+    </div>
+    <span class="field-error" id="otpError"></span>
+  </div>
 
-              <div class="vc-form-group">
-                <label class="field-label">Send OTP via</label>
-                <button type="button" class="btn-otp-whatsapp" id="sendOtpWhatsapp">
-                  <i class="bi bi-whatsapp"></i> Share OTP via WhatsApp
-                </button>
-                <a href="#" class="link-otp-sms" id="sendOtpSms">Share OTP Via SMS</a>
-              </div>
+  <div class="vc-form-group">
+    <label class="field-label">Send OTP via</label>
+    <button type="button" class="btn-otp-whatsapp" id="sendOtpWhatsapp">
+      <i class="bi bi-whatsapp"></i> Share OTP via WhatsApp
+    </button>
+    <a href="#" class="link-otp-sms" id="sendOtpSms">Share OTP Via SMS</a>
+  </div>
 
-              <div class="vc-terms-box">
-                <label class="vc-checkbox">
-                  <input type="checkbox" id="authTerms" checked data-required />
-                  <span class="vc-checkbox__box"><i class="bi bi-check"></i></span>
-                  <span class="vc-checkbox__label">
-                    I agree to the
-                    <a href="/terms" target="_blank">Terms &amp; Conditions</a> and
-                    <a href="/privacy" target="_blank">Privacy Policy</a>
-                  </span>
-                </label>
-              </div>
-            </div>
+  <div class="vc-terms-box">
+    <label class="vc-checkbox">
+      <input type="checkbox" id="authTerms" checked data-required />
+      <span class="vc-checkbox__box"><i class="bi bi-check"></i></span>
+      <span class="vc-checkbox__label">
+        I agree to the
+        <a href="/terms" target="_blank">Terms &amp; Conditions</a> and
+        <a href="/privacy" target="_blank">Privacy Policy</a>
+      </span>
+    </label>
+    <span class="field-error" id="authTermsError"></span>
+  </div>
+</div>
 
             <!-- ===== SUB-STEP D: Estimated Resale Value / Result ===== -->
             <div class="vc-question-set" data-vc-set="result">
