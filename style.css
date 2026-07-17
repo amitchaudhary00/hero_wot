@@ -253,10 +253,17 @@ header.site-header {
   position: relative;
 }
 .hero_carousel_img {
+  touch-action: pan-y; /* let vertical page scroll pass through; horizontal swipe is handled by JS */
+  user-select: none; /* prevent text/image selection while dragging */
+  cursor: grab;
   min-height: 300px;
   position: relative;
   height: 100%;
   width: 100%;
+}
+
+.hero_carousel_img:active {
+  cursor: grabbing;
 }
 
 /* -------- hero image column -------- */
@@ -1854,15 +1861,11 @@ header.site-header {
     /* Bootstrap slides offcanvas-end via translateX; override to translateY for bottom-sheet feel */
     transform: translateY(100%) !important;
   }
-  .vc-offcanvas.show {
-    transform: translateY(0) !important;
-  }
   .vc-offcanvas.showing,
-  .vc-offcanvas.hiding {
-    transform: translateY(
-      100%
-    ) !important; /* BS toggles .show at the end of transition; keep consistent direction */
+  .vc-offcanvas.show {
+    transform: none !important;
   }
+  
 
   .vc-offcanvas__inner {
     flex-direction: column;

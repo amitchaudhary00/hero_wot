@@ -126,7 +126,6 @@ class SwipeGestureController {
   }
 }
 
-
 /**
  * DoubleClickController
  * Detects double-click (desktop) and double-tap (mobile) on an element,
@@ -436,7 +435,6 @@ class VehicleConditionOffcanvas {
 
     this.proceedBtn = document.getElementById("vcProceedBtn");
     this.backBtn = document.getElementById("vcBackBtn");
-
     this._bindEvents();
   }
 
