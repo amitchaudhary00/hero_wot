@@ -670,7 +670,7 @@ header.site-header {
   font-weight: 500;
   margin: 0;
   color: black;
-      line-height: 24px;
+  line-height: 24px;
 }
 
 .section-nav {
@@ -880,9 +880,9 @@ header.site-header {
 .vehicle-tabs-filter__item {
   background: none;
   border: none;
-  padding: 12px 2px;
-  font-size: clamp(0.9rem, 1vw, 1rem);
-  font-weight: 500;
+  padding: 10px 2px;
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  font-weight: 400;
   color: var(--color-text-dark);
   cursor: pointer;
   border-bottom: 2px solid transparent;
@@ -973,7 +973,7 @@ header.site-header {
   position: relative;
   padding-left: 16px;
   color: var(--color-text-dark);
-  font-size: clamp(0.7rem, 0.95vw, 0.8rem);
+  font-size: clamp(0.65rem, 0.95vw, 0.75rem);
 }
 
 .vehicle-card__specs li::before {
@@ -995,7 +995,7 @@ header.site-header {
 
 .vehicle-card__price-sub {
   color: var(--color-text-dark);
-  font-size: clamp(0.78rem, 1.2vw, 0.85rem);
+  font-size: clamp(0.65rem, 1.2vw, 0.8rem);
   margin: 0 0 18px 0;
 }
 
@@ -1490,7 +1490,7 @@ header.site-header {
 .footer-col__heading {
   color: var(--color-primary-red);
   font-weight: 700;
-  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
   margin-bottom: 8px;
 }
 
@@ -1505,7 +1505,7 @@ header.site-header {
 
 .footer-col__list a {
   color: rgba(255, 255, 255, 0.75);
-  font-size: clamp(0.88rem, 1vw, 1rem);
+  font-size: clamp(0.7rem, 1vw, 0.8rem);
   transition: color 0.2s ease;
 }
 .footer-col__list a:hover {
@@ -1529,7 +1529,7 @@ header.site-header {
 
 .footer-bottom__copyright {
   color: rgba(255, 255, 255, 0.55);
-  font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
   margin: 0;
 }
 
@@ -1541,7 +1541,7 @@ header.site-header {
 
 .footer-bottom__links a {
   color: rgba(255, 255, 255, 0.75);
-  font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
   transition: color 0.2s ease;
 }
 .footer-bottom__links a:hover {
