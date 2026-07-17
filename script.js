@@ -1241,7 +1241,7 @@ class ValuationCardGlowController {
   }
 
   scrollAndGlow() {
-    window.scrollTo({ top: 1, behavior: "smooth" });
+    window.scrollTo({ top: 100, behavior: "smooth" });
     this.triggerGlow();
   }
 
