@@ -240,14 +240,21 @@
                   <label class="field-label" for="year_select"
                     >Year <span class="required">*</span></label
                   >
-                  <select
+                  <input
+                    id="year_select"
+                    type="month"
+                    class="custom-select"
+                    name="year"
+                    data-required
+                  />
+                  <!-- <select
                     id="year_select"
                     class="custom-select"
                     name="year"
                     data-required
                   >
                     <option value="" disabled selected hidden>Select Year</option>
-                  </select>
+                  </select> -->
                   <span class="field-error" id="yearError"></span>
                 </div>
               </div>
@@ -1146,16 +1153,22 @@
                 <p class="vc-question__text">1. Is there any black or white smoke?</p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="no_smoke">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-cloud-fill"></i
-                    ></span>
-                    No Smoke
+                    <label for="smokeYes">
+                      <input type="radio" id="smokeYes" value="Yes" name="smoke" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-cloud-fill"></i
+                      ></span>
+                      No Smoke
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="smoke">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-cloud-fill"></i
-                    ></span>
-                    Smoke
+                    <label for="smokeNo">
+                      <input type="radio" id="smokeNo" value="No" name="smoke" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-cloud-fill"></i
+                      ></span>
+                      Smoke
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1166,16 +1179,22 @@
                 </p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="starts_normally">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-lightning-charge-fill"></i
-                    ></span>
-                    Starts Normally
+                    <label for="startYes">
+                      <input type="radio" id="startYes" value="Yes" name="starting" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-lightning-charge-fill"></i
+                      ></span>
+                      Starts Normally
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="not_starting">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-lightning-charge"></i
-                    ></span>
-                    Not Starting
+                    <label for="startNo">
+                      <input type="radio" id="startNo" value="No" name="starting" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-lightning-charge"></i
+                      ></span>
+                      Not Starting
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1186,16 +1205,22 @@
                 </p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="working">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-lightbulb-fill"></i
-                    ></span>
-                    Working
+                    <label for="workingYes">
+                      <input type="radio" id="workingYes" value="Yes" name="working" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-lightbulb-fill"></i
+                      ></span>
+                      Working
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="not_working">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-lightbulb-off-fill"></i
-                    ></span>
-                    Not Working
+                    <label for="workingNo">
+                      <input type="radio" id="workingNo" value="Yes" name="working" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-lightbulb-off-fill"></i
+                      ></span>
+                      Not Working
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1206,56 +1231,87 @@
                 </p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="good">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-record-circle"></i
-                    ></span>
-                    Good
+                    <label for="fronTtyreOk">
+                      <input
+                        type="radio"
+                        id="fronTtyreOk"
+                        value="Yes"
+                        name="front_tyre"
+                      />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-record-circle"></i
+                      ></span>
+                      Good
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="worn_out">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-vignette"></i
-                    ></span>
-                    Worn out /Cracks/Puncture
+                    <label for="tyreNotOk">
+                      <input type="radio" id="tyreNotOk" value="No" name="front_tyre" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-vignette"></i
+                      ></span>
+                      Worn out /Cracks/Puncture
+                    </label>
                   </div>
                 </div>
               </div>
-
               <div class="vc-question" data-question="rear_tyre">
                 <p class="vc-question__text">
                   5. What is the condition of the rear tyre?
                 </p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="good">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-record-circle"></i
-                    ></span>
-                    Good
+                    <label for="rearTyreOk">
+                      <input type="radio" id="rearTyreOk" value="Yes" name="rear_tyre" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-record-circle"></i
+                      ></span>
+                      Good
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="worn_out">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-vignette"></i
-                    ></span>
-                    Worn out /Cracks/Puncture
+                    <label for="rearTyreNotOk">
+                      <input
+                        type="radio"
+                        id="rearTyreNotOk"
+                        value="No"
+                        name="rear_tyre"
+                      />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-vignette"></i
+                      ></span>
+                      Worn out /Cracks/Puncture
+                    </label>
                   </div>
                 </div>
               </div>
-
               <div class="vc-question" data-question="body_parts">
                 <p class="vc-question__text">
                   6. What is the condition of the body parts?
                 </p>
                 <div class="vc-toggle-group">
                   <div class="vc-toggle-option is-active" data-value="no_damage">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-shield-fill"></i
-                    ></span>
-                    No Scratch / Dent / Cracks
+                    <label for="bodyPartOk">
+                      <input type="radio" id="bodyPartOk" value="Yes" name="body_part" />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-shield-fill"></i
+                      ></span>
+                      No Scratch / Dent / Cracks
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="damaged">
-                    <span class="vc-toggle-option__icon"
-                      ><i class="bi bi-shield-fill"></i
-                    ></span>
-                    Scratch/Dent/Cracks
+                    <label for="bodyPartNotOk">
+                      <input
+                        type="radio"
+                        id="bodyPartNotOk"
+                        value="Yes"
+                        name="body_part"
+                      />
+                      <span class="vc-toggle-option__icon"
+                        ><i class="bi bi-shield-fill"></i
+                      ></span>
+                      Scratch/Dent/Cracks
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1269,10 +1325,26 @@
                 </p>
                 <div class="vc-toggle-group vc-toggle-group--radio">
                   <div class="vc-toggle-option is-active" data-value="yes">
-                    <span class="vc-radio-dot"></span> Yes
+                    <label for="originalRcYes">
+                      <input
+                        type="radio"
+                        id="originalRcYes"
+                        value="Yes"
+                        name="rc_available"
+                      />
+                      <span class="vc-radio-dot"></span> Yes
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="no">
-                    <span class="vc-radio-dot"></span> No
+                    <label for="originalRcNo">
+                      <input
+                        type="radio"
+                        id="originalRcNo"
+                        value="No"
+                        name="rc_available"
+                      />
+                      <span class="vc-radio-dot"></span> No
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1283,10 +1355,21 @@
                 </p>
                 <div class="vc-toggle-group vc-toggle-group--radio">
                   <div class="vc-toggle-option is-active" data-value="yes">
-                    <span class="vc-radio-dot"></span> Yes
+                    <label for="aadhaarKycYes">
+                      <input
+                        type="radio"
+                        id="aadhaarKycYes"
+                        value="Yes"
+                        name="match_rc"
+                      />
+                      <span class="vc-radio-dot"></span> Yes
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="no">
-                    <span class="vc-radio-dot"></span> No
+                    <label for="aadhaarKycNo">
+                      <input type="radio" id="aadhaarKycNo" value="No" name="match_rc" />
+                      <span class="vc-radio-dot"></span> No
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1297,10 +1380,26 @@
                 </p>
                 <div class="vc-toggle-group vc-toggle-group--radio">
                   <div class="vc-toggle-option" data-value="yes">
-                    <span class="vc-radio-dot"></span> Yes
+                    <label for="hypothecationYes">
+                      <input
+                        type="radio"
+                        id="hypothecationYes"
+                        value="Yes"
+                        name="hypothecation"
+                      />
+                      <span class="vc-radio-dot"></span> Yes
+                    </label>
                   </div>
                   <div class="vc-toggle-option is-active" data-value="no">
-                    <span class="vc-radio-dot"></span> No
+                    <label for="hypothecationNo">
+                      <input
+                        type="radio"
+                        id="hypothecationNo"
+                        value="Yes"
+                        name="hypothecation"
+                      />
+                      <span class="vc-radio-dot"></span> No
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1311,10 +1410,26 @@
                 </p>
                 <div class="vc-toggle-group vc-toggle-group--radio">
                   <div class="vc-toggle-option" data-value="yes">
-                    <span class="vc-radio-dot"></span> Yes
+                    <label for="criminal_recordYes">
+                      <input
+                        type="radio"
+                        id="criminal_recordYes"
+                        value="Yes"
+                        name="criminal_record"
+                      />
+                      <span class="vc-radio-dot"></span> Yes
+                    </label>
                   </div>
                   <div class="vc-toggle-option is-active" data-value="no">
-                    <span class="vc-radio-dot"></span> No
+                    <label for="criminal_recordNo">
+                      <input
+                        type="radio"
+                        id="criminal_recordNo"
+                        value="No"
+                        name="criminal_record"
+                      />
+                      <span class="vc-radio-dot"></span> No
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1325,10 +1440,26 @@
                 </p>
                 <div class="vc-toggle-group vc-toggle-group--radio">
                   <div class="vc-toggle-option" data-value="yes">
-                    <span class="vc-radio-dot"></span> Yes
+                    <label for="pending_liabilitiesYes">
+                      <input
+                        type="radio"
+                        id="pending_liabilitiesYes"
+                        value="No"
+                        name="pending_liabilities"
+                      />
+                      <span class="vc-radio-dot"></span> Yes
+                    </label>
                   </div>
                   <div class="vc-toggle-option is-active" data-value="no">
-                    <span class="vc-radio-dot"></span> No
+                    <label for="pending_liabilitiesNo">
+                      <input
+                        type="radio"
+                        id="pending_liabilitiesNo"
+                        value="No"
+                        name="pending_liabilities"
+                      />
+                      <span class="vc-radio-dot"></span> No
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1337,10 +1468,26 @@
                 <p class="vc-question__text">6. Is your vehicle in running condition?</p>
                 <div class="vc-toggle-group vc-toggle-group--radio">
                   <div class="vc-toggle-option" data-value="yes">
-                    <span class="vc-radio-dot"></span> Yes
+                    <label for="running_conditionYes">
+                      <input
+                        type="radio"
+                        id="running_conditionYes"
+                        value="No"
+                        name="running_condition"
+                      />
+                      <span class="vc-radio-dot"></span> Yes
+                    </label>
                   </div>
                   <div class="vc-toggle-option" data-value="no">
-                    <span class="vc-radio-dot"></span> No
+                    <label for="running_conditionNo">
+                      <input
+                        type="radio"
+                        id="running_conditionNo"
+                        value="No"
+                        name="running_condition"
+                      />
+                      <span class="vc-radio-dot"></span> No
+                    </label>
                   </div>
                 </div>
               </div>

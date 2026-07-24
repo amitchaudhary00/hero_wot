@@ -474,6 +474,10 @@ header.site-header {
   background-position: right 14px center;
 }
 
+#year_select.custom-select {
+  background-image: none;
+}
+
 /* two wheeler type selector */
 .wheeler-type-group {
   display: flex;
@@ -1796,15 +1800,23 @@ header.site-header {
 .vc-toggle-option {
   border: 1.5px solid var(--color-border, #ddd);
   border-radius: 8px;
-  padding: 8px 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
   font-weight: 500;
   color: #333;
   transition: all 0.15s ease;
   font-size: clamp(0.65rem, 1vw, 0.75rem);
+
+  label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    height: 100%;
+    width: 100%;
+    input {
+      display: none;
+    }
+  }
 }
 
 .vc-toggle-option.is-active {
