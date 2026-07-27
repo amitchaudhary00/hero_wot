@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Old Bike Exchange Offers | Used Two-Wheeler Exchange Platform.</title>
+    <meta
+      name="description"
+      content="Looking for the best old bike exchange offer? Swap your used motorcycle or second hand scooter for a brand new Hero two-wheeler safely at an authorized dealer or channel partner."
+    />
+    <link rel="preload" as="image" href="/assets/hero_carousel_1.png" />
+    <link rel="preload" as="image" href="/assets/hero_carousel_2.png" />
+    <link rel="preload" as="image" href="/assets/hero_carousel_3.png" />
+    <link rel="preload" as="image" href="/assets/logo_main.svg" />
+    <link rel="preload" as="image" href="/assets/logo.svg" />
+    <link
+      rel="preload"
+      href="/assets/fonts/transducer-normalregular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/style.css" as="style" />
+    <link rel="preload" href="/script.js" as="script" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/scrap.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+        <div class="container-xl nav-inner">
+          <!-- Brand Left: Wheels of Trust -->
+          <a class="navbar-brand brand-wot" href="/">
+            <img src="/assets/logo.svg" alt="Wheels of Trust logo" class="brand-icon" />
+          </a>
+
+          <!-- Center: Hero Logo -->
+          <a class="navbar-brand brand-hero mx-auto" href="/">
+            <img src="/assets/logo_main.svg" alt="Hero" />
+          </a>
+          <!-- var(--color-primary-navy, #0a1f44) -->
+          <!-- Right controls -->
+          <div class="nav-right d-flex align-items-center gap-lg-3 gap-1">
+            <a href="#" class="nav-faq d-none">FAQs</a>
+            <div class="lang-switcher-wrap">
+              <!-- Real select: accessible, keyboard-friendly, form-compatible -->
+              <select id="languageSwitcher" class="lang-select-native">
+                <option value="en" data-code="EN" selected>English</option>
+                <option value="hi" data-code="हिन्दी">हिन्दी (Hindi)</option>
+                <option value="ta" data-code="தமிழ்">தமிழ் (Tamil)</option>
+                <option value="te" data-code="తెలుగు">తెలుగు (Telugu)</option>
+                <option value="mr" data-code="मराठी">मराठी (Marathi)</option>
+                <option value="kn" data-code="ಕನ್ನಡ">ಕನ್ನಡ (Kannada)</option>
+                <option value="bn" data-code="বাংলা">বাংলা (Bengali)</option>
+                <option value="gu" data-code="ગુજરાતી">ગુજરાતી (Gujarati)</option>
+              </select>
+
+              <!-- Trigger button -->
+              <button
+                id="openLanguageSwitcher"
+                class="btn lang-switcher d-flex align-items-center gap-1"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span class="flag"><img src="/assets/globe.svg" alt="" /></span>
+                <span class="fw-bold" id="langSwitcherLabel">EN</span>
+                <span class="arrow-down">▾</span>
+              </button>
+
+              <!-- Custom visual dropdown, generated from the select above -->
+              <ul class="lang-dropdown" id="langDropdown" role="listbox" hidden></ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <header class="hero-section position-relative overflow-hidden">
+      <div class="hero-bg" data-aos></div>
+      <div class="container position-relative py-4">
+        <div class="row align-items-center">
+          <div class="col-lg-7 hero-copy">
+            <!-- <p class="eyebrow mb-3">Quick &amp; Reliable</p> -->
+            <h1 class="hero-title mb-4">
+              Claim The Best Old Two-Wheeler
+              <span class="text-red d-block">Exchange Offers Instantly</span>
+            </h1>
+            <p class="hero-sub mb-4">
+              Upgrade your ride without the stress of private buyers. Check the fair
+              exchange value of your second-hand bike or scooter online and seamlessly
+              transition to a brand-new Hero.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <span class="pill-badge"
+                ><i class="check-dot">✓</i> All Brands Accepted</span
+              >
+              <span class="pill-badge"
+                ><i class="check-dot">✓</i> Direct Value Deduction</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PROCESS SECTION -->
+    <section class="py-4 process-section">
+      <div class="container py-4">
+        <div class="text-center mb-5" data-reveal>
+          <!-- <span class="section-eyebrow">Hero Wheels of Trust</span> -->
+          <h2 class="section-title my-2">How The Hero Bike Exchange Program Works</h2>
+          <p class="section-sub">
+            A straightforward, safe, 3-step phygital (physical + digital) upgrade process
+            managed through India's largest authorized network.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4" data-reveal style="--delay: 0s">
+            <div class="process-card h-100">
+              <div class="process-icon">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <path d="M3 9h18M9 4v16" />
+                </svg>
+              </div>
+              <h3 class="process-title">1. Calculate Your Exchange Value Online</h3>
+              <p class="process-text">
+                Input your two-wheeler's make, model and year, then answer 6 quick
+                condition questions to unlock an instant estimate.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.12s">
+            <div class="process-card h-100">
+              <div class="process-icon">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <path d="M3 9h18M8 2v4M16 2v4" />
+                </svg>
+              </div>
+              <h3 class="process-title">2. Reserve a Quick Verification Window</h3>
+              <p class="process-text">
+                Select your preferred local dealer from our 1,000+ authorized channel
+                partners network. Schedule a brief physical inspection where a technician
+                will quickly verify standard condition metrics.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.24s">
+            <div class="process-card h-100">
+              <div class="process-icon">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <h3 class="process-title">3. Deduct Payout & Ride Home on a New Hero</h3>
+              <p class="process-text">
+                Lock in your final verified valuation quote directly at the designated
+                local dealership. The exchange value can be subtracted from the cost of
+                your brand-new Hero motorcycle or scooter, cutting down your out-of-pocket
+                expenses.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section class="py-4 calculator-section" id="calculator">
+      <div class="container py-4">
+        <div class="text-center mb-5" data-reveal>
+          <h2 class="section-title my-2">How Our Exchange Price Engine Works</h2>
+          <p class="section-sub">
+            We evaluate your used two-wheeler across three core pillars to establish an
+            objective, highly competitive exchange value.
+          </p>
+        </div>
+
+        <div class="calc-wrapper mx-auto" data-reveal>
+          <div class="calc-tabs" role="tablist">
+            <button class="calc-tab active" data-tab="location" type="button">
+              Location
+            </button>
+            <button class="calc-tab" data-tab="age" type="button">Age</button>
+            <button class="calc-tab" data-tab="health" type="button">Health</button>
+          </div>
+
+          <div class="calc-panel">
+            <div class="calc-pane active" id="pane-location">
+              <div class="row align-items-center g-4">
+                <div>
+                  <!-- class="col-md-7" -->
+                  <h3 class="calc-heading">Regional Market Demands</h3>
+                  <p class="calc-text">
+                    Exchange values fluctuate based on geographic popularity. Our
+                    analytical backend tracks local demand across your specific city or
+                    state to ensure your vehicle evaluation price mirrors true live market
+                    trends.
+                  </p>
+                  <!-- <span class="calc-tag"
+                    ><svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" />
+                      <circle cx="12" cy="10" r="2.5" />
+                    </svg>
+                    City-specific demand mapping</span
+                  > -->
+                </div>
+                <!-- <div class="col-md-5">
+                  <div class="calc-visual">
+                    <svg
+                      width="48"
+                      height="48"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--color-primary-red)"
+                      stroke-width="1.6"
+                    >
+                      <path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z" />
+                      <path d="M9 3v15M15 6v15" />
+                    </svg>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="calc-pane" id="pane-age">
+              <div class="row align-items-center g-4">
+                <div>
+                  <h3 class="calc-heading">Lifecycle Age & Depreciation</h3>
+                  <p class="calc-text">
+                    The specific model-variant and total years of consumer road usage
+                    establish the definitive baseline for vehicle value calculation
+                    metrics.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-pane" id="pane-health">
+              <div class="row align-items-center g-4">
+                <div>
+                  <h3 class="calc-heading">Physical & Mechanical Health</h3>
+                  <p class="calc-text">
+                    Our evaluation framework factors in vehicle condition on broad
+                    parameters which impacts the final offer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXCHANGE BANNER -->
+    <section class="exchange-section text-center">
+      <div class="container py-5" data-reveal>
+        <h2 class="exchange-title mb-4">Swap Any Second Hand Bike or Scooter Easily</h2>
+        <p class="exchange-text mx-auto mb-4">
+          You do not have to own a Hero model to unlock our premium evaluation benefits. 
+          A common misconception is that an official manufacturer-backed network only
+          exchanges its own brand models. Wheels of Trust breaks this barrier down
+          entirely. Our smart used two-wheeler valuation tools welcome every major vehicle
+          brand for a brand new Hero.
+        </p>
+        <button class="btn btn-outline-light-pill" id="readMoreBtn">+ Read More</button>
+      </div>
+    </section>
+
+    <!-- TRUST STATS -->
+    <section class="trust-section py-4">
+      <div class="container py-4">
+        <div class="mb-5" data-reveal>
+          <h2 class="trust-title">Why Millions Choose Our Upgrade Standards</h2>
+          <span class="title-underline my-2"></span>
+          <p class="section-sub text-white">
+            Rely on decades of automotive leadership, absolute structural integrity and
+            transparent dealer operations.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4" data-reveal style="--delay: 0s">
+            <div class="trust-card h-100">
+              <div class="trust-icon">
+                <i class="bi bi-bicycle fs-4"></i>
+              </div>
+              <h3 class="trust-num">125 Mn+ Two-Wheelers Sold Globally</h3>
+              <p class="trust-text">
+                Leveraging the global legacy and manufacturing scale of the world’s number
+                one motorcycle and scooter company for 25 consecutive years. 
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.12s">
+            <div class="trust-card h-100">
+              <div class="trust-icon">
+                <i class="bi bi-clock fs-4"></i>
+              </div>
+              <h3 class="trust-num">Four Decades of Customer Trust</h3>
+              <p class="trust-text">
+                Bringing absolute transparency, clean legal documentation support and
+                total peace of mind to every pre-owned transaction in India.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.24s">
+            <div class="trust-card h-100">
+              <div class="trust-icon">
+                <i class="bi bi-heart fs-4"></i>
+              </div>
+              <h3 class="trust-num">1,000+ Authorized Channel Partners</h3>
+              <p class="trust-text">
+                Enjoy maximum convenience with a widespread dealer network. Complete your
+                vehicle inspection and new model upgrade seamlessly at any authorized
+                dealer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= FAQ SECTION ============================= -->
+    <section class="faq-section">
+      <div class="faq-grid">
+        <div>
+          <h2 class="faq-heading">Frequently Asked Questions About Vehicle Exchange</h2>
+        </div>
+
+        <div>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Can I exchange an old scooter to buy a new motorcycle, or vice versa?
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  Yes. You can cross-exchange categories freely within the platform - such
+                  as exchanging an old second hand scooter to purchase a high-performance
+                  Hero motorcycle.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  What happens if my used motorcycle has an active bank loan on it?
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  You can still check your exchange estimate online. However, before
+                  closing the transaction at the dealer, you must clear all outstanding
+                  loan liabilities with your financial provider and secure a formal No
+                  Objection Certificate (NOC).
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  Is the value calculated by the online value finder guaranteed?
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  The online quote provides an estimate based on your self-reported data.
+                  The final exchange price is locked in once our authorized expert
+                  performs a physical inspection of your vehicle.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= FOOTER SECTION ============================= -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-hero-logo">
+            <img src="/assets/footer_logo.svg" alt="" />
+          </div>
+          <div class="footer-brand__divider"></div>
+          <div class="footer-wot-badge">
+            <img src="/assets/footer_logo_main.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col__heading">Quick Links</p>
+          <ul class="footer-col__list" id="footerQuickLinks">
+            <li><a href="#">Sell My Vehicle </a></li>
+            <li><a href="#"> Old Bike Exchange</a></li>
+            <li><a href="#">Scrap Program</a></li>
+            <li><a href="#"> Expert Guides</a></li>
+            <li><a href="#">Website Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col__heading">Contact</p>
+          <ul class="footer-col__list" id="footerContactLinks">
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copyright">
+          Copyrights © 2026. All Rights Reserved by Wheels of Trust
+        </p>
+        <div class="footer-bottom__links" id="footerBottomLinks">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =============================  Calculate Exchange Value SECTION ============================= -->
+    <section class="sticky-button is-visible">
+      <a href="/index.html?flow=sell" class="mobile-sticky-cta" type="button">
+        Calculate Exchange Value <i class="bi bi-arrow-right"></i></a
+      >
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/scrap.js"></script>
+  </body>
+</html>
