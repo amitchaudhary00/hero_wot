@@ -355,12 +355,15 @@ header.site-header {
   font-weight: 700;
   font-size: 1.1rem;
   margin-bottom: 0.8rem;
+  min-height: 4rem;
 }
 .process-text {
   color: var(--color-text-muted);
   font-size: var(--font-para);
   line-height: 1.6;
   margin-bottom: 0;
+  flex-grow: 1;
+  margin-top: auto;
 }
 
 /* =========================================================
@@ -865,4 +868,3 @@ header.site-header {
     padding: 10px 8px;
   }
 }
-
