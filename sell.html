@@ -126,8 +126,8 @@
 
     <!-- PROCESS SECTION -->
     <section class="py-4 process-section">
-      <div class="container py-4">
-        <div class="text-center mb-5" data-reveal>
+      <div class="container">
+        <div class="text-center mb-4" data-reveal>
           <!-- <span class="section-eyebrow">Hero Wheels of Trust</span> -->
           <h2 class="section-title my-2">How The Online Bike Selling Process Works</h2>
           <p class="section-sub">
@@ -211,7 +211,7 @@
 
     <!-- CALCULATOR SECTION -->
     <section class="py-4 calculator-section" id="calculator">
-      <div class="container py-4">
+      <div class="container">
         <div class="text-center mb-5" data-reveal>
           <h2 class="section-title my-2">How Our Bike Resale Value Calculator Works</h2>
           <p class="section-sub">
@@ -220,7 +220,41 @@
           </p>
         </div>
 
-        <div class="calc-wrapper mx-auto" data-reveal>
+        <div class="row g-4">
+          <div class="col-md-4" data-reveal style="--delay: 0s">
+            <div class="process-card h-100">
+              <p class="eyebrow">Location</p>
+              <h3 class="process-title">Regional Location Demands</h3>
+              <p class="process-text">
+                Resale values fluctuate based on geographic popularity. Our analytical
+                backend tracks indices across your city or state to ensure your vehicle
+                valuation mirrors true local market demand.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.12s">
+            <div class="process-card h-100">
+              <p class="eyebrow">Age</p>
+              <h3 class="process-title">Lifecycle Age & Structural Depreciation</h3>
+              <p class="process-text">
+                The model-variant and total years of usage establish the definitive
+                baseline for vehicle value calculation metrics.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.24s">
+            <div class="process-card h-100">
+              <p class="eyebrow">Health</p>
+              <h3 class="process-title">Physical & Mechanical Functionality</h3>
+              <p class="process-text">
+                Our inspection framework factors in vehicle condition on broad parameters
+                to access vehicle health.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="calc-wrapper mx-auto" data-reveal>
           <div class="calc-tabs" role="tablist">
             <button class="calc-tab active" data-tab="location" type="button">
               Location
@@ -233,43 +267,13 @@
             <div class="calc-pane active" id="pane-location">
               <div class="row align-items-center g-4">
                 <div>
-                  <!-- class="col-md-7" -->
                   <h3 class="calc-heading">Regional Location Demands</h3>
                   <p class="calc-text">
                     Resale values fluctuate based on geographic popularity. Our analytical
                     backend tracks indices across your city or state to ensure your
                     vehicle valuation mirrors true local market demand.
                   </p>
-                  <!-- <span class="calc-tag"
-                    ><svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" />
-                      <circle cx="12" cy="10" r="2.5" />
-                    </svg>
-                    City-specific demand mapping</span
-                  > -->
                 </div>
-                <!-- <div class="col-md-5">
-                  <div class="calc-visual">
-                    <svg
-                      width="48"
-                      height="48"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="var(--color-primary-red)"
-                      stroke-width="1.6"
-                    >
-                      <path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z" />
-                      <path d="M9 3v15M15 6v15" />
-                    </svg>
-                  </div>
-                </div> -->
               </div>
             </div>
 
@@ -297,13 +301,13 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
     <!-- EXCHANGE BANNER -->
-    <section class="exchange-section text-center">
-      <div class="container py-5" data-reveal>
+    <section class="exchange-section text-center py-4">
+      <div class="container" data-reveal>
         <h2 class="exchange-title mb-4">
           We Securely Evaluate and Buy Any Brand of Two-Wheeler
         </h2>
@@ -314,14 +318,14 @@
           down entirely. Our smart used two-wheeler valuation tools welcome every major
           vehicle brand to deliver a competitive resale value.
         </p>
-        <button class="btn btn-outline-light-pill" id="readMoreBtn">+ Read More</button>
+        <!-- <button class="btn btn-outline-light-pill" id="readMoreBtn">+ Read More</button> -->
       </div>
     </section>
 
     <!-- TRUST STATS -->
     <section class="trust-section py-4">
       <div class="container py-4">
-        <div class="mb-5" data-reveal>
+        <div class="mb-4" data-reveal>
           <h2 class="trust-title">Why Millions Trust Our Valuation Standards</h2>
           <span class="title-underline my-2"></span>
           <p class="section-sub text-white">
@@ -334,11 +338,13 @@
               <div class="trust-icon">
                 <i class="bi bi-bicycle fs-4"></i>
               </div>
-              <h3 class="trust-num">125 Mn+ Two-Wheelers Sold Globally</h3>
-              <p class="trust-text">
-                Leveraging the legacy and scale of the world’s number one motorcycle and
-                scooter company for 25 consecutive years.
-              </p>
+              <div>
+                <h3 class="trust-num">125 Mn+ Two-Wheelers Sold Globally</h3>
+                <p class="trust-text">
+                  Leveraging the legacy and scale of the world’s number one motorcycle and
+                  scooter company for 25 consecutive years.
+                </p>
+              </div>
             </div>
           </div>
           <div class="col-md-4" data-reveal style="--delay: 0.12s">
@@ -346,11 +352,13 @@
               <div class="trust-icon">
                 <i class="bi bi-clock fs-4"></i>
               </div>
-              <h3 class="trust-num">Four Decades of Customer Trust</h3>
-              <p class="trust-text">
-                Bringing transparency and peace of mind to every pre-owned transaction in
-                India.
-              </p>
+              <div>
+                <h3 class="trust-num">Four Decades of Customer Trust</h3>
+                <p class="trust-text">
+                  Bringing transparency and peace of mind to every pre-owned transaction
+                  in India.
+                </p>
+              </div>
             </div>
           </div>
           <div class="col-md-4" data-reveal style="--delay: 0.24s">
@@ -358,11 +366,13 @@
               <div class="trust-icon">
                 <i class="bi bi-heart fs-4"></i>
               </div>
-              <h3 class="trust-num">1,000+ Authorized Channel Partners</h3>
-              <p class="trust-text">
-                Enjoy maximum convenience with wide dealer network. Complete your vehicle
-                inspection seamlessly at any authorized dealer.
-              </p>
+              <div>
+                <h3 class="trust-num">1,000+ Authorized Channel Partners</h3>
+                <p class="trust-text">
+                  Enjoy maximum convenience with wide dealer network. Complete your
+                  vehicle inspection seamlessly at any authorized dealer.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -385,7 +395,7 @@
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseTwo"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
                   What essential documents must I present to sell my used bike?
@@ -393,7 +403,7 @@
               </h2>
               <div
                 id="collapseTwo"
-                class="accordion-collapse collapse show"
+                class="accordion-collapse collapse"
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">

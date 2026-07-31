@@ -21,11 +21,26 @@ class YearSelectInput {
   }
 
   init() {
+    this.customPlaceholder();
     this.selectInput = document.querySelector(this.selector);
 
     if (!this.selectInput) return;
+  }
 
-    this._generateYear();
+  customPlaceholder() {
+    document.querySelectorAll(".year-input").forEach((input) => {
+      const wrapper = input.closest(".year-wrapper");
+
+      function updatePlaceholder() {
+        wrapper.classList.toggle("has-value", input.value !== "");
+      }
+
+      input.addEventListener("input", updatePlaceholder);
+      input.addEventListener("change", updatePlaceholder);
+
+      // Initialize on page load
+      updatePlaceholder();
+    });
   }
 
   _generateYear() {

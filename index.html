@@ -135,11 +135,21 @@
             </div>
 
             <!-- Tabs: disabled after step 1 -->
+
+            <!-- changes [31-07] button class -->
             <div class="vehicle-tabs" id="vehicleTabs">
-              <button type="button" class="vehicle-tabs__btn is-active" data-tab="sell">
+              <button
+                type="button"
+                class="vehicle-tabs__btn fill_red is-active"
+                data-tab="sell"
+              >
                 Sell / Exchange
               </button>
-              <button type="button" class="vehicle-tabs__btn" data-tab="scrap">
+              <button
+                type="button"
+                class="vehicle-tabs__btn outline_red"
+                data-tab="scrap"
+              >
                 Scrap Vehicle
               </button>
             </div>
@@ -189,15 +199,21 @@
                   data-field="vehicleType"
                 >
                   <div class="wheeler-type-option is-active" data-type="motorcycle">
-                    <span class="wheeler-type-option__icon">🏍</span>
+                    <span class="wheeler-type-option__icon">
+                      <img src="/assets/motorcycle.svg" alt="motorcycle" />
+                    </span>
                     Motorcycle
                   </div>
                   <div class="wheeler-type-option" data-type="scooter">
-                    <span class="wheeler-type-option__icon">🛵</span>
+                    <span class="wheeler-type-option__icon">
+                      <img src="/assets/scooter.svg" alt="scooter" />
+                    </span>
                     Scooter
                   </div>
                   <div class="wheeler-type-option" data-type="moped">
-                    <span class="wheeler-type-option__icon">🚲</span>
+                    <span class="wheeler-type-option__icon">
+                      <img src="/assets/moped.svg" alt="moped" />
+                    </span>
                     Moped
                   </div>
                 </div>
@@ -240,13 +256,19 @@
                   <label class="field-label" for="year_select"
                     >Year <span class="required">*</span></label
                   >
-                  <input
-                    id="year_select"
-                    type="month"
-                    class="custom-select"
-                    name="year"
-                    data-required
-                  />
+
+                  <!-- changes [31-07] -->
+                  <div class="year-wrapper">
+                    <input
+                      id="year_select"
+                      type="month"
+                      class="custom-select year-input"
+                      name="year"
+                      placeholder="MM/YYYY"
+                      data-required
+                    />
+                  </div>
+
                   <!-- <select
                     id="year_select"
                     class="custom-select"
@@ -365,9 +387,10 @@
           <article class="benefit-card benefit-card--filled">
             <div class="d-flex gap-2 align-items-end">
               <div class="benefit-card__icon"><i class="bi bi-clock"></i></div>
-              <p class="benefit-card__tag">Speed</p>
+              <!-- <p class="benefit-card__tag">Speed</p> -->
+              <p class="benefit-card__tag">30-Second Valuation</p>
             </div>
-            <h3 class="benefit-card__title">30-Second Valuation</h3>
+            <!-- <h3 class="benefit-card__title">30-Second Valuation</h3> -->
             <p class="benefit-card__desc">
               Get your bike's estimated resale value in just 30 seconds.
             </p>
@@ -378,9 +401,10 @@
               <div class="benefit-card__icon">
                 <i class="bi bi-file-earmark-text"></i>
               </div>
-              <p class="benefit-card__tag">Legal</p>
+              <!-- <p class="benefit-card__tag">Legal</p> -->
+              <p class="benefit-card__tag">All Brands Accepted</p>
             </div>
-            <h3 class="benefit-card__title">All Brands Accepted</h3>
+            <!-- <h3 class="benefit-card__title">All Brands Accepted</h3> -->
             <p class="benefit-card__desc">
               Get a fair resale price for any make or model
             </p>
@@ -391,9 +415,10 @@
               <div class="benefit-card__icon">
                 <i class="bi bi-lightning-fill"></i>
               </div>
-              <p class="benefit-card__tag">Payment</p>
+              <p class="benefit-card__tag">1,000+ Channel Partners</p>
+              <!-- <p class="benefit-card__tag">Payment</p> -->
             </div>
-            <h3 class="benefit-card__title">1,000+ Channel Partners</h3>
+            <!-- <h3 class="benefit-card__title">1,000+ Channel Partners</h3> -->
             <p class="benefit-card__desc">
               Access India's largest authorized Hero dealer network
             </p>
@@ -404,9 +429,10 @@
               <div class="benefit-card__icon">
                 <i class="bi bi-geo-alt-fill"></i>
               </div>
-              <p class="benefit-card__tag">Network</p>
+              <p class="benefit-card__tag">Easy Exchange Process</p>
+              <!-- <p class="benefit-card__tag">Network</p> -->
             </div>
-            <h3 class="benefit-card__title">Easy Exchange Process</h3>
+            <!-- <h3 class="benefit-card__title">Easy Exchange Process</h3> -->
             <p class="benefit-card__desc">
               Connect with a nearby authorized dealer to upgrade quickly
             </p>
@@ -417,9 +443,10 @@
               <div class="benefit-card__icon">
                 <i class="bi bi-house-door-fill"></i>
               </div>
-              <p class="benefit-card__tag">Doorstep</p>
+              <p class="benefit-card__tag">World's Number 1</p>
+              <!-- <p class="benefit-card__tag">Doorstep</p> -->
             </div>
-            <h3 class="benefit-card__title">World's Number 1</h3>
+            <!-- <h3 class="benefit-card__title">World's Number 1</h3> -->
             <p class="benefit-card__desc">
               Four decades of trust, 25 consecutive years of leadership
             </p>
@@ -716,8 +743,22 @@
             </div>
           </article>
         </div>
-
         <div class="blogs-grid__col">
+          <article
+            class="blog-card blog-card--tall"
+            style="background-image: url(&quot;/assets/blogs/blog_2.png&quot;)"
+          >
+            <span class="blog-card__badge">Finance</span>
+            <div class="blog-card__content">
+              <h3 class="blog-card__title">Finance Your Dreams</h3>
+              <p class="blog-card__desc">
+                Easy financing for your perfect ride. Low EMIs, quick approval.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- <div class="blogs-grid__col">
           <article
             class="blog-card blog-card--wide"
             style="background-image: url(&quot;/assets/blogs/blog_2.png&quot;)"
@@ -758,7 +799,7 @@
               </div>
             </article>
           </div>
-        </div>
+        </div> -->
 
         <div class="blogs-grid__col">
           <article
@@ -941,7 +982,7 @@
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseOne"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   aria-controls="collapseOne"
                 >
                   How does the Wheels of Trust valuation platform work?
@@ -949,7 +990,7 @@
               </h2>
               <div
                 id="collapseOne"
-                class="accordion-collapse collapse show"
+                class="accordion-collapse collapse"
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">

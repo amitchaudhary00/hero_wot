@@ -2613,3 +2613,63 @@ header.site-header {
 .vc-share-icon--twitter {
   color: #1da1f2;
 }
+
+/* New css changes */
+.vehicle-tabs__btn.fill_red {
+  background: var(--color-primary-red);
+  border: 1.5px solid var(--color-primary-red);
+}
+
+.vehicle-tabs__btn.outline_red {
+  background: #f3f4f6;
+  border: 1.5px solid var(--color-primary-red);
+  color: var(--color-primary-red);
+}
+
+.wheeler-type-option__icon > img {
+  height: 30px;
+  width: 35px;
+  margin-top: 7px;
+}
+
+.year-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.year-wrapper::before {
+  content: "MM,YYYY";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  pointer-events: none;
+  font-size: 0.8rem;
+  background-color: white;
+  padding-inline: 10px;
+}
+
+/* Hide fake placeholder when input is focused */
+.year-wrapper:focus-within::before {
+  display: none;
+}
+
+/* Hide when the input has a value (using JS to add class) */
+.year-wrapper.has-value::before {
+  display: none;
+}
+
+.benefit-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.faq-section {
+  padding: clamp(30px, 6vw, 40px) clamp(16px, 4vw, 64px);
+}
+
+.blogs-grid {
+  grid-template-columns: 1fr 1fr 1fr;
+}

@@ -99,7 +99,7 @@
     </header>
 
     <!-- HERO -->
-    <header class="hero-section position-relative overflow-hidden">
+    <section class="hero-section position-relative overflow-hidden">
       <div class="hero-bg" data-aos></div>
       <div class="container position-relative py-4">
         <div class="row align-items-center">
@@ -125,12 +125,12 @@
           </div>
         </div>
       </div>
-    </header>
+    </section>
 
     <!-- PROCESS SECTION -->
     <section class="py-4 process-section">
-      <div class="container py-4">
-        <div class="text-center mb-5" data-reveal>
+      <div class="container">
+        <div class="text-center mb-4" data-reveal>
           <!-- <span class="section-eyebrow">Hero Wheels of Trust</span> -->
           <h2 class="section-title my-2">How The Hero Bike Exchange Program Works</h2>
           <p class="section-sub">
@@ -214,7 +214,7 @@
 
     <!-- CALCULATOR SECTION -->
     <section class="py-4 calculator-section" id="calculator">
-      <div class="container py-4">
+      <div class="container">
         <div class="text-center mb-5" data-reveal>
           <h2 class="section-title my-2">How Our Exchange Price Engine Works</h2>
           <p class="section-sub">
@@ -223,7 +223,41 @@
           </p>
         </div>
 
-        <div class="calc-wrapper mx-auto" data-reveal>
+        <div class="row g-4">
+          <div class="col-md-4" data-reveal style="--delay: 0s">
+            <div class="process-card h-100">
+              <p class="eyebrow">Location</p>
+              <h3 class="process-title">Regional Market Demands</h3>
+              <p class="process-text">
+                Exchange values fluctuate based on geographic popularity. Our analytical
+                backend tracks local demand across your specific city or state to ensure
+                your vehicle evaluation price mirrors true live market trends.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.12s">
+            <div class="process-card h-100">
+              <p class="eyebrow">Age</p>
+              <h3 class="process-title">Lifecycle Age & Depreciation</h3>
+              <p class="process-text">
+                The specific model-variant and total years of consumer road usage
+                establish the definitive baseline for vehicle value calculation metrics.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-reveal style="--delay: 0.24s">
+            <div class="process-card h-100">
+              <p class="eyebrow">Health</p>
+              <h3 class="process-title">Physical & Mechanical Health</h3>
+              <p class="process-text">
+                Our evaluation framework factors in vehicle condition on broad parameters
+                which impacts the final offer.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="calc-wrapper mx-auto" data-reveal>
           <div class="calc-tabs" role="tablist">
             <button class="calc-tab active" data-tab="location" type="button">
               Location
@@ -236,7 +270,6 @@
             <div class="calc-pane active" id="pane-location">
               <div class="row align-items-center g-4">
                 <div>
-                  <!-- class="col-md-7" -->
                   <h3 class="calc-heading">Regional Market Demands</h3>
                   <p class="calc-text">
                     Exchange values fluctuate based on geographic popularity. Our
@@ -244,36 +277,7 @@
                     state to ensure your vehicle evaluation price mirrors true live market
                     trends.
                   </p>
-                  <!-- <span class="calc-tag"
-                    ><svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" />
-                      <circle cx="12" cy="10" r="2.5" />
-                    </svg>
-                    City-specific demand mapping</span
-                  > -->
                 </div>
-                <!-- <div class="col-md-5">
-                  <div class="calc-visual">
-                    <svg
-                      width="48"
-                      height="48"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="var(--color-primary-red)"
-                      stroke-width="1.6"
-                    >
-                      <path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z" />
-                      <path d="M9 3v15M15 6v15" />
-                    </svg>
-                  </div>
-                </div> -->
               </div>
             </div>
 
@@ -302,29 +306,29 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
     <!-- EXCHANGE BANNER -->
-    <section class="exchange-section text-center">
-      <div class="container py-5" data-reveal>
+    <section class="exchange-section text-center py-4">
+      <div class="container" data-reveal>
         <h2 class="exchange-title mb-4">Swap Any Second Hand Bike or Scooter Easily</h2>
-        <p class="exchange-text mx-auto mb-4">
+        <p class="exchange-text mx-auto">
           You do not have to own a Hero model to unlock our premium evaluation benefits. 
           A common misconception is that an official manufacturer-backed network only
           exchanges its own brand models. Wheels of Trust breaks this barrier down
           entirely. Our smart used two-wheeler valuation tools welcome every major vehicle
           brand for a brand new Hero.
         </p>
-        <button class="btn btn-outline-light-pill" id="readMoreBtn">+ Read More</button>
+        <!-- <button class="btn btn-outline-light-pill" id="readMoreBtn">+ Read More</button> -->
       </div>
     </section>
 
     <!-- TRUST STATS -->
     <section class="trust-section py-4">
-      <div class="container py-4">
-        <div class="mb-5" data-reveal>
+      <div class="container">
+        <div class="mb-4" data-reveal>
           <h2 class="trust-title">Why Millions Choose Our Upgrade Standards</h2>
           <span class="title-underline my-2"></span>
           <p class="section-sub text-white">
@@ -338,11 +342,13 @@
               <div class="trust-icon">
                 <i class="bi bi-bicycle fs-4"></i>
               </div>
-              <h3 class="trust-num">125 Mn+ Two-Wheelers Sold Globally</h3>
-              <p class="trust-text">
-                Leveraging the global legacy and manufacturing scale of the world’s number
-                one motorcycle and scooter company for 25 consecutive years. 
-              </p>
+              <div>
+                <h3 class="trust-num">125 Mn+ Two-Wheelers Sold Globally</h3>
+                <p class="trust-text">
+                  Leveraging the global legacy and manufacturing scale of the world’s
+                  number one motorcycle and scooter company for 25 consecutive years. 
+                </p>
+              </div>
             </div>
           </div>
           <div class="col-md-4" data-reveal style="--delay: 0.12s">
@@ -350,11 +356,13 @@
               <div class="trust-icon">
                 <i class="bi bi-clock fs-4"></i>
               </div>
-              <h3 class="trust-num">Four Decades of Customer Trust</h3>
-              <p class="trust-text">
-                Bringing absolute transparency, clean legal documentation support and
-                total peace of mind to every pre-owned transaction in India.
-              </p>
+              <div>
+                <h3 class="trust-num">Four Decades of Customer Trust</h3>
+                <p class="trust-text">
+                  Bringing absolute transparency, clean legal documentation support and
+                  total peace of mind to every pre-owned transaction in India.
+                </p>
+              </div>
             </div>
           </div>
           <div class="col-md-4" data-reveal style="--delay: 0.24s">
@@ -362,12 +370,14 @@
               <div class="trust-icon">
                 <i class="bi bi-heart fs-4"></i>
               </div>
-              <h3 class="trust-num">1,000+ Authorized Channel Partners</h3>
-              <p class="trust-text">
-                Enjoy maximum convenience with a widespread dealer network. Complete your
-                vehicle inspection and new model upgrade seamlessly at any authorized
-                dealer.
-              </p>
+              <div>
+                <h3 class="trust-num">1,000+ Authorized Channel Partners</h3>
+                <p class="trust-text">
+                  Enjoy maximum convenience with a widespread dealer network. Complete
+                  your vehicle inspection and new model upgrade seamlessly at any
+                  authorized dealer.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -390,7 +400,7 @@
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseOne"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   aria-controls="collapseOne"
                 >
                   Can I exchange an old scooter to buy a new motorcycle, or vice versa?
@@ -398,7 +408,7 @@
               </h2>
               <div
                 id="collapseOne"
-                class="accordion-collapse collapse show"
+                class="accordion-collapse collapse"
                 data-bs-parent="#accordionExample"
               >
                 <div class="accordion-body">
