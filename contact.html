@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Exchange - Hero Section</title>
+    <link rel="preload" as="image" href="/assets/hero_carousel_1.png" />
+    <link rel="preload" as="image" href="/assets/hero_carousel_2.png" />
+    <link rel="preload" as="image" href="/assets/hero_carousel_3.png" />
+    <link rel="preload" as="image" href="/assets/logo_main.svg" />
+    <link rel="preload" as="image" href="/assets/logo.svg" />
+    <link
+      rel="preload"
+      href="/assets/fonts/transducer-normalregular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/style.css" as="style" />
+    <link rel="preload" href="/script.js" as="script" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="contact">
+    <!-- NAVBAR -->
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+        <div class="container-xl nav-inner">
+          <!-- Brand Left: Wheels of Trust -->
+          <a class="navbar-brand brand-wot" href="/">
+            <img src="/assets/logo.svg" alt="Wheels of Trust logo" class="brand-icon" />
+          </a>
+
+          <!-- Center: Hero Logo -->
+          <a class="navbar-brand brand-hero mx-auto" href="/">
+            <img src="/assets/logo_main.svg" alt="Hero" />
+          </a>
+          <!-- var(--color-primary-navy, #0a1f44) -->
+          <!-- Right controls -->
+          <div class="nav-right d-flex align-items-center gap-lg-3 gap-1">
+            <a href="#" class="nav-faq d-none">FAQs</a>
+            <div class="lang-switcher-wrap">
+              <!-- Real select: accessible, keyboard-friendly, form-compatible -->
+              <select id="languageSwitcher" class="lang-select-native">
+                <option value="en" data-code="EN" selected>English</option>
+                <option value="hi" data-code="हिन्दी">हिन्दी (Hindi)</option>
+                <option value="ta" data-code="தமிழ்">தமிழ் (Tamil)</option>
+                <option value="te" data-code="తెలుగు">తెలుగు (Telugu)</option>
+                <option value="mr" data-code="मराठी">मराठी (Marathi)</option>
+                <option value="kn" data-code="ಕನ್ನಡ">ಕನ್ನಡ (Kannada)</option>
+                <option value="bn" data-code="বাংলা">বাংলা (Bengali)</option>
+                <option value="gu" data-code="ગુજરાતી">ગુજરાતી (Gujarati)</option>
+              </select>
+
+              <!-- Trigger button -->
+              <button
+                id="openLanguageSwitcher"
+                class="btn lang-switcher d-flex align-items-center gap-1"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span class="flag"><img src="/assets/globe.svg" alt="" /></span>
+                <span class="fw-bold" id="langSwitcherLabel">EN</span>
+                <span class="arrow-down">▾</span>
+              </button>
+
+              <!-- Custom visual dropdown, generated from the select above -->
+              <ul class="lang-dropdown" id="langDropdown" role="listbox" hidden></ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="contact-hero position-relative overflow-hidden">
+      <div class="container-fluid px-4 position-relative hero-inner">
+        <h1 class="contact-title" data-reveal>Contact Us</h1>
+        <div class="hero-socials" data-reveal style="--delay: 0.15s">
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="contact-main">
+      <div class="container-fluid px-4">
+        <!-- TABS -->
+        <ul class="nav contact-tabs" role="tablist">
+          <li class="nav-item">
+            <button class="tab-link" data-tab="products" type="button">Products</button>
+          </li>
+          <li class="nav-item">
+            <button class="tab-link" data-tab="offices" type="button">Offices</button>
+          </li>
+          <li class="nav-item">
+            <button class="tab-link" data-tab="dealers" type="button">
+              Dealers/Channel Partners
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="tab-link active" data-tab="general" type="button">
+              General Enquiry
+            </button>
+          </li>
+        </ul>
+        <hr class="tabs-hr" />
+
+        <!-- TAB PANES -->
+        <div class="tab-content container mt-4">
+          <div class="tab-pane" id="pane-products">
+            <div class="empty-pane">
+              Product-related enquiry options will appear here.
+            </div>
+          </div>
+
+          <div class="tab-pane" id="pane-offices">
+            <div class="empty-pane">
+              Regional office addresses and contact details will appear here.
+            </div>
+          </div>
+
+          <div class="tab-pane" id="pane-dealers">
+            <div class="empty-pane">
+              Dealer and channel partner enquiry options will appear here.
+            </div>
+          </div>
+
+          <div class="tab-pane active" id="pane-general">
+            <div class="row">
+              <div class="col-lg-3 mb-4 p-0">
+                <div class="section-label">
+                  <span class="label-bar"></span>
+                  <h2>Corporate Enquiry</h2>
+                </div>
+              </div>
+
+              <div class="col-lg-9 p-0">
+                <p class="form-intro">
+                  For queries, fill the below and we will get back to you with the desired
+                  information at the earliest.
+                </p>
+
+                <form id="enquiryForm" class="row gy-4 gx-4 needs-validation px-4" novalidate>
+                  <div class="col-md-6 form-floating-line">
+                    <input
+                      type="text"
+                      class="form-line"
+                      id="name"
+                      placeholder=" "
+                      required
+                    />
+                    <label for="name">Name<span class="req">*</span></label>
+                  </div>
+                  <div class="col-md-6 form-floating-line">
+                    <input
+                      type="text"
+                      class="form-line"
+                      id="designation"
+                      placeholder=" "
+                      required
+                    />
+                    <label for="designation">Designation<span class="req">*</span></label>
+                  </div>
+
+                  <div class="col-md-6 form-floating-line">
+                    <select class="form-line" id="category" required>
+                      <option value="" selected disabled hidden></option>
+                      <option>Dealer / Distributor</option>
+                      <option>Corporate / B2B</option>
+                      <option>Supplier / Vendor</option>
+                      <option>Media / Press</option>
+                      <option>Other</option>
+                    </select>
+                    <label for="category">Category<span class="req">*</span></label>
+                  </div>
+                  <div class="col-md-6 form-floating-line">
+                    <input
+                      type="text"
+                      class="form-line"
+                      id="company"
+                      placeholder=" "
+                      required
+                    />
+                    <label for="company">Company<span class="req">*</span></label>
+                  </div>
+
+                  <div class="col-12 form-floating-line">
+                    <input
+                      type="text"
+                      class="form-line"
+                      id="address"
+                      placeholder=" "
+                      required
+                    />
+                    <label for="address">Address<span class="req">*</span></label>
+                  </div>
+
+                  <div class="col-md-6 form-floating-line">
+                    <select class="form-line" id="state" required>
+                      <option value="" selected disabled hidden></option>
+                      <option>Delhi</option>
+                      <option>Maharashtra</option>
+                      <option>Karnataka</option>
+                      <option>Tamil Nadu</option>
+                      <option>Uttar Pradesh</option>
+                    </select>
+                    <label for="state">State<span class="req">*</span></label>
+                  </div>
+                  <div class="col-md-6 form-floating-line">
+                    <select class="form-line" id="city" required>
+                      <option value="" selected disabled hidden></option>
+                      <option>New Delhi</option>
+                      <option>Mumbai</option>
+                      <option>Bengaluru</option>
+                      <option>Chennai</option>
+                      <option>Lucknow</option>
+                    </select>
+                    <label for="city">City<span class="req">*</span></label>
+                  </div>
+
+                  <div class="col-md-6 form-floating-line">
+                    <input
+                      type="tel"
+                      class="form-line"
+                      id="mobile"
+                      placeholder=" "
+                      maxlength="10"
+                      required
+                    />
+                    <label for="mobile">Mobile Number<span class="req">*</span></label>
+                  </div>
+                  <div class="col-md-6 form-floating-line otp-field">
+                    <input
+                      type="text"
+                      class="form-line"
+                      id="otp"
+                      placeholder=" "
+                      maxlength="6"
+                      required
+                    />
+                    <label for="otp">Enter OTP<span class="req">*</span></label>
+                    <button type="button" class="otp-btn" id="sendOtpBtn">
+                      Send OTP
+                    </button>
+                  </div>
+
+                  <div class="col-md-6 form-floating-line">
+                    <input
+                      type="tel"
+                      class="form-line"
+                      id="phone"
+                      placeholder=" "
+                      required
+                    />
+                    <label for="phone">Phone Number<span class="req">*</span></label>
+                  </div>
+                  <div class="col-md-6 form-floating-line">
+                    <input
+                      type="email"
+                      class="form-line"
+                      id="email"
+                      placeholder=" "
+                      required
+                    />
+                    <label for="email">Email Address<span class="req">*</span></label>
+                  </div>
+
+                  <div class="col-12 form-floating-line">
+                    <input
+                      type="text"
+                      class="form-line"
+                      id="requirements"
+                      placeholder=" "
+                      required
+                    />
+                    <label for="requirements"
+                      >Requirements<span class="req">*</span></label
+                    >
+                  </div>
+
+                  <div class="col-12 form-floating-line">
+                    <input type="text" class="form-line" id="otherInfo" placeholder=" " />
+                    <label for="otherInfo">Any Other Information</label>
+                  </div>
+
+                  <!-- CAPTCHA -->
+                  <div class="col-12">
+                    <div class="captcha-row">
+                      <div class="captcha-box" id="captchaText"></div>
+                      <button
+                        type="button"
+                        class="captcha-refresh"
+                        id="refreshCaptcha"
+                        aria-label="Refresh captcha"
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path d="M21 12a9 9 0 10-2.6 6.3M21 5v6h-6" />
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="col-md-8 form-floating-line mt-2">
+                      <input
+                        type="text"
+                        class="form-line"
+                        id="captchaInput"
+                        placeholder=" "
+                        required
+                      />
+                      <label for="captchaInput"
+                        >Enter Captcha<span class="req">*</span></label
+                      >
+                    </div>
+                  </div>
+
+                  <!-- CONSENT -->
+                  <div class="col-12">
+                    <div class="form-check consent-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="consentCheck"
+                        required
+                      />
+                      <label class="form-check-label" for="consentCheck">
+                        *By clicking Submit, you agree to our
+                        <a href="#">Terms of Use</a>, <a href="#">Disclaimer</a> and
+                        <a href="#">Privacy Policy</a>. You may receive Calls / SMS /
+                        Email notifications from us.
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- ACTIONS -->
+                  <div class="col-12 d-flex gap-3">
+                    <button type="reset" class="btn btn-reset-outline">Reset</button>
+                    <button type="submit" class="btn btn-submit" id="submitBtn" disabled>
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ============================= FOOTER SECTION ============================= -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-hero-logo">
+            <img src="/assets/footer_logo.svg" alt="" />
+          </div>
+          <div class="footer-brand__divider"></div>
+          <div class="footer-wot-badge">
+            <img src="/assets/footer_logo_main.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col__heading">Quick Links</p>
+          <ul class="footer-col__list" id="footerQuickLinks">
+            <li><a href="#">Sell My Vehicle </a></li>
+            <li><a href="#"> Old Bike Exchange</a></li>
+            <li><a href="#">Scrap Program</a></li>
+            <li><a href="#"> Expert Guides</a></li>
+            <li><a href="#">Website Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col__heading">Contact</p>
+          <ul class="footer-col__list" id="footerContactLinks">
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copyright">
+          Copyrights © 2026. All Rights Reserved by Wheels of Trust
+        </p>
+        <div class="footer-bottom__links" id="footerBottomLinks">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
