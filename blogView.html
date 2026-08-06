@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs — Hero wheel of trust</title>
+    <link rel="preload" as="image" href="/assets/logo_main.svg" />
+    <link rel="preload" as="image" href="/assets/logo.svg" />
+    <link
+      rel="preload"
+      href="/assets/fonts/transducer-normalregular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/style.css" as="style" />
+    <link rel="preload" href="/script.js" as="script" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="blogs-page">
+    <!-- NAVBAR -->
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+        <div class="container-xl nav-inner">
+          <!-- Brand Left: Wheels of Trust -->
+          <a class="navbar-brand brand-wot" href="/">
+            <img src="/assets/logo.svg" alt="Wheels of Trust logo" class="brand-icon" />
+          </a>
+
+          <!-- Center: Hero Logo -->
+          <a class="navbar-brand brand-hero mx-auto" href="/">
+            <img src="/assets/logo_main.svg" alt="Hero" />
+          </a>
+          <!-- var(--color-primary-navy, #0a1f44) -->
+          <!-- Right controls -->
+          <div class="nav-right d-flex align-items-center gap-lg-3 gap-1">
+            <a href="#" class="nav-faq d-none">FAQs</a>
+            <div class="lang-switcher-wrap">
+              <!-- Real select: accessible, keyboard-friendly, form-compatible -->
+              <select id="languageSwitcher" class="lang-select-native">
+                <option value="en" data-code="EN" selected>English</option>
+                <option value="hi" data-code="हिन्दी">हिन्दी (Hindi)</option>
+                <option value="ta" data-code="தமிழ்">தமிழ் (Tamil)</option>
+                <option value="te" data-code="తెలుగు">తెలుగు (Telugu)</option>
+                <option value="mr" data-code="मराठी">मराठी (Marathi)</option>
+                <option value="kn" data-code="ಕನ್ನಡ">ಕನ್ನಡ (Kannada)</option>
+                <option value="bn" data-code="বাংলা">বাংলা (Bengali)</option>
+                <option value="gu" data-code="ગુજરાતી">ગુજરાતી (Gujarati)</option>
+              </select>
+
+              <!-- Trigger button -->
+              <button
+                id="openLanguageSwitcher"
+                class="btn lang-switcher d-flex align-items-center gap-1"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span class="flag"><img src="/assets/globe.svg" alt="" /></span>
+                <span class="fw-bold" id="langSwitcherLabel">EN</span>
+                <span class="arrow-down">▾</span>
+              </button>
+
+              <!-- Custom visual dropdown, generated from the select above -->
+              <ul class="lang-dropdown" id="langDropdown" role="listbox" hidden></ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="blg-detail-main">
+      <div class="container-fluid px-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8" id="blogArticleWrap">
+            <!-- ============ ARTICLE 1 ============ -->
+            <article
+              class="blg-article"
+              id="post-sell-bike-fast"
+              data-title="7 Ways to Get the Best Resale Value for Your Bike"
+            >
+              <span class="blg-article-badge">Selling Tips</span>
+              <h1 class="blg-article-title">
+                7 Ways to Get the Best Resale Value for Your Bike
+              </h1>
+              <div class="blg-article-meta">
+                <span><i class="bi bi-calendar3"></i> Jul 12, 2026</span>
+                <span><i class="bi bi-clock"></i> 5 min read</span>
+                <span><i class="bi bi-person"></i> Hero Editorial Team</span>
+              </div>
+              <img
+                class="blg-article-hero"
+                src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1400&auto=format&fit=crop"
+                alt=""
+              />
+              <div class="blg-article-body">
+                <p>
+                  Getting a fair price for your used two-wheeler comes down to a handful
+                  of habits, most of which cost little to nothing. Buyers and evaluators
+                  alike respond to visible care — a clean, well-documented bike
+                  consistently earns a better offer than an identical one that looks
+                  neglected.
+                </p>
+                <h2>1. Get a professional wash and detail</h2>
+                <p>
+                  A thorough wash, chain lubrication, and polish can lift first
+                  impressions dramatically. Evaluators inspect visually before anything
+                  else, and a clean bike signals a well-maintained one.
+                </p>
+                <h2>2. Fix small cosmetic issues</h2>
+                <p>
+                  Scratches, dents, and worn grips are inexpensive to repair and
+                  disproportionately affect perceived value. Spend a small amount here for
+                  a larger return at sale time.
+                </p>
+                <h2>3. Keep your service history organized</h2>
+                <p>
+                  A complete, dated service record reassures buyers that the vehicle has
+                  been looked after and reduces uncertainty about hidden issues.
+                </p>
+                <h2>4. Time your sale around demand</h2>
+                <p>
+                  Resale values shift with season and local demand. Selling just before a
+                  festive period or a new registration cycle often fetches a better price.
+                </p>
+                <h2>5. Replace worn tyres if the cost is justified</h2>
+                <p>
+                  Heavily worn tyres are one of the first things evaluators flag. If the
+                  wear is significant, replacing them can pay for itself in a higher
+                  offer.
+                </p>
+                <h2>6. Have your paperwork ready</h2>
+                <p>
+                  Missing documents slow down the process and can lower buyer confidence.
+                  Keep your RC, PUC, insurance and invoice together and easily accessible.
+                </p>
+                <h2>7. Get an independent valuation first</h2>
+                <p>
+                  Knowing your bike's fair market range before you negotiate keeps you
+                  from underselling or pricing yourself out of the market.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ============================= FOOTER SECTION ============================= -->
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-hero-logo">
+            <img src="/assets/footer_logo.svg" alt="" />
+          </div>
+          <div class="footer-brand__divider"></div>
+          <div class="footer-wot-badge">
+            <img src="/assets/footer_logo_main.svg" alt="" />
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col__heading">Quick Links</p>
+          <ul class="footer-col__list" id="footerQuickLinks">
+            <li><a href="#">Sell My Vehicle </a></li>
+            <li><a href="#"> Old Bike Exchange</a></li>
+            <li><a href="#">Scrap Program</a></li>
+            <li><a href="#"> Expert Guides</a></li>
+            <li><a href="#">Website Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col__heading">Contact</p>
+          <ul class="footer-col__list" id="footerContactLinks">
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copyright">
+          Copyrights © 2026. All Rights Reserved by Wheels of Trust
+        </p>
+        <div class="footer-bottom__links" id="footerBottomLinks">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

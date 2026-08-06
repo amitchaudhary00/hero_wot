@@ -1665,16 +1665,9 @@ class ValuationCardGlowController {
   }
 }
 
-
 // ==================================================
-//     FAQ PAGE TABS LISTING
+//     BLOG PAGE LISTING
 // ==================================================
-
-
-
-
-
-
 
 /* =========================================================
      App Init Class - entry point
