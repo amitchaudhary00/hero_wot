@@ -3531,3 +3531,146 @@ header.site-header {
     margin-bottom: 16px;
   }
 }
+
+/* TERMS & CONDITIONS PAGE CSS */
+
+.tnc-page {
+  /* HERO */
+  .tnc-hero {
+    background: linear-gradient(
+      120deg,
+      var(--color-navy-dark) 0%,
+      var(--color-primary-navy) 60%,
+      #143257 100%
+    );
+    padding: clamp(48px, 7vw, 84px) 0 clamp(56px, 8vw, 88px);
+    height: clamp(380px, 70vh, 450px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tnc-eyebrow {
+    color: #ff8f8f;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .tnc-hero-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    margin-bottom: 14px;
+  }
+  .tnc-hero-sub {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.02rem;
+    max-width: 640px;
+    margin-bottom: 0;
+  }
+
+  /* DOCUMENT BODY */
+  .tnc-main {
+    padding: clamp(32px, 5vw, 56px) 0 clamp(56px, 7vw, 80px);
+  }
+  .tnc-intro,
+  .tnc-section-body {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    color: var(--color-text-dark);
+  }
+  .tnc-intro p,
+  .tnc-section-body p {
+    margin-bottom: 16px;
+  }
+  .tnc-section {
+    margin-top: clamp(28px, 4vw, 40px);
+  }
+  .tnc-section-title {
+    color: var(--color-navy-dark);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .tnc-section-body h3 {
+    color: var(--color-navy-dark);
+    font-weight: 700;
+    font-size: 1.02rem;
+    margin: 24px 0 10px;
+  }
+
+  /* LISTS */
+  .tnc-list {
+    margin: 0 0 16px;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tnc-list li {
+    line-height: 1.8;
+  }
+  .tnc-list-alpha {
+    list-style-type: lower-alpha;
+  }
+  .tnc-list-alpha .tnc-list-alpha {
+    margin-top: 10px;
+  }
+  .tnc-list-alpha p {
+    margin: 10px 0;
+  }
+
+  /* GRIEVANCE CONTACT CARD */
+  .tnc-contact-card {
+    background: var(--color-bg-pink);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 3vw, 28px);
+    margin-top: 8px;
+  }
+  .tnc-contact-name {
+    color: var(--color-navy-dark);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .tnc-contact-address {
+    font-style: normal;
+    color: var(--color-text-dark);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .tnc-contact-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tnc-contact-meta li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-dark);
+    font-size: 0.92rem;
+  }
+  .tnc-contact-meta i {
+    color: var(--color-primary-red);
+  }
+  .tnc-contact-meta a {
+    color: var(--color-primary-red);
+    font-weight: 600;
+  }
+  .tnc-contact-meta a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .tnc-section-title {
+      font-size: 1.1rem;
+    }
+  }
+}
