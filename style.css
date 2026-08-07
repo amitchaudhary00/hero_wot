@@ -513,6 +513,12 @@ header.site-header {
   border-color: var(--color-primary-red);
   background: #fdecec;
   color: var(--color-primary-red);
+
+  .wheeler-type-option__icon > svg,
+  .wheeler-type-option__icon > img {
+    filter: brightness(0) saturate(100%) invert(18%) sepia(92%) saturate(5000%)
+      hue-rotate(-15deg);
+  }
 }
 
 /* CTA */
